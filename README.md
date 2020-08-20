@@ -23,8 +23,6 @@ _En el año 2019 la venta de vehículos aumentó en un 14%, esto significa que l
 <br>
 _Por otro lado, han habido múltiples denuncias por estafa al momento de la transacción de un vehículos, por ejemplo, durante la cuarentena se realizó una página web, que titulaba “Segunda subasta electrónica 2020” en la cual aparecen varios objetos en remate como los vehículos. El link de esta página fue compartido 22 veces en Facebook y circula en cadena por WhatsApp. En la página de inicio de esta web, fueron colocadas hasta notas institucionales de la Aduana Nacional, para tratar de darle mayor credibilidad. Otro detalle a tomar en cuenta, es que los logos de la Aduana Nacional que son utilizados en esta página están pixelados, pudiéndose notar que los mismos están sobrepuestos._
 <br>
-![alt text](http://url/to/img.png)
-_Por otro lado, han habido múltiples denuncias por estafa al momento de la transacción de un vehículos, por ejemplo, durante la cuarentena se realizó una página web, que titulaba “Segunda subasta electrónica 2020” en la cual aparecen varios objetos en remate como los vehículos. El link de esta página fue compartido 22 veces en Facebook y circula en cadena por WhatsApp. En la página de inicio de esta web, fueron colocadas hasta notas institucionales de la Aduana Nacional, para tratar de darle mayor credibilidad. Otro detalle a tomar en cuenta, es que los logos de la Aduana Nacional que son utilizados en esta página están pixelados, pudiéndose notar que los mismos están sobrepuestos._
 
 ## Identificación del problema:
 *  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.
