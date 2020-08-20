@@ -1,5 +1,3 @@
-# SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS
-## Perfil del proyecto 
 # Cabalito <br>
 SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS <br>
 ## Integrantes:
@@ -43,11 +41,11 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 ### Lenguaje(s) de programación:
 * Dart
 ### Frameworks
-* [https://flutter-es.io/]Flutter
+* [Flutter](https://flutter-es.io/)
 ### Herramientas CASE de soporte a los modelos:
 * Draw.io
 ### Herramientas de Maquetado (Wire Framing):
-* Figma
+* [Figma](https://www.figma.com/)
 ## Anexos: 
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
