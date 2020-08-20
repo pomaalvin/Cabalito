@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 # Cabalito <br>
 # SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS <br>
+=======
+# SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS
+## Perfil del proyecto 
+# Cabalito <br>
+SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS <br>
+>>>>>>> c347adf58bcc2c372ca4b25fa1e0fe1ef177d6ce
 ## Integrantes:
 	* Erwin Alejo Gutierrez
 	* Josemar Elian Castro Paz
@@ -11,12 +18,16 @@ En la ciudad de La Paz como en el Alto, la comercialización de vehículos es un
 ## Antecedentes:
 
 _En el año 2019 la venta de vehículos aumentó en un 14%, esto significa que la estabilidad económica tuvo un avance en materia social, el cual beneficia a las familias. La cifra a la cual se llegó es de $us 767 millones, en 2018 lo que se alcanzó fue de $us 670 millones._
+<<<<<<< HEAD
 <br>
 ![](https://lh3.googleusercontent.com/proxy/k2g2XcJJDDKpGxP7cKcjNn6ZLZtMVAWAIKJ4Vu7g7Vq32kdT0M4vVIpVBL0nIDMVOOElxIvkNgxQ8aKZqDrSuL_25R0JI9BO6VNhOYeguij5QEM7fMWIeU1e)
 <br>
+=======
+</br>
+![](https://lh3.googleusercontent.com/proxy/k2g2XcJJDDKpGxP7cKcjNn6ZLZtMVAWAIKJ4Vu7g7Vq32kdT0M4vVIpVBL0nIDMVOOElxIvkNgxQ8aKZqDrSuL_25R0JI9BO6VNhOYeguij5QEM7fMWIeU1e)
+</br>
+>>>>>>> c347adf58bcc2c372ca4b25fa1e0fe1ef177d6ce
 _Por otro lado, han habido múltiples denuncias por estafa al momento de la transacción de un vehículos, por ejemplo, durante la cuarentena se realizó una página web, que titulaba “Segunda subasta electrónica 2020” en la cual aparecen varios objetos en remate como los vehículos. El link de esta página fue compartido 22 veces en Facebook y circula en cadena por WhatsApp. En la página de inicio de esta web, fueron colocadas hasta notas institucionales de la Aduana Nacional, para tratar de darle mayor credibilidad. Otro detalle a tomar en cuenta, es que los logos de la Aduana Nacional que son utilizados en esta página están pixelados, pudiéndose notar que los mismos están sobrepuestos._
-<br>
-
 ## Identificación del problema:
 *  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.
 * Al momento de buscar un vehículo, no hay categorizaciones del mismo, por lo tanto no es posible una búsqueda mediante diferentes filtros.
@@ -27,10 +38,17 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * Crear un apartado que contenga información de mecánicos de confianza para que éstos comprueben el estado del vehículo antes de la compra.
 * Categorizar la información de los vehículos para que se pueda realizar una búsqueda mediante filtro.
 ## Límites
+<<<<<<< HEAD
 * El entorno se limita a la ciudad de La Paz y el Alto, inicialmente.. </br>
 * El sistema no procesa ningún tipo de pago. </br>
 * Solo será un prototipo de un sistema</br>
 * El programa sólo funcionará en dispositivos móviles.</br>
+=======
+* El entorno se limita a la ciudad de La Paz y el Alto, inicialmente.. 
+* El sistema no procesa ningún tipo de pago. 
+* Solo será un prototipo de un sistema
+* El programa sólo funcionará en dispositivos móviles.
+>>>>>>> c347adf58bcc2c372ca4b25fa1e0fe1ef177d6ce
 ## Modelos y Herramientas:
 ### Modelo
 * Modelado Orientado a Objetos
