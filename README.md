@@ -41,11 +41,7 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 ### Lenguaje(s) de programación:
 * Dart
 ### Frameworks
-<<<<<<< HEAD
 * Flutter
-=======
-* [Flutter](https://flutter-es.io/)
->>>>>>> 42e980708c93560e56c7aeaf253b6688c8cdc16c
 ### Herramientas CASE de soporte a los modelos:
 * Draw.io
 ### Herramientas de Maquetado (Wire Framing):
