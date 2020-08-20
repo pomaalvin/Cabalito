@@ -19,9 +19,9 @@ _Por otro lado, han habido múltiples denuncias por estafa al momento de la tran
 <br>
 
 ## Identificación del problema:
-*  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.[BoliviaVerifica](https://boliviaverifica.bo/crean-falsa-pagina-web-de-la-aduana-para-estafar-a-usuarios/)[PaginaSiete](https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html)
+*  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local. [Bolivia Verifica](https://boliviaverifica.bo/crean-falsa-pagina-web-de-la-aduana-para-estafar-a-usuarios/), [Pagina Siete](https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html)
 * Al momento de buscar un vehículo, no hay categorizaciones del mismo, por lo tanto no es posible una búsqueda mediante diferentes filtros.
-* Falta de seguridad en la compra de vehículos de segunda mano, por medio de plataformas informales. [ElDiario](https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito)
+* Falta de seguridad en la compra de vehículos de segunda mano, por medio de plataformas informales. [El Diario](https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito)
 ## Objetivo General:
 Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y primera mano, para simplificar y brindar seguridad a los compradores y vendedores.
 ## Objetivos Específicos:
