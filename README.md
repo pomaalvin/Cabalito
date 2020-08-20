@@ -29,13 +29,12 @@ _Por otro lado, han habido múltiples denuncias por estafa al momento de la tran
 ### Modelo
 * Modelado Orientado a Objetos
 * Bloc
-### Herramientas:
 ### Sistema operativo:
 * Android
 ### Lenguaje(s) de programación:
 * Dart
 ### Frameworks
-Flutter
+* Flutter
 ### Herramientas CASE de soporte a los modelos:
 * Draw.io
 ### Herramientas de Maquetado (Wire Framing):
