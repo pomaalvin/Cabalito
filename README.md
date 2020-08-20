@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 42e980708c93560e56c7aeaf253b6688c8cdc16c
 # Cabalito <br>
 # SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS <br>
 ## Integrantes:
@@ -19,9 +22,9 @@ _En el año 2019 la venta de vehículos aumentó en un 14%, esto significa que l
 
 _Por otro lado, han habido múltiples denuncias por estafa al momento de la transacción de un vehículos, por ejemplo, durante la cuarentena se realizó una página web, que titulaba “Segunda subasta electrónica 2020” en la cual aparecen varios objetos en remate como los vehículos. El link de esta página fue compartido 22 veces en Facebook y circula en cadena por WhatsApp. En la página de inicio de esta web, fueron colocadas hasta notas institucionales de la Aduana Nacional, para tratar de darle mayor credibilidad. Otro detalle a tomar en cuenta, es que los logos de la Aduana Nacional que son utilizados en esta página están pixelados, pudiéndose notar que los mismos están sobrepuestos._
 ## Identificación del problema:
-*  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.
+*  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.[BoliviaVerifica](https://boliviaverifica.bo/crean-falsa-pagina-web-de-la-aduana-para-estafar-a-usuarios/)[PaginaSiete](https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html)
 * Al momento de buscar un vehículo, no hay categorizaciones del mismo, por lo tanto no es posible una búsqueda mediante diferentes filtros.
-* Falta de seguridad en la compra de vehículos de segunda mano, por medio de plataformas informales.
+* Falta de seguridad en la compra de vehículos de segunda mano, por medio de plataformas informales. [ElDiario](https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito)
 ## Objetivo General:
 Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y primera mano, para simplificar y brindar seguridad a los compradores y vendedores.
 ## Objetivos Específicos:
@@ -42,11 +45,15 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 ### Lenguaje(s) de programación:
 * Dart
 ### Frameworks
+<<<<<<< HEAD
 * Flutter
+=======
+* [Flutter](https://flutter-es.io/)
+>>>>>>> 42e980708c93560e56c7aeaf253b6688c8cdc16c
 ### Herramientas CASE de soporte a los modelos:
 * Draw.io
 ### Herramientas de Maquetado (Wire Framing):
-* Figma
+* [Figma](https://www.figma.com/)
 ## Anexos: 
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
