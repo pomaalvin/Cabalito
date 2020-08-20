@@ -1,4 +1,4 @@
-# Cabalito <br>
+# CABALITO <br>
 # SISTEMA DE INFORMACIÓN PARA COMERCIALIZACION DE VEHICULOS <br>
 ## Integrantes:
 * **Erwin Alejo Gutierrez**
