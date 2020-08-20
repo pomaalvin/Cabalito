@@ -16,3 +16,15 @@ _En el año 2019 la venta de vehículos aumentó en un 14%, esto significa que l
 <img src="https://imgur.com/a/Z9cazRi" width="300" height="150">
 ![alt text](http://url/to/img.png)
 _Por otro lado, han habido múltiples denuncias por estafa al momento de la transacción de un vehículos, por ejemplo, durante la cuarentena se realizó una página web, que titulaba “Segunda subasta electrónica 2020” en la cual aparecen varios objetos en remate como los vehículos. El link de esta página fue compartido 22 veces en Facebook y circula en cadena por WhatsApp. En la página de inicio de esta web, fueron colocadas hasta notas institucionales de la Aduana Nacional, para tratar de darle mayor credibilidad. Otro detalle a tomar en cuenta, es que los logos de la Aduana Nacional que son utilizados en esta página están pixelados, pudiéndose notar que los mismos están sobrepuestos._
+
+## 3.- Identificación del problema:
+*  No existe ninguna plataforma que centralice la información de todos los vehículos que estén a la venta, a un nivel local.
+* Al momento de buscar un vehículo, no hay categorizaciones del mismo, por lo tanto no es posible una búsqueda mediante diferentes filtros.
+* Falta de seguridad en la compra de vehículos de segunda mano, por medio de plataformas informales.
+## 4.- Objetivo General:
+Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y primera mano, para simplificar y brindar seguridad a los compradores y vendedores.
+## 5.- Objetivos Específicos:
+* Crear un apartado que contenga información de mecánicos de confianza para que éstos comprueben el estado del vehículo antes de la compra.
+* Categorizar la información de los vehículos para que se pueda realizar una búsqueda mediante filtro.
+
+
