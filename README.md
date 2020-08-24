@@ -5,6 +5,9 @@
 * **Josemar Elian Castro Paz**
 * **Silvana Stephanie Muñoz Vargas**
 * **Alvin Jamil Poma Tarqui**
+
+<div style='text-align: justify;'> 
+En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div></br>	
 ## Introducción: </br>
 <div style='text-align: justify;'> 
 En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div></br>	
