@@ -11,11 +11,11 @@ En la ciudad de La Paz y el Alto, la comercialización de vehículos es una acti
 <div align="center">
 <img src="https://i.imgur.com/dEPodai.png" width="200" align="center">
 </div>
-## Antecedentes:
-
+## Antecedentes: <br>
 _La comercialización de autos se ha vuelto una actividad económica común en Bolivia, en el año 2019 aumentó en un 14%, esto significa que la estabilidad económica tuvo un avance en materia social, el cual beneficia a las familias. La cifra a la cual se llegó es de $us 767 millones, en 2018 lo que se alcanzó fue de $us 670 millones. Como se puede observar en la figura 1, a partir del año 2017 incremento la venta de vehículos._<br>
+<div align="center">
 ![](http://cd1.eju.tv/wp-content/uploads/2019/09/img_5d84259c6d395.jpg)
-
+</div>
 Figura 1.- Histograma de la venta de vehículos y combustibles desde del año 2015 hasta el 2019. 
 <br>
 
