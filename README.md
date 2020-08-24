@@ -10,11 +10,12 @@
 </br>
 En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc.
 </br>
-<div align="center">
+<p align="center">
     <img src="https://i.imgur.com/dEPodai.png" width="200" align="center" margintop ="10">
-    
-## Antecedentes: </br>
-</div>
+
+</p>
+
+## Antecedentes:
 La comercialización de autos se ha vuelto una actividad económica común en Bolivia, en el año 2019 aumentó en un 14%, esto significa que la estabilidad económica tuvo un avance en materia social, el cual beneficia a las familias. La cifra a la cual se llegó es de $us 767 millones, en 2018 lo que se alcanzó fue de $us 670 millones. Como se puede observar en la figura 1, a partir del año 2017 incremento la venta de vehículos.</br>
 <div align="center">
     <img src="http://cd1.eju.tv/wp-content/uploads/2019/09/img_5d84259c6d395.jpg" align="center">
