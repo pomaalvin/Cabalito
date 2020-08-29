@@ -6,8 +6,7 @@
 * **Silvana Stephanie Muñoz Vargas**
 * **Alvin Jamil Poma Tarqui**
 ## Introducción: <br>
-<div style='text-align: justify;'> 
-En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div><br>	
+<div style='text-align: justify;'> En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div><br>	
 
 ![](https://i.imgur.com/dEPodai.png)
 
@@ -49,6 +48,18 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * Draw.io
 ### Herramientas de Maquetado (Wire Framing):
 * [Figma](https://www.figma.com/)
+## Elementos de los requerimiento de sistemas
+### Patrocinador del proyecto
+### Necesidades del negocio
+### Requerimientos del negocio
+### Valor del negocio
+### Cuestiones especiales
+## Analisis de factibilidad
+### Riesgos del proyecto
+### Componentes principales
+#### Factibilidad técnica
+#### Fcatibilidad económica
+#### Factibilidad de la organización
 ## Anexos: 
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
