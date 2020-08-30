@@ -62,8 +62,13 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 ### Requerimientos del negocio
 ### Valor del negocio
 ### Cuestiones especiales
+* El contacto con los concesionarios sera despues de una primera version para que la aplicacion pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
+* El mercado para un principio solo sera abarcado para celulares android ya que se desarrollo y subidad a la AppStore son mas costosos.
 ## Analisis de factibilidad
 ### Riesgos del proyecto
+* Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco dificil captar la atención de las personas al principio.
+* Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
+* A pesar de que se pondra seguridad a la hora de las compras se dificil controlar totalmente el buen uso de la aplicacion para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaria que muchos clientes desconfiaran de la aplicacion y se pasen a otras soluciones.
 ### Componentes principales
 #### Factibilidad técnica
 #### Fcatibilidad económica
