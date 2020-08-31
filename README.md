@@ -89,7 +89,7 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 * **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
 * **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
 necesidad de realizar un largo proceso de aprendizaje.
-=======
+
 **Codigo:** RNF-1 <br>
 **Tipo:** Requerimiento de conexión<br>
 **Nombre:** Conexión a internet. <br>
@@ -125,14 +125,8 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios será un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
-<<<<<<< HEAD
-#### Factibilidad técnica
-#### Factibilidad económica
-#### Factibilidad de la organización
-## Componentes del negocio
 ### Factibilidad Técnica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
-<<<<<<< HEAD
 <br>
 
 * **Tamaño del proyecto:** Mediana <br>	
