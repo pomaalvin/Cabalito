@@ -124,7 +124,7 @@ La aplicación se basa en el área de venta de los vehículos como un intermedia
 * **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
 * **Familiaridad del proyecto:** Comunidad de compradores <br>	
 ### Factibilidad Económica
-La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+En la aplicación se toma en cuenta el tiempo que se toma en construir el sistema, además es necesario saber el costo que se gastara por el proyecto siguiente:
 <br>
 
 * **Costo del desarrollo:** Aun no medido <br>		
