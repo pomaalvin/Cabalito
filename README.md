@@ -6,8 +6,7 @@
 * **Silvana Stephanie Muñoz Vargas**
 * **Alvin Jamil Poma Tarqui**
 ## Introducción: <br>
-<div style='text-align: justify;'> En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div><br>	
-## Introducción: 
+<div style='text-align: justify;'> En la ciudad de La Paz y el Alto, la comercialización de vehículos es una actividad muy común, tanto de segunda como de primera mano. Aunque existen varios concesionarios, cvendedores informales que apoyan con la compra y venta de vehículos, no existe ninguna plataforma dirigida para esta actividad, como la exposición de todos los automóviles con la información correspondiente del mismo de forma segura. El presente proyecto está orientado a la comercialización de vehículos en la ciudad de La Paz y el Alto. El objetivo es construir una plataforma mediante la cual tanto vendedores de vehículos como los interesados puedan ingresar y tengan información de todas las movilidades disponibles en su entorno, además tener una búsqueda más minuciosa por criterios como el precio, modelo, antigüedad, etc. </div>
 </br>
 <p align="center">
     <img src="https://i.imgur.com/dEPodai.png" width="200" align="center" margintop ="10">
@@ -54,13 +53,15 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * [Figma](https://www.figma.com/)
 ## Elementos de los requerimientos del sistema
 ### Patrocinador del proyecto
+* Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el rimer starup del proyecto se buscará nuestros inversionistas como las concesionarias de autos. 
 ### Necesidades del negocio
+* 
 ### Requerimientos del negocio
 ### Valor del negocio
 ### Cuestiones especiales
 * El contacto con los concesionarios sera despues de una primera version para que la aplicacion pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
 * El mercado para un principio solo sera abarcado para celulares android ya que se desarrollo y subidad a la AppStore son mas costosos.
-## Analisis de factibilidad
+## Análisis de factibilidad
 ### Riesgos del proyecto
 * Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco dificil captar la atención de las personas al principio.
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
