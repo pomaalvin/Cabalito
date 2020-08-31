@@ -37,20 +37,6 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * El sistema no procesa ningún tipo de pago. 
 * Solo será un prototipo de un sistema
 * El programa sólo funcionará en dispositivos móviles.
-## Modelos y Herramientas:
-### Modelo
-* Modelado Orientado a Objetos
-* Bloc
-### Sistema operativo:
-* Android
-### Lenguaje(s) de programación:
-* Dart
-### Frameworks
-* [Flutter](https://flutter-es.io/)
-### Herramientas CASE de soporte a los modelos:
-* [Draw.io](https://app.diagrams.net/)
-### Herramientas de Maquetado (Wire Framing):
-* [Figma](https://www.figma.com/)
 ## Elementos de los requerimientos del sistema
 ### Patrocinador del proyecto
 * Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el primer starup del proyecto se buscará nuevos inversionistas como las concesionarias de autos. 
