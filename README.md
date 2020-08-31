@@ -129,10 +129,10 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 #### Factibilidad técnica
 #### Factibilidad económica
 #### Factibilidad de la organización
-
 ## Componentes del negocio
 ### Factibilidad Técnica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+<<<<<<< HEAD
 <br>
 
 * **Tamaño del proyecto:** Mediana <br>	
@@ -146,9 +146,26 @@ En la aplicación se toma en cuenta el tiempo que se toma en construir dicha apl
 #### Factibilidad Organizacional
 El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación es ofrecer a los talleres a usar la aplicación y ellos inviten a otras personas a la aplicación como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
 <br>
+
 * **Encargado del proyecto:** Alvin Poma <br>	
 * **Gerencia Senior:** Erwin Alejo Gutiérrez <br>	
 * **Usuarios:** Desarrolladores <br>		
+* **Tamaño del proyecto:** Mediana <br>	
+* **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
+* **Familiaridad del proyecto:** Comunidad de compradores <br>	
+
+### Factibilidad Económica
+La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+<br>
+
+* **Costo del desarrollo:** Aun no medido <br>		
+### Factibilidad Organizacional
+El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación se ofrecerá a los talleres a usar el sistema y ellos inviten a otras personas a la aplicación de venta como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
+<br>
+
+* **Encargado del proyecto:** Erwin Alejo Gutiérrez <br>	
+* **Gerencia Senior:** Silvana Stephanie Muñoz Vargas <br>	
+* **Usuarios:** Clientes <br>			
 ### Anexos: 
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
