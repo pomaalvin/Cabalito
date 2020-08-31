@@ -84,7 +84,6 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 <br>´
 
 #### Requerimientos No Funcionales
-<<<<<<< HEAD
 * **Codigo:** RNF-1 <br> **Tipo:** Requerimiento de conexión <br> **Nombre:** Conexión a internet. <br> **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
 * **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
 * **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
