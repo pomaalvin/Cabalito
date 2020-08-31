@@ -106,7 +106,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 **Codigo:** RNF-4 <br>
 **Tipo:** Requerimiento de Sistema Opertivo <br>
 **Nombre:** Uso de Android <br>
-**Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de android.<br>
+**Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
 <br>
 
 ### Valor del negocio
@@ -129,8 +129,9 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 ### Factibilidad Técnica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito de intermediario del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
 <br>
+
 * **Tamaño del proyecto:** Mediana <br>	
-* **Herramientas necesarias:** Flutter, Android <br>	
+* **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
 * **Familiaridad del proyecto:** Comunidad de compradores <br>	
 
 ### Factibilidad Económica
