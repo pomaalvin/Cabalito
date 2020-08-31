@@ -53,9 +53,12 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * [Figma](https://www.figma.com/)
 ## Elementos de los requerimientos del sistema
 ### Patrocinador del proyecto
-* Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el rimer starup del proyecto se buscará nuestros inversionistas como las concesionarias de autos. 
+* Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el primer starup del proyecto se buscará nuevos inversionistas como las concesionarias de autos. 
 ### Necesidades del negocio
-* 
+* Se necesita un sistema que centralice la información de autos a la venta.
+* Se necesita que mediante el sistema se permita hacer búsquedas mediante filtros o caracteristicas específicas como el precio, modelo o estado.
+* Se necesita que el sistema brinde confiabilidad tanto a los vendedores como a los interesados. 
+* Se necesita que el sistema que se desarrolle sea intuitido y brinde una buena experiencia los usuarios que lo utilicen.
 ### Requerimientos del negocio
 ### Valor del negocio
 ### Cuestiones especiales
