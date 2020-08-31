@@ -120,13 +120,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
-#### Factibilidad técnica
-#### Factibilidad económica
-#### Factibilidad de la organización
-
-## Componentes del negocio
-
-### Factibilidad Técnica
+#### Factibilidad Técnica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito de intermediario del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
 <br>
 
@@ -134,17 +128,17 @@ La aplicación se basa en el área de venta de los vehículos como un intermedia
 * **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
 * **Familiaridad del proyecto:** Comunidad de compradores <br>	
 
-### Factibilidad Económica
+#### Factibilidad Económica
 En la aplicación se toma en cuenta el tiempo que se toma en construir dicha aplicación, además cuanto ay que invertir a la aplicación para lograrlo realizar se estima en lo siguiente:
 <br>
 * **Costo del desarrollo:** Aun no medible <br>		
-### Factibilidad Organizacional
+#### Factibilidad Organizacional
 El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación es ofrecer a los talleres a usar la aplicación y ellos inviten a otras personas a la aplicación como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
 <br>
 * **Encargado del proyecto:** Alvin Poma <br>	
 * **Gerencia Senior:** Erwin Alejo Gutiérrez <br>	
 * **Usuarios:** Desarrolladores <br>		
-## Anexos: 
+### Anexos: 
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
 * https://boliviaverifica.bo/crean-falsa-pagina-web-de-la-aduana-para-estafar-a-usuarios
