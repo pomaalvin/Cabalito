@@ -81,9 +81,15 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Nombre:** Búsqueda de Vehículos<br>
 **Funcionalidad:** El usuario a partir de filtros podrá realizar una búsqueda minuciosa del vehículo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br>
 **Salida:** Vehículos con las características que se buscaron <br>
-<br>
+<br>´
 
 #### Requerimientos No Funcionales
+<<<<<<< HEAD
+* **Codigo:** RNF-1 <br> **Tipo:** Requerimiento de conexión <br> **Nombre:** Conexión a internet. <br> **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
+* **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
+* **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
+necesidad de realizar un largo proceso de aprendizaje.
+=======
 **Codigo:** RNF-1 <br>
 **Tipo:** Requerimiento de conexión<br>
 **Nombre:** Conexión a internet. <br>
@@ -110,7 +116,6 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 <br>
 
 ### Valor del negocio
-
 ### Cuestiones especiales
 * El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
 * El mercado para un principio solo sera abarcado para celulares android ya que el desarrollo y subidad a la AppStore son mas costosos.
@@ -120,18 +125,24 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios será un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
-#### Factibilidad Técnica
-La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito de intermediario del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+<<<<<<< HEAD
+#### Factibilidad técnica
+#### Factibilidad económica
+#### Factibilidad de la organización
+
+## Componentes del negocio
+### Factibilidad Técnica
+La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
 <br>
 
 * **Tamaño del proyecto:** Mediana <br>	
 * **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
 * **Familiaridad del proyecto:** Comunidad de compradores <br>	
-
 #### Factibilidad Económica
 En la aplicación se toma en cuenta el tiempo que se toma en construir dicha aplicación, además cuanto ay que invertir a la aplicación para lograrlo realizar se estima en lo siguiente:
 <br>
-* **Costo del desarrollo:** Aun no medible <br>		
+* **Costo del desarrollo:** Aun no medible <br>
+
 #### Factibilidad Organizacional
 El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación es ofrecer a los talleres a usar la aplicación y ellos inviten a otras personas a la aplicación como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
 <br>
