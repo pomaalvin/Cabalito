@@ -48,16 +48,67 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 * Se necesita que el sistema brinde información de mecánicos fiables para la revisión del auto a la venta.
 ### Requerimientos del negocio
 #### Requerimientos Funcionales
-* **Codigo:** RF-1 <br> **Tipo:** Requerimiento de Seguridad <br> **Prioridad:** Alta <br> **Nombre:** Sign - In al sistema <br> **Funcionalidad:** Mediante este se verificara la identidad del usuario para proteccion del mismo y del resto de usuarios. <br> **Entrada:** Nombre + Apellido + Numero de Telefono + CI <br> **Salida:** Nombre de Usuario y contraseña
-* **Codigo:** RF-2 <br> **Tipo:** Verificacion de Datos <br> **Prioridad:** Alta <br> **Nombre:** Publicacion de Vehiculos <br> **Funcionalidad:** El sistema verificara el vehiculo a publicitar mediante un contacto con transito, para asi poder ver si el vehiculo se encuentra en las condiciones optimas para ser vendido.<br> **Entrada:** Nombre del Propietario + Numero de placa + Rua + CI <br> **Salida:** Validacion del Vehiculo      
-* **Codigo:** RF-3 <br> **Tipo:** Requerimiento de Seguridad <br> **Prioridad:** Media <br> **Nombre:** Vinculacion con Mecanicos <br> **Funcionalidad:** Se proporsionara una evaluacion diagnostica para ver si el mecanico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicacion.<br> **Entrada:** Respuestas a la evaluacion diagnotico <br> **Salida:** Resultado de confirmacion de vinculo con la empresa 
-* **Codigo:** RF-4 <br> **Tipo:** Gestion de Datos <br> **Prioridad:** Media <br> **Nombre:** Busqueda de Vehiculos <br> **Funcionalidad:** Ael usuario a partir de filtros podra realizar una busqueda minuciosa del vehiculo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br> **Salida:** Vehiculos con las caracteristicas que se buscaron 
+**Codigo:** RF-1 
+**Tipo:** Requerimiento de Seguridad
+**Prioridad:** Alta
+**Nombre:** Sign - In al sistema
+**Funcionalidad:** Mediante este se verificara la identidad del usuario para proteccion del mismo y del resto de usuarios.
+**Entrada:** Nombre + Apellido + Numero de Telefono + CI
+**Salida:** Nombre de Usuario y contraseña
+<br>
+
+**Codigo:** RF-2
+**Tipo:** Verificacion de Datos
+**Prioridad:** Alta 
+**Nombre:** Publicacion de Vehiculos 
+**Funcionalidad:** El sistema verificara el vehiculo a publicitar mediante un contacto con transito, para asi poder ver si el vehiculo se encuentra en las condiciones optimas para ser vendido.
+**Entrada:** Nombre del Propietario + Numero de placa + Rua + CI 
+**Salida:** Validacion del Vehiculo  
+<br>
+
+**Codigo:** RF-3 
+**Tipo:** Requerimiento de Seguridad
+**Prioridad:** Media 
+**Nombre:** Vinculacion con Mecanicos 
+**Funcionalidad:** Se proporsionara una evaluacion diagnostica para ver si el mecanico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicacion.
+**Entrada:** Respuestas a la evaluacion diagnotico
+**Salida:** Resultado de confirmacion de vinculo con la empresa 
+<br>
+
+**Codigo:** RF-4 
+**Tipo:** Gestion de Datos 
+**Prioridad:** Media 
+**Nombre:** Busqueda de Vehiculos
+**Funcionalidad:** Ael usuario a partir de filtros podra realizar una busqueda minuciosa del vehiculo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados 
+**Salida:** Vehiculos con las caracteristicas que se buscaron 
+<br>
+
 #### Requerimientos No Funcionales
-* **Codigo:** RNF-1 <br> **Tipo:** Requerimiento de conexión <br> **Nombre:** Conexión a internet. <br> **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
-* **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
-* **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
+**Codigo:** RNF-1 
+**Tipo:** Requerimiento de conexión
+**Nombre:** Conexión a internet. 
+**Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
+<br>
+
+**Codigo:** RNF-2 
+**Tipo:** Requerimiento de eficiencia 
+**Nombre:** Rendimiento eficiente 
+**Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
+<br>
+
+**Codigo:** RNF-3 
+**Tipo:** Requerimiento de interfaz de usuario 
+**Nombre:** Simplicidad de la interfaz
+**Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
 necesidad de realizar un largo proceso de aprendizaje.
-* **Codigo:** RNF-4 <br> **Tipo:** Requerimiento de Sistema Opertivo <br> **Nombre:** Uso de Android <br> **Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de android.
+<br>
+
+**Codigo:** RNF-4 
+**Tipo:** Requerimiento de Sistema Opertivo 
+**Nombre:** Uso de Android 
+**Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de android.
+<br>
+
 ### Valor del negocio
 
 ### Cuestiones especiales
