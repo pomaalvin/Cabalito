@@ -55,7 +55,6 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Funcionalidad:** Mediante este se verificará la identidad del usuario para protección del mismo y del resto de usuarios.<br>
 **Entrada:** Nombre + Apellido + Numero de Telefono + CI<br>
 **Salida:** Nombre de Usuario y contraseña<br>
-<br>
 
 **Codigo:** RF-2<br>
 **Tipo:** Verificación de Datos<br>
@@ -64,7 +63,6 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Funcionalidad:** El sistema verificará el vehículo a publicitar mediante un contacto con tránsito, para asi poder ver si el vehículo se encuentra en las condiciones óptimas para ser vendido.<br>
 **Entrada:** Nombre del Propietario + Número de placa + Rua + CI <br>
 **Salida:** Validación del Vehículo  <br>
-<br>
 
 **Codigo:** RF-3 <br>
 **Tipo:** Requerimiento de Seguridad<br>
@@ -73,7 +71,6 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Funcionalidad:** Se proporcionará una evaluación diagnóstica para ver si el meca¡ánico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicación.<br>
 **Entrada:** Respuestas a la evaluación diagnóstico<br>
 **Salida:** Resultado de confirmación de vínculo con la empresa <br>
-<br>
 
 **Codigo:** RF-4 <br>
 **Tipo:** Gestión de Datos <br>
@@ -81,35 +78,35 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Nombre:** Búsqueda de Vehículos<br>
 **Funcionalidad:** El usuario a partir de filtros podrá realizar una búsqueda minuciosa del vehículo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br>
 **Salida:** Vehículos con las características que se buscaron <br>
-<br>
 
 #### Requerimientos No Funcionales
 **Codigo:** RNF-1 <br>
 **Tipo:** Requerimiento de conexión<br>
 **Nombre:** Conexión a internet. <br>
 **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.<br>
-<br>
 
 **Codigo:** RNF-2 <br>
 **Tipo:** Requerimiento de eficiencia <br>
 **Nombre:** Rendimiento eficiente <br>
 **Funcionalidad:**  El sistema debe permitir la búsqueda de vehículos de manera eficiente y eficaz.<br>
-<br>
 
 **Codigo:** RNF-3 <br>
 **Tipo:** Requerimiento de interfaz de usuario <br>
 **Nombre:** Simplicidad de la interfaz<br>
 **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
 necesidad de realizar un largo proceso de aprendizaje.<br>
-<br>
 
 **Codigo:** RNF-4 <br>
 **Tipo:** Requerimiento de Sistema Opertivo <br>
 **Nombre:** Uso de Android <br>
 **Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
-<br>
 
 ### Valor del negocio
+Los beneficios que traera el sistema a la empresa son: <br>
+* 5% de aumento en publicidad <br>
+* 1.5% de aumento en participacion del mercado<br>
+* Bs. 100,000 de ahorro en costo de mantenimiento de oficinas y personal <br>
+* Bs. 5,000 de ahorro en costos de papeleria <br>
 ### Cuestiones especiales
 * El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
 * El mercado para un principio solo sera abarcado para celulares android ya que el desarrollo y subidad a la AppStore son mas costosos.
