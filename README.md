@@ -120,7 +120,6 @@ Los beneficios que traera el sistema a la empresa son: <br>
 * La aplicacion sera de un uso simple e intuitivo para el vendedor y cliente.
 * Como la aplicación esta diseñada para dispostivos moviles, su acceso sera medianamente facil ya que muchas personas manejan estos dispositivos.
 * El proyecto crecerá con el tiempo, por lo que su tamaño en las primeras versiones sera mediano, lo que permitirá un fácil desarrollo.
-<br>
 ### Factibilidad Económica
 En la aplicación se toma en cuenta el tiempo que se toma en construir el sistema, además es necesario saber el costo que se gastara por el proyecto siguiente:
 <br>
