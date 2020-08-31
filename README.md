@@ -39,22 +39,23 @@ Desarrollar un sistema que centralice la compra/venta de vehículos de segunda y
 * El programa sólo funcionará en dispositivos móviles.
 ## Elementos de los requerimientos del sistema
 ### Patrocinador del proyecto
-* Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el primer starup del proyecto se buscará nuevos inversionistas como las concesionarias de autos. 
+Inicialmente los patrocinadores del proyecto serían los progenitores del equipo compuesto por Alvin Poma, Erwin Alejo, Josemar Castro y Silvana Muñoz, debido a que éstos no generan ingresos económicos. Sin embargo, una vez concretado el primer starup del proyecto se buscará nuevos inversionistas como las concesionarias de autos. 
 ### Necesidades del negocio
 * Se necesita un sistema que centralice la información de autos a la venta.
 * Se necesita que mediante el sistema se permita hacer búsquedas mediante filtros o caracteristicas específicas como el precio, modelo o estado.
 * Se necesita que el sistema brinde confiabilidad tanto a los vendedores como a los interesados. 
-* Se necesita que el sistema que se desarrolle sea intuitido y brinde una buena experiencia los usuarios que lo utilicen.
+* Se necesita que el sistema que se desarrolle sea intuitivo y brinde una buena experiencia a los usuarios que lo utilicen.
+* Se necesita que el sistema brinde información de mecánicos fiables para la revisión del auto a la venta.
 ### Requerimientos del negocio
 ### Valor del negocio
 ### Cuestiones especiales
-* El contacto con los concesionarios sera despues de una primera version para que la aplicacion pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
-* El mercado para un principio solo sera abarcado para celulares android ya que se desarrollo y subidad a la AppStore son mas costosos.
+* El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
+* El mercado para un principio solo sera abarcado para celulares android ya que el desarrollo y subidad a la AppStore son mas costosos.
 ## Análisis de factibilidad
 ### Riesgos del proyecto
-* Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco dificil captar la atención de las personas al principio.
+* Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco difícil captar la atención de las personas al principio.
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
-* A pesar de que se pondra seguridad a la hora de las compras se dificil controlar totalmente el buen uso de la aplicacion para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaria que muchos clientes desconfiaran de la aplicacion y se pasen a otras soluciones.
+* A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
 #### Factibilidad técnica
 #### Factibilidad económica
