@@ -47,6 +47,9 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 * Se necesita que el sistema que se desarrolle sea intuitivo y brinde una buena experiencia a los usuarios que lo utilicen.
 * Se necesita que el sistema brinde información de mecánicos fiables para la revisión del auto a la venta.
 ### Requerimientos del negocio
+#### Requerimientos Funcionales
+* Codigo: RF-1 <br> Tipo: Requerimiento de Seguridad <br> Prioridad: Alta <br> Nombre: Sing - In al sistema <br> Funcionalidad: Mediante este se verificara la identidad del usuario para proteccion del mismo y del resto de usuarios. <br> Entrada: Nombre + Apellido + Numero de Telefono + CI <br> Salida: Nombre de Usuario y contraseña    
+#### Requerimientos No Funcionales
 ### Valor del negocio
 ### Cuestiones especiales
 * El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
