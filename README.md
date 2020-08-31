@@ -52,35 +52,35 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Tipo:** Requerimiento de Seguridad<br>
 **Prioridad:** Alta<br>
 **Nombre:** Sign - In al sistema<br>
-**Funcionalidad:** Mediante este se verificara la identidad del usuario para proteccion del mismo y del resto de usuarios.<br>
+**Funcionalidad:** Mediante este se verificará la identidad del usuario para protección del mismo y del resto de usuarios.<br>
 **Entrada:** Nombre + Apellido + Numero de Telefono + CI<br>
 **Salida:** Nombre de Usuario y contraseña<br>
 <br>
 
 **Codigo:** RF-2<br>
-**Tipo:** Verificacion de Datos<br>
+**Tipo:** Verificación de Datos<br>
 **Prioridad:** Alta <br>
-**Nombre:** Publicacion de Vehiculos <br>
-**Funcionalidad:** El sistema verificara el vehiculo a publicitar mediante un contacto con transito, para asi poder ver si el vehiculo se encuentra en las condiciones optimas para ser vendido.<br>
-**Entrada:** Nombre del Propietario + Numero de placa + Rua + CI <br>
-**Salida:** Validacion del Vehiculo  <br>
+**Nombre:** Publicación de Vehículos <br>
+**Funcionalidad:** El sistema verificará el vehículo a publicitar mediante un contacto con tránsito, para asi poder ver si el vehículo se encuentra en las condiciones óptimas para ser vendido.<br>
+**Entrada:** Nombre del Propietario + Número de placa + Rua + CI <br>
+**Salida:** Validación del Vehículo  <br>
 <br>
 
 **Codigo:** RF-3 <br>
 **Tipo:** Requerimiento de Seguridad<br>
 **Prioridad:** Media <br>
-**Nombre:** Vinculacion con Mecanicos <br>
-**Funcionalidad:** Se proporsionara una evaluacion diagnostica para ver si el mecanico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicacion.<br>
-**Entrada:** Respuestas a la evaluacion diagnotico<br>
-**Salida:** Resultado de confirmacion de vinculo con la empresa <br>
+**Nombre:** Vinculación con Mecánicos <br>
+**Funcionalidad:** Se proporcionará una evaluación diagnóstica para ver si el meca¡ánico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicación.<br>
+**Entrada:** Respuestas a la evaluación diagnóstico<br>
+**Salida:** Resultado de confirmación de vínculo con la empresa <br>
 <br>
 
 **Codigo:** RF-4 <br>
-**Tipo:** Gestion de Datos <br>
+**Tipo:** Gestión de Datos <br>
 **Prioridad:** Media <br>
-**Nombre:** Busqueda de Vehiculos<br>
-**Funcionalidad:** Ael usuario a partir de filtros podra realizar una busqueda minuciosa del vehiculo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br>
-**Salida:** Vehiculos con las caracteristicas que se buscaron <br>
+**Nombre:** Búsqueda de Vehículos<br>
+**Funcionalidad:** El usuario a partir de filtros podrá realizar una búsqueda minuciosa del vehículo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br>
+**Salida:** Vehículos con las características que se buscaron <br>
 <br>
 
 #### Requerimientos No Funcionales
@@ -93,7 +93,7 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Codigo:** RNF-2 <br>
 **Tipo:** Requerimiento de eficiencia <br>
 **Nombre:** Rendimiento eficiente <br>
-**Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.<br>
+**Funcionalidad:**  El sistema debe permitir la búsqueda de vehículos de manera eficiente y eficaz.<br>
 <br>
 
 **Codigo:** RNF-3 <br>
@@ -106,7 +106,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 **Codigo:** RNF-4 <br>
 **Tipo:** Requerimiento de Sistema Opertivo <br>
 **Nombre:** Uso de Android <br>
-**Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
+**Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
 <br>
 
 ### Valor del negocio
@@ -117,7 +117,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 ## Análisis de factibilidad
 ### Riesgos del proyecto
 * Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco difícil captar la atención de las personas al principio.
-* Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
+* Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios será un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
 #### Factibilidad Técnica
