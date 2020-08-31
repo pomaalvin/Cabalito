@@ -117,12 +117,10 @@ Los beneficios que traera el sistema a la empresa son: <br>
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas. Esto ocasionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
 ### Factibilidad Técnica
-La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+* La aplicacion sera de un uso simple e intuitivo para el vendedor y cliente.
+* Como la aplicación esta diseñada para dispostivos moviles, su acceso sera medianamente facil ya que muchas personas manejan estos dispositivos.
+* El proyecto crecerá con el tiempo, por lo que su tamaño en las primeras versiones sera mediano, lo que permitirá un fácil desarrollo.
 <br>
-
-* **Tamaño del proyecto:** Mediana <br>	
-* **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
-* **Familiaridad del proyecto:** Comunidad de compradores <br>	
 ### Factibilidad Económica
 En la aplicación se toma en cuenta el tiempo que se toma en construir el sistema, además es necesario saber el costo que se gastara por el proyecto siguiente:
 <br>
