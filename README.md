@@ -106,7 +106,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 **Codigo:** RNF-4 <br>
 **Tipo:** Requerimiento de Sistema Opertivo <br>
 **Nombre:** Uso de Android <br>
-**Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
+**Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Android](https://www.android.com/).<br>
 <br>
 
 ### Valor del negocio
