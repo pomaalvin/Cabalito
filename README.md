@@ -106,7 +106,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 **Codigo:** RNF-4 <br>
 **Tipo:** Requerimiento de Sistema Opertivo <br>
 **Nombre:** Uso de Android <br>
-**Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Android](https://www.android.com/).<br>
+**Funcionalidad:**  El sistema será capaz de funcionar en el sistema operativo de [Andorid](https://www.android.com/).<br>
 <br>
 
 ### Valor del negocio
@@ -115,7 +115,7 @@ necesidad de realizar un largo proceso de aprendizaje.<br>
 * El mercado para un principio solo sera abarcado para celulares android ya que el desarrollo y subidad a la AppStore son mas costosos.
 ## Análisis de factibilidad
 ### Riesgos del proyecto
-* Existen otras plataformas que ofrecen un servicio casi similar por lo que sera un poco difícil captar la atención de las personas al principio.
+* Existen otras plataformas que ofrecen un servicio similar por lo que sera un poco difícil captar la atención de las personas al principio.
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios será un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
