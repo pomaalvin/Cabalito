@@ -57,7 +57,9 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 * **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
 * **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
 necesidad de realizar un largo proceso de aprendizaje.
+* **Codigo:** RNF-4 <br> **Tipo:** Requerimiento de Sistema Opertivo <br> **Nombre:** Uso de Android <br> **Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de android.
 ### Valor del negocio
+
 ### Cuestiones especiales
 * El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
 * El mercado para un principio solo sera abarcado para celulares android ya que el desarrollo y subidad a la AppStore son mas costosos.
