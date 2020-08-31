@@ -81,14 +81,9 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 **Nombre:** Búsqueda de Vehículos<br>
 **Funcionalidad:** El usuario a partir de filtros podrá realizar una búsqueda minuciosa del vehículo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br>
 **Salida:** Vehículos con las características que se buscaron <br>
-<br>´
+<br>
 
 #### Requerimientos No Funcionales
-* **Codigo:** RNF-1 <br> **Tipo:** Requerimiento de conexión <br> **Nombre:** Conexión a internet. <br> **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
-* **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
-* **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
-necesidad de realizar un largo proceso de aprendizaje.
-
 **Codigo:** RNF-1 <br>
 **Tipo:** Requerimiento de conexión<br>
 **Nombre:** Conexión a internet. <br>
