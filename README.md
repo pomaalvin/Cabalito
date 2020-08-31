@@ -53,10 +53,38 @@ Inicialmente los patrocinadores del proyecto serían los progenitores del equipo
 * **Codigo:** RF-3 <br> **Tipo:** Requerimiento de Seguridad <br> **Prioridad:** Media <br> **Nombre:** Vinculacion con Mecanicos <br> **Funcionalidad:** Se proporsionara una evaluacion diagnostica para ver si el mecanico esta completamente capacitado para realizar los controles al momento de encontrarse en una cita acordada por la aplicacion.<br> **Entrada:** Respuestas a la evaluacion diagnotico <br> **Salida:** Resultado de confirmacion de vinculo con la empresa 
 * **Codigo:** RF-4 <br> **Tipo:** Gestion de Datos <br> **Prioridad:** Media <br> **Nombre:** Busqueda de Vehiculos <br> **Funcionalidad:** Ael usuario a partir de filtros podra realizar una busqueda minuciosa del vehiculo que se ajusta a sus necesidades<br> **Entrada:** Filtros aplicados <br> **Salida:** Vehiculos con las caracteristicas que se buscaron 
 #### Requerimientos No Funcionales
+<<<<<<< HEAD
 * **Codigo:** RNF-1 <br> **Tipo:** Requerimiento de conexión <br> **Nombre:** Conexión a internet. <br> **Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.
 * **Codigo:** RNF-2 <br> **Tipo:** Requerimiento de eficiencia <br> **Nombre:** Rendimiento eficiente <br> **Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.
 * **Codigo:** RNF-3 <br> **Tipo:** Requerimiento de interfaz de usuario <br> **Nombre:** Simplicidad de la interfaz<br> **Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
 necesidad de realizar un largo proceso de aprendizaje.
+=======
+**Codigo:** RNF-1 <br>
+**Tipo:** Requerimiento de conexión<br>
+**Nombre:** Conexión a internet. <br>
+**Funcionalidad:**  El sistema deberá contar con una conexión estable a internet.<br>
+<br>
+
+**Codigo:** RNF-2 <br>
+**Tipo:** Requerimiento de eficiencia <br>
+**Nombre:** Rendimiento eficiente <br>
+**Funcionalidad:**  El sistema debe permitir la busqueda de vehiculos de manera eficiente y eficaz.<br>
+<br>
+
+**Codigo:** RNF-3 <br>
+**Tipo:** Requerimiento de interfaz de usuario <br>
+**Nombre:** Simplicidad de la interfaz<br>
+**Funcionalidad:**  La interfaz de usuario debe permitir el uso del sistema de manera fluida, sin la
+necesidad de realizar un largo proceso de aprendizaje.<br>
+<br>
+
+**Codigo:** RNF-4 <br>
+**Tipo:** Requerimiento de Sistema Opertivo <br>
+**Nombre:** Uso de Android <br>
+**Funcionalidad:**  el sistema sera capaz de funcionar en el sistema operativo de [Android](https://www.android.com/).<br>
+<br>
+
+>>>>>>> 9d01fc119eac23394be546024dd2a797a4b8e577
 ### Valor del negocio
 ### Cuestiones especiales
 * El contacto con los concesionarios será después de una primera versión para que la aplicación pueda tener cierta popularidad y sea mas fácil y factible el acuerdo con los concesionarios.
@@ -67,6 +95,7 @@ necesidad de realizar un largo proceso de aprendizaje.
 * Poca ganancia al inicio del proyecto, debido a que el contacto con los concesionarios sera un proceso largo que es una de las partes que aporta mas a las ganancias.
 * A pesar de que se pondrá seguridad a la hora de las compras es difícil controlar totalmente el buen uso de la aplicación para vendedores o compradores que realizan consultas o publicaciones falsas que afectan a ambas partes. Esto ocacionaría que muchos clientes desconfiaran de la aplicación y se pasen a otras soluciones.
 ### Componentes principales
+<<<<<<< HEAD
 #### Factibilidad técnica
 #### Factibilidad económica
 #### Factibilidad de la organización
@@ -75,11 +104,17 @@ necesidad de realizar un largo proceso de aprendizaje.
 
 ### Factibilidad Técnica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+=======
+#### Factibilidad Técnica
+La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito de intermediario del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
+>>>>>>> 9d01fc119eac23394be546024dd2a797a4b8e577
 <br>
+
 * **Tamaño del proyecto:** Mediana <br>	
-* **Herramientas necesarias:** Flutter, Android <br>	
+* **Herramientas necesarias:** [Flutter](https://flutter.dev/?gclid=Cj0KCQjwv7L6BRDxARIsAGj-34qEjzWRuxZ3N6TnWmidEDtb4PBske9ATRKMzzEX2sKYNk36O7XjwZMaAsFSEALw_wcB&gclsrc=aw.ds),[Android](https://www.android.com/) <br>	
 * **Familiaridad del proyecto:** Comunidad de compradores <br>	
 
+<<<<<<< HEAD
 ### Factibilidad Económica
 La aplicación se basa en el área de venta de los vehículos como un intermediario, además es posible construir por la situación de que se puede generar un ámbito del vendedor y cliente, con algunos requisitos que prefieren los clientes como ser un costo mínimo, características de un vehículo, etc.
 <br>
@@ -91,6 +126,19 @@ El desarrollo de la organización va dirigido a los usuarios que necesitan compr
 * **Gerencia Senior:** Silvana Stephanie Muñoz Vargas <br>	
 * **Usuarios:** Clientes <br>		
 ## Anexos: 
+=======
+#### Factibilidad Económica
+En la aplicación se toma en cuenta el tiempo que se toma en construir dicha aplicación, además cuanto ay que invertir a la aplicación para lograrlo realizar se estima en lo siguiente:
+<br>
+* **Costo del desarrollo:** Aun no medible <br>		
+#### Factibilidad Organizacional
+El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación es ofrecer a los talleres a usar la aplicación y ellos inviten a otras personas a la aplicación como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
+<br>
+* **Encargado del proyecto:** Alvin Poma <br>	
+* **Gerencia Senior:** Erwin Alejo Gutiérrez <br>	
+* **Usuarios:** Desarrolladores <br>		
+### Anexos: 
+>>>>>>> 9d01fc119eac23394be546024dd2a797a4b8e577
 * https://www.paginasiete.bo/especial01/2019/12/19/el-mercado-negro-de-los-autos-chutos-240832.html
 * https://www.eldiario.net/noticias/2017/2017_08/nt170830/nacional.php?n=47&-detienen-a-estafadores-por-venta-de-vehiculos-a-credito
 * https://boliviaverifica.bo/crean-falsa-pagina-web-de-la-aduana-para-estafar-a-usuarios
