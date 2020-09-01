@@ -121,10 +121,9 @@ Los beneficios que traera el sistema a la empresa son: <br>
 * Como la aplicación esta diseñada para dispostivos moviles, su acceso sera medianamente facil ya que muchas personas manejan estos dispositivos.
 * El proyecto crecerá con el tiempo, por lo que su tamaño en las primeras versiones sera mediano, lo que permitirá un fácil desarrollo.
 ### Factibilidad Económica
-En la aplicación se toma en cuenta el tiempo que se toma en construir el sistema, además es necesario saber el costo que se gastara por el proyecto siguiente:
-<br>
-
-* **Costo del desarrollo:** Aun no medido <br>		
+Para determinar el costo del desarrollo de la aplicación se tomará en cuenta: 
+* Cantidad de horas invertidas.
+* Equipos para el soporte de software de desarrollo.
 ### Factibilidad Organizacional
 El desarrollo de la organización va dirigido a los usuarios que necesitan comprar un vehículo con las preferencias específicas, por otra parte, para atraer usuarios a la aplicación se ofrecerá a los talleres a usar el sistema y ellos inviten a otras personas a la aplicación de venta como publicidad tanto vendedores y compradores, finalmente los encargados del proyecto son:
 <br>
