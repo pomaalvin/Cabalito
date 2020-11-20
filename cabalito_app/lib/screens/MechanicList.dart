@@ -66,23 +66,26 @@ class MechanicListState extends State<MechanicList>{
                   color: Colors.white,
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                 ),
-                child: ListView(
-                  primary: false,
-                  padding: EdgeInsets.only(left:25.0, right: 20.0),
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(top: 25.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height-150.0,
-                        child: ListView.builder(
-                          itemBuilder: (context, index){
-                            return ListTile(title: Text('Item $index'),);
-                          },
-                          itemCount: 100,
+                child: ScrollConfiguration(
+                  behavior: MyBehavior(),
+                  child:ListView(
+                      primary: false,
+                      padding: EdgeInsets.only(left:25.0, right: 20.0),
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(top: 25.0),
+                          child: Container(
+                            height: MediaQuery.of(context).size.height-150.0,
+                            child: ListView.builder(
+                              itemBuilder: (context, index){
+                                return ListTile(title: Text('Item $index'),);
+                              },
+                              itemCount: 100,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
                 ),
               )
             ],
@@ -90,5 +93,13 @@ class MechanicListState extends State<MechanicList>{
         ],
       )
     );
+  }
+
+}
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
