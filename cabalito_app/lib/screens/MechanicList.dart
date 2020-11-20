@@ -21,12 +21,11 @@ class MechanicListState extends State<MechanicList>{
       body: Column(
         children: <Widget>[
           Container(
-            height:110,
+            height:60,
             child: Center(
 
               child:
                 Container(
-                  padding: EdgeInsets.only(top:20),
                       child:Text("Mecánicos",
                         style: TextStyle(
                           color: Colors.white,

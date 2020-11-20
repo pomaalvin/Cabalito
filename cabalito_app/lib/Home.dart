@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
+import 'screens/MechanicList.dart';
+
 class Home extends KFDrawerContent{
   @override
   _HomeState createState() => _HomeState();
@@ -29,11 +31,8 @@ class _HomeState extends State<Home>{
               ],
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                ],
-              )
+              child:
+                  MechanicList()
             ),
           ],
         ),
