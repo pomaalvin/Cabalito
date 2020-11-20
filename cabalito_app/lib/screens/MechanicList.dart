@@ -78,9 +78,12 @@ class MechanicListState extends State<MechanicList>{
                             height: MediaQuery.of(context).size.height-150.0,
                             child: ListView.builder(
                               itemBuilder: (context, index){
-                                return ListTile(title: Text('Item $index'),);
+                                return ListTile(
+                                  title: Text('Shop Name $index'),
+                                  subtitle: Text('Location $index'),
+                                );
                               },
-                              itemCount: 100,
+                              itemCount: 10,
                             ),
                           ),
                         ),
