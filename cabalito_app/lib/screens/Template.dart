@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../lib/Colors.dart';
 
-class MechanicList extends StatefulWidget{
+class Template extends StatefulWidget{
   @override
-  State createState() => MechanicListState();
+  State createState() => TemplateState();
 }
 
-class MechanicListState extends State<MechanicList>{
+class TemplateState extends State<Template>{
   @override
   void initState(){
     super.initState();
@@ -26,7 +26,7 @@ class MechanicListState extends State<MechanicList>{
 
               child:
                 Container(
-                      child:Text("Mecánicos",
+                      child:Text("Template",
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
