@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
+import 'ViewPublication.dart';
+
 class Home extends KFDrawerContent{
   @override
   _HomeState createState() => _HomeState();
@@ -33,7 +35,7 @@ class _HomeState extends State<Home>{
                   Expanded(
                       child: Container(
                         margin: EdgeInsets.only(top:size.height*0.13),
-                        child: MechanicList(),
+                        child: Template(),
                       )
                   ),
                 ],

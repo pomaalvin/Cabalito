@@ -2,6 +2,8 @@ import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../ViewPublication.dart';
+
 abstract class NavigationState extends Equatable{
   const NavigationState();
 }
@@ -23,7 +25,7 @@ class HomePageState extends NavigationState{
 class PublicationPageState extends NavigationState{
   const PublicationPageState();
   @override
-  List<Object> get props => ["Publication"];
+  List<Object> get props => ["Publication",PublicationView()];
 }
 class MechanicPageState extends NavigationState{
   const MechanicPageState();
