@@ -1,6 +1,6 @@
 import 'package:cabalitoapp/ClassBuilder.dart';
 import 'package:cabalitoapp/screens/Template.dart';
-import 'package:cabalitoapp/screens/Menu.dart';
+import 'package:cabalitoapp/Menu.dart';
 import 'package:flutter/material.dart';
 
 void main() {

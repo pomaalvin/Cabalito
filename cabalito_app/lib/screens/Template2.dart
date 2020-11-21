@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../lib/Colors.dart';
 
-class Template extends StatefulWidget{
+class Template2 extends StatefulWidget{
   @override
-  State createState() => TemplateState();
+  State createState() => Template2State();
 }
 
-class TemplateState extends State<Template>{
+class Template2State extends State<Template2>{
   @override
   void initState(){
     super.initState();
@@ -137,7 +137,7 @@ class Busqueda extends StatelessWidget{
          fillColor: Colors.white,
          border: InputBorder.none,
          contentPadding: EdgeInsets.only(left: 10,top: 15,bottom: 0,right: 0),
-         hintText: "Buscar mecánicos",
+         hintText: "Buscar mecánicos 2",
          suffixIcon:Icon(Icons.search,color: color3.withOpacity(0.6),) ,
 
          hintStyle: TextStyle(color: color3.withOpacity(0.3)),

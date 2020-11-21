@@ -1,4 +1,5 @@
-import 'package:cabalitoapp/Home.dart';
+import 'file:///G:/Universidad/Semestre%206/Ingenieria%20de%20Software/Proyecto/Cabalito/cabalito_app/lib/screens/Home.dart';
+
 
 typedef T Constructor<T>();
 
