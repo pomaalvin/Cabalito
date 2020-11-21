@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
@@ -35,7 +36,7 @@ class _HomeState extends State<Home>{
               ),
               Expanded(
                   child:
-                  Template()
+                  MechanicList()
               ),
             ],
           ),

@@ -17,7 +17,7 @@ class TemplateState extends State<Template>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-      backgroundColor: color1,
+      backgroundColor: Primarycolor,
       body: Column(
         children: <Widget>[
           Container(
@@ -41,7 +41,7 @@ class TemplateState extends State<Template>{
               children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: color2,
+                      color: SecondaryColor,
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                     ),
                   ),
@@ -132,12 +132,12 @@ class Estrellas extends StatelessWidget{
           if(estrellas>=index+1){
 
             return
-              Icon(Icons.star,color: color2,);
+              Icon(Icons.star,color: SecondaryColor,);
           }
           else{
 
             return
-              Icon(Icons.star_border,color: color2,);
+              Icon(Icons.star_border,color: SecondaryColor,);
           }
         })
       ),

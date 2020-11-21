@@ -33,6 +33,7 @@ dependencies:
   bloc: ^2.0.0
   equatable: 1.2.0
   shared_preferences: 0.5.12
+  flutter_phone_direct_caller: ^1.0.1
 
 dev_dependencies:
   flutter_test:
