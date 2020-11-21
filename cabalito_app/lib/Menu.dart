@@ -1,6 +1,5 @@
-import 'file:///G:/Universidad/Semestre%206/Ingenieria%20de%20Software/Proyecto/Cabalito/cabalito_app/lib/screens/Home.dart';
+import 'package:cabalitoapp/Home.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
-import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';

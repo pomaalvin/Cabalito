@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:equatable/equatable.dart';
 
@@ -27,5 +28,5 @@ class PublicationPageState extends NavigationState{
 class MechanicPageState extends NavigationState{
   const MechanicPageState();
   @override
-  List<Object> get props => ["Mechanic"];
+  List<Object> get props => ["Mechanic",MechanicList()];
 }

@@ -17,7 +17,7 @@ class SellerState extends State<Seller>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: color1,
+        backgroundColor: PrimaryColor,
         body: Column(
           children: <Widget>[
             Container(
@@ -41,7 +41,7 @@ class SellerState extends State<Seller>{
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: color2,
+                      color: SecondaryColor,
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                     ),
                   ),

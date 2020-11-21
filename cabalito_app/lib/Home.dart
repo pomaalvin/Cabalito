@@ -1,6 +1,7 @@
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/lib/Colors.dart';
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,7 @@ class _HomeState extends State<Home>{
                   Expanded(
                       child: Container(
                         margin: EdgeInsets.only(top:size.height*0.13),
-                        child: Template(),
+                        child: MechanicList(),
                       )
                   ),
                 ],
@@ -85,7 +86,7 @@ class ShapePainter extends CustomPainter {
     path.lineTo(size1.width, 0);
     path.close();
 
-    paint.color = color2;
+    paint.color = SecondaryColor;
     canvas.drawPath(path, paint);
     path =Path();
     path.lineTo(0, size.height);
@@ -96,7 +97,7 @@ class ShapePainter extends CustomPainter {
     path.lineTo(size.width, 0);
     path.close();
 
-    paint.color = color1;
+    paint.color = PrimaryColor;
     canvas.drawPath(path, paint);
   }
 

@@ -17,7 +17,7 @@ class MechanicListState extends State<MechanicList>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: Primarycolor,
+        backgroundColor: PrimaryColor,
         body: Column(
           children: <Widget>[
             Container(
@@ -91,7 +91,7 @@ class _Card extends StatelessWidget{
 
   _Card(this.widhtScreen, this.heightScreen);
 
-  Color color= Primarycolor;
+  Color color= PrimaryColor;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -201,7 +201,7 @@ class Puntuacion extends StatelessWidget{
           Text("$puntuacion",
             style: TextStyle(
                 fontSize: 15,
-                color: Primarycolor
+                color: PrimaryColor
             ),
           ),
         ],
@@ -299,7 +299,7 @@ class MechanicCall extends StatelessWidget{
           left: 16,
           right: 16,
           child: CircleAvatar(
-            backgroundColor: Primarycolor,
+            backgroundColor: PrimaryColor,
             radius: 50,
             child: IconButton(
               onPressed: () async{

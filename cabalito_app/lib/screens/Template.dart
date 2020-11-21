@@ -17,7 +17,7 @@ class TemplateState extends State<Template>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: color1,
+      backgroundColor: PrimaryColor,
       body: Column(
             children: <Widget>[
               Expanded(
@@ -108,12 +108,12 @@ class Estrellas extends StatelessWidget{
           if(estrellas>=index+1){
 
             return
-              Icon(Icons.star,color: color2,);
+              Icon(Icons.star,color: SecondaryColor,);
           }
           else{
 
             return
-              Icon(Icons.star_border,color: color2,);
+              Icon(Icons.star_border,color: SecondaryColor,);
           }
         })
       ),
