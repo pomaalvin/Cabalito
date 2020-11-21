@@ -4,13 +4,23 @@ import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   @override
-  // TODO: implement initialState
-  NavigationState get initialState => throw UnimplementedError();
+  NavigationState get initialState => InitPageState();
 
   @override
-  Stream<NavigationState> mapEventToState(NavigationEvent event) {
-    // TODO: implement mapEventToState
-    throw UnimplementedError();
+  Stream<NavigationState> mapEventToState(NavigationEvent event) async* {
+    if(event is HomePageEvent){
+      yield LoadingPageState();
+      yield HomePageState();
+    }
+    else if(event is PublicationPageEvent){
+      yield LoadingPageState();
+      yield PublicationPageState();
+
+    }
+    else if(event is MechanicPageEvent){
+      yield LoadingPageState();
+      yield MechanicPageState();
+    }
   }
 
 
