@@ -2,6 +2,7 @@ import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
+import 'package:cabalitoapp/screens/UpdateSeller.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../ViewPublication.dart';
@@ -43,4 +44,9 @@ class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
   @override
   List<Object> get props => ["RegisterSeller",RegisterSeller()];
+}
+class UpdateSellerPageState extends NavigationState{
+  const UpdateSellerPageState();
+  @override
+  List<Object> get props => ["UpdateSeller",UpdateSeller()];
 }
