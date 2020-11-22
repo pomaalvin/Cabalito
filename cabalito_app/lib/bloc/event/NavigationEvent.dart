@@ -13,3 +13,7 @@ class MechanicPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
+class SellerPageEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}

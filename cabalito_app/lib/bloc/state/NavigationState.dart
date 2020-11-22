@@ -1,4 +1,5 @@
 import 'package:cabalitoapp/screens/MechanicList.dart';
+import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:equatable/equatable.dart';
 
@@ -31,4 +32,9 @@ class MechanicPageState extends NavigationState{
   const MechanicPageState();
   @override
   List<Object> get props => ["Mechanic",MechanicList()];
+}
+class SellerPageState extends NavigationState{
+  const SellerPageState();
+  @override
+  List<Object> get props => ["Seller",Seller()];
 }

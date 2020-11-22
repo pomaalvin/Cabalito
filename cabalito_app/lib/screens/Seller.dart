@@ -9,6 +9,7 @@ class Seller extends StatefulWidget{
 
 class SellerState extends State<Seller>{
   @override
+  @override
   void initState(){
     super.initState();
   }
@@ -23,10 +24,9 @@ class SellerState extends State<Seller>{
             Container(
               height:60,
               child: Center(
-
                 child:
                 Container(
-                  child:Text("Vendedor",
+                  child:Text("Contacto",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -47,58 +47,25 @@ class SellerState extends State<Seller>{
                   ),
                   Container(
                       margin: new EdgeInsets.only(top: 6.0),
+                      padding: new EdgeInsets.only(top:25.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                       ),
                       child: Column(
                         children: [
-                          Container(
-                            height: 100,
-                            padding: EdgeInsets.only(left:size.width*0.1,right:size.width*0.1),
-                            child: Center(
-                            ),
-                          ),
                           Expanded(
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
-                              child: GridView.builder(
-                                padding: EdgeInsets.all(0),
-                                gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: 2,
-                                    mainAxisSpacing: 2
-                                ),
-                                itemBuilder: (context, index){
-                                  return Container(
-                                      color: Colors.black.withOpacity(0.5),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                              width: size.width*0.5,
-                                              height: size.width*0.5*0.8,
-                                              decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                      fit: BoxFit.fill,
-                                                      image: NetworkImage(
-                                                          "https://lh3.googleusercontent.com/proxy/w03jEsMOLft4L9aoN-sXooFysioVPF9EorLo8RwCNupJvhMpX0OjjZ_Mh3VJHVh3ttAqN9tVlmPp0GbB9N0DZgm01g"
-                                                      )
-                                                  )
-                                              )
-                                          ),
-                                          Expanded(
-                                              child: Center(
-
-                                              )
-                                          ),
-                                        ],
-                                      )
-                                  );
+                              child: ListView.builder(
+                                padding: EdgeInsets.only(left: 50.0 ,right:50.0),
+                                itemBuilder: (context,index){
+                                  return _Card(size.width,size.height);
                                 },
-                                itemCount: 20,
+                                itemCount: 1,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       )
                   ),
@@ -109,7 +76,6 @@ class SellerState extends State<Seller>{
         )
     );
   }
-
 }
 class MyBehavior extends ScrollBehavior {
   @override
@@ -117,5 +83,122 @@ class MyBehavior extends ScrollBehavior {
       BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
+}
 
+class _Card extends StatelessWidget{
+  Size size;
+  var widhtScreen;
+  var heightScreen;
+
+  _Card(this.widhtScreen, this.heightScreen);
+
+  Color color= PrimaryColor;
+  @override
+  Widget build(BuildContext context) {
+    size=MediaQuery.of(context).size;
+    return  Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: BorderListColor),
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+      ),
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                  width: size.width*0.5,
+                  height: size.width*0.5,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage(
+                              "https://sa.uia.ac.cr/images/customers-icon-3.png"
+                          )
+                      )
+                  )
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Nombre: ",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Silvana",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Munoz",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  )
+
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Telefono: ",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("15963255",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Email: ",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 20,left: 5),
+                    child: Text("Silvana@gmail.com",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+
+        ],
+      ),
+    );
+  }
 }

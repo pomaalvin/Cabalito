@@ -1,6 +1,4 @@
 
-
-
 import 'Home.dart';
 
 typedef T Constructor<T>();
@@ -17,6 +15,6 @@ class ClassBuilder{
   }
   static dynamic fromString(String type){
     return _constructors[type]();
-
   }
+
 }
