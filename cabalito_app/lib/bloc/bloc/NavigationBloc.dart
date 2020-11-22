@@ -25,6 +25,10 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield LoadingPageState();
       yield SellerPageState();
     }
+    else if(event is RegisterSellerPageEvent){
+      yield LoadingPageState();
+      yield RegisterSellerPageState();
+    }
   }
 
 

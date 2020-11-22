@@ -17,3 +17,7 @@ class SellerPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
+class RegisterSellerPageEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
