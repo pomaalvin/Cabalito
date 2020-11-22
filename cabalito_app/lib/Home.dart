@@ -2,7 +2,9 @@ import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/lib/Colors.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
+import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
+import 'package:cabalitoapp/screens/UpdateSeller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
@@ -35,7 +37,7 @@ class _HomeState extends State<Home>{
                   Expanded(
                       child: Container(
                         margin: EdgeInsets.only(top:size.height*0.13),
-                        child: Template(),
+                        child: MechanicList(),
                       )
                   ),
                 ],

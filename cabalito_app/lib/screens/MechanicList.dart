@@ -57,7 +57,7 @@ class MechanicListState extends State<MechanicList>{
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                  padding: EdgeInsets.only(left: 50.0 ,right:50.0),
+                                  padding: EdgeInsets.only(left: size.width/7 ,right: size.width/7),
                                   itemBuilder: (context,index){
                                     return _Card(size.width,size.height);
                                   },
@@ -98,7 +98,7 @@ class _Card extends StatelessWidget{
       onTap:(){
         showDialog(context: context, builder:(contex) => MechanicCall(
             "shopName",
-            "70628525",
+            "79113586",//Todo change phone number
         ));
       },
       child: Container(
@@ -115,7 +115,7 @@ class _Card extends StatelessWidget{
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 20,left: 20),
+                      padding: EdgeInsets.only(top: heightScreen/40,left: widhtScreen/17),
                       child: Text("Shop Name",
                         style: TextStyle(
                           fontSize: 18.0,
@@ -125,10 +125,13 @@ class _Card extends StatelessWidget{
                     )
                   ],
                 ),
+                SizedBox(
+                  height: heightScreen/50,
+                ),
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10,left: 22),
+                      padding: EdgeInsets.only(left: widhtScreen/17+2),
                       child: Text("Location",
                         style: TextStyle(
                           fontSize: 15.0,
@@ -143,15 +146,27 @@ class _Card extends StatelessWidget{
             Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Puntuacion(4)
+                    Padding(padding: EdgeInsets.only(top:heightScreen/40,right: widhtScreen/17-3),
+                        child:
+                        Estrellas(((10/5)+1%5).floor())
+                    )
                   ],
                 ),
+                SizedBox(
+                  height: heightScreen/50,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Estrellas(((10/5)+1%5).floor())
+                    Padding(
+                      padding: EdgeInsets.only(right: widhtScreen/17),
+                      child:
+                        Puntuacion(4),
+                    )
                   ],
-                )
+                ),
               ],
             ),
           ],
@@ -168,9 +183,8 @@ class Estrellas extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
     return  Container(
-      padding: EdgeInsets.only(left: 141,top: 10),
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(5, (index) {
             if(estrellas>=index+1){
 
@@ -193,8 +207,7 @@ class Puntuacion extends StatelessWidget{
   Puntuacion(this.puntuacion);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 208,top: 20),
+    return Container(
       child: Row(
         children: [
           Icon(Icons.star,color: SecondaryColor,size: 20),
