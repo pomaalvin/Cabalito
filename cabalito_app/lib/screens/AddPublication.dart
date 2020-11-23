@@ -196,6 +196,7 @@ class _AddPublicationState extends State<AddPublication>{
         var alert=AlertItemPublication();
         switch(text) {
           case "Ciudad":
+            FocusScope.of(context).requestFocus(new FocusNode());
             var city=await alert.alertCity(context, cities);
             if(city!=null){
               setState(() {
@@ -204,6 +205,7 @@ class _AddPublicationState extends State<AddPublication>{
             }
             break;
           case "Marca":
+            FocusScope.of(context).requestFocus(new FocusNode());
             var brand=await alert.alertBrand(context, brands);
             if(brand!=null){
               setState(() {
@@ -212,6 +214,7 @@ class _AddPublicationState extends State<AddPublication>{
             }
             break;
           case "Color":
+            FocusScope.of(context).requestFocus(new FocusNode());
              var color =await alert.alertColor(context, colors);
              if(color!=null){
                setState(() {
