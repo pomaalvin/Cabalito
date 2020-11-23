@@ -43,9 +43,7 @@ class PublicationRepository{
           request.files.add(await http.MultipartFile.fromPath("images", imageFile.path));
           });
       var response = await request.send();
-      print(response.statusCode);
       if(response.statusCode==200){
-        print("upload correcto");
         return true;
       }
       else{
@@ -61,7 +59,6 @@ class PublicationRepository{
     try{
       List<Color> colors=List();
       var url=api.url + "publications/colors";
-      print(url);
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
@@ -74,7 +71,6 @@ class PublicationRepository{
         newColor.color=element["color"];
         colors.add(newColor);
       });
-      print(colors);
       if(response.statusCode==200){
         return colors;
       }
@@ -92,7 +88,6 @@ class PublicationRepository{
     try{
       List<Brand> brands=List();
       var url=api.url + "publications/brands";
-      print(url);
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
@@ -122,7 +117,6 @@ class PublicationRepository{
     try{
       List<City> cities=List();
       var url=api.url + "publications/cities";
-      print(url);
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',

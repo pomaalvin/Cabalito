@@ -41,12 +41,9 @@ class AddPublicationPageState extends NavigationState{
   List<Object> get props => ["Publicacion",AddPublication(colors,brands,cities)];
 }
 class PublicationPageState extends NavigationState{
-  List<Color> colors;
-  List<City> cities;
-  List<Brand> brands;
-  PublicationPageState(this.colors,this.brands,this.cities);
+  PublicationPageState();
   @override
-  List<Object> get props => ["Publication",AddPublication(colors,brands,cities)];
+  List<Object> get props => ["Publication"];
 }
 class PublicationViewState extends NavigationState{
   const PublicationViewState();
