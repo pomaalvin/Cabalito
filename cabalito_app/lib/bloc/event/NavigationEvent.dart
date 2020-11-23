@@ -14,6 +14,14 @@ class PublicationPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
+class PublicationViewEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
+class PublicationListEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
 class MechanicPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];

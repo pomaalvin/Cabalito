@@ -20,6 +20,18 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield PublicationPageState();
 
     }
+    else if(event is AddPublicationPageEvent){
+      yield LoadingPageState();
+      yield AddPublicationPageState();
+    }
+    else if(event is PublicationViewEvent){
+      yield LoadingPageState();
+      yield PublicationViewState();
+    }
+    else if(event is PublicationListEvent){
+      yield LoadingPageState();
+      yield PublicationListState();
+    }
     else if(event is MechanicPageEvent){
       yield LoadingPageState();
       yield MechanicPageState();
@@ -36,10 +48,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield LoadingPageState();
       yield UpdateSellerPageState();
     }
-    else if(event is AddPublicationPageEvent){
-      yield LoadingPageState();
-      yield AddPublicationPageState();
-    }
+
     else if(event is AddPublicationEvent){
       //yield LoadingPageState();
       bool estado=await _publicationRepository.addPublication(event.publication);

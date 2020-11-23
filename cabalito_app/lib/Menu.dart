@@ -47,7 +47,36 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(AddPublicationPageEvent());
             },
           ),
-
+          KFDrawerItem.initWithPage(
+            text: Text("Lista de Publicación",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.view_list,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(PublicationListEvent());
+            },
+          ),
+          /*
+          KFDrawerItem.initWithPage(
+            text: Text("Publicación",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.view_list,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent());
+            },
+          ),
+          */
         ]
     );
   }
