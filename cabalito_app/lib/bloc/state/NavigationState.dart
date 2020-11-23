@@ -61,10 +61,15 @@ class SellerPageState extends NavigationState{
 class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
   @override
-  List<Object> get props => ["RegisterSeller",RegisterSeller()];
+  List<Object> get props => ["Registro",RegisterSeller()];
 }
 class UpdateSellerPageState extends NavigationState{
   const UpdateSellerPageState();
   @override
   List<Object> get props => ["UpdateSeller",UpdateSeller()];
+}
+class AddSellerPageState extends NavigationState{
+  const AddSellerPageState();
+  @override
+  List<Object> get props => ["Registro",RegisterSeller()];
 }

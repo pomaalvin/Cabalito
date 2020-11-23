@@ -2,10 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
+import 'package:cabalitoapp/repository/SellerRepository.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   PublicationRepository _publicationRepository;
-  NavigationBloc(this._publicationRepository);
+  SellerRepository _sellerRepository;
+  NavigationBloc(this._publicationRepository,this._sellerRepository);
   @override
   NavigationState get initialState => InitPageState();
 
@@ -52,6 +54,19 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is AddPublicationEvent){
       //yield LoadingPageState();
       bool estado=await _publicationRepository.addPublication(event.publication);
+      /*if(estado){
+        yield HomePageState();
+      }
+      else{
+      }*/
+    }
+    else if(event is AddSellerEvent){
+      try{
+        bool estado=await _sellerRepository.addSeller(event.seller);
+
+      }catch(e){
+      }
+
       /*if(estado){
         yield HomePageState();
       }
