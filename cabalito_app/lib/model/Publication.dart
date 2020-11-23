@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 class Publication {
   int _idPublication;
   int _idSeller;
@@ -99,4 +100,19 @@ class Publication {
   set idPublication(int value) {
     _idPublication = value;
   }
+  Map toJson()=>{
+  'idPublication':idPublication,
+   'idSeller':idSeller,
+   "idBrand":idBrand,
+  "idColor": idColor,
+   "idCity":idCity,
+   "title":title,
+  "model":model,
+   "doorNumber":doorNumber,
+   "licensePlate":licensePlate,
+   "description":description,
+   "motor":motor,
+   "price":price,
+   "datePublication":DateFormat('yyyy-MM-dd - kk;mm').format(datePublication)
+  };
 }

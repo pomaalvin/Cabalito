@@ -14,7 +14,7 @@ abstract class NavigationState extends Equatable{
 class LoadingPageState extends NavigationState{
   const LoadingPageState();
   @override
-  List<Object> get props => [];
+  List<Object> get props => ["Loading",Template()];
 }
 class InitPageState extends NavigationState{
   const InitPageState();

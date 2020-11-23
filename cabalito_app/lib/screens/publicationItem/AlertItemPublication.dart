@@ -3,6 +3,7 @@ import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

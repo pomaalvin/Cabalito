@@ -2,14 +2,18 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/model/Publication.dart';
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/publicationItem/AlertItemPublication.dart';
 import 'package:cabalitoapp/screens/publicationItem/CardImage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
 
@@ -135,12 +139,12 @@ class _AddPublicationState extends State<AddPublication>{
                       SizedBox(height: 15),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: input(null,size.width*0.8,"Titulo",20.0,TextInputType.text),
+                        child: input(title,size.width*0.8,"Titulo",20.0,TextInputType.text),
                       ),
                       SizedBox(height: 15,),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: inputArea(null, size.width*0.8, 140.0, "Descripcion", 15.0),
+                        child: inputArea(description, size.width*0.8, 140.0, "Descripcion", 15.0),
                       ),
                       SizedBox(height: 15),
                       Padding(
@@ -160,8 +164,8 @@ class _AddPublicationState extends State<AddPublication>{
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            input(null, size.width*0.35, "Placa", size.height*0.02,TextInputType.text),
-                            input(null, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number),
+                            input(plate, size.width*0.35, "Placa", size.height*0.02,TextInputType.text),
+                            input(model, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number),
                           ],
                         ),
                       ),
@@ -171,8 +175,9 @@ class _AddPublicationState extends State<AddPublication>{
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            input(null, size.width*0.35, "N° Puertas",size.height*0.02,TextInputType.number),
-                            input(null, size.width*0.35, "Motor",size.height*0.02,TextInputType.text),
+                            input(dNumber, size.width*0.25, "N° Puertas",size.height*0.02,TextInputType.number),
+                            input(motor, size.width*0.25, "Motor",size.height*0.02,TextInputType.text),
+                            input(price, size.width*0.25, "Precio",size.height*0.02,TextInputType.text),
                           ],
                         ),
                       ),
@@ -186,7 +191,7 @@ class _AddPublicationState extends State<AddPublication>{
 
                           color:PrimaryColor,
                           onPressed: (){
-
+                                _addPublication();
                           },
                           child: Center(
                             child: Text("Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
@@ -257,6 +262,7 @@ class _AddPublicationState extends State<AddPublication>{
               borderRadius: BorderRadius.circular(font*0.3)
           ),
           child: TextField(
+            controller: controller,
             scrollPadding: EdgeInsets.all(0),
             maxLines: null,
             maxLength: 255,
@@ -284,6 +290,7 @@ class _AddPublicationState extends State<AddPublication>{
           borderRadius: BorderRadius.circular(font*0.3)
         ),
         child:TextField(
+          controller:controller,
             keyboardType: type,
             cursorColor: color3,
             cursorWidth: 1,
@@ -431,11 +438,23 @@ class _AddPublicationState extends State<AddPublication>{
     else{
     }
   }
+
+  _addPublication(){
+    Publication publication= Publication();
+    publication.idColor=newColor.idColor;
+    publication.idBrand=newBrand.idBrand;
+    publication.idCity=newCity.idCity;
+    publication.datePublication=DateTime.now();
+    publication.description=description.text;
+    print(dNumber.text);
+    publication.doorNumber=int.parse(dNumber.text);
+    publication.model=int.parse(model.text);
+    publication.title=title.text;
+    publication.motor=motor.text;
+    publication.licensePlate=plate.text;
+    print(price.text);
+    publication.price=double.parse(price.text);
+    BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication));
+
   }
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
   }
-}

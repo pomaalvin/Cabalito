@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/model/Publication.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class NavigationEvent extends Equatable{}
@@ -28,4 +29,10 @@ class RegisterSellerPageEvent extends NavigationEvent {
 class UpdateSellerPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
+}
+class AddPublicationEvent extends NavigationEvent {
+  Publication publication;
+  AddPublicationEvent(this.publication);
+  @override
+  List<Object> get props => [publication];
 }
