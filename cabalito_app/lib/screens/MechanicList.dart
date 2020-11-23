@@ -57,7 +57,7 @@ class MechanicListState extends State<MechanicList>{
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                  padding: EdgeInsets.only(left: size.width/7 ,right: size.width/7),
+                                  padding: EdgeInsets.only(left: size.width*0.07 ,right: size.width*0.07),
                                   itemBuilder: (context,index){
                                     return _Card(size.width,size.height);
                                   },
@@ -98,7 +98,7 @@ class _Card extends StatelessWidget{
       onTap:(){
         showDialog(context: context, builder:(contex) => MechanicCall(
             "shopName",
-            "79113586",//Todo change phone number
+            "72594781",//Todo change phone number
         ));
       },
       child: Container(
@@ -115,7 +115,7 @@ class _Card extends StatelessWidget{
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: heightScreen/40,left: widhtScreen/17),
+                      padding: EdgeInsets.only(top: heightScreen*0.025,left: widhtScreen*0.055),
                       child: Text("Shop Name",
                         style: TextStyle(
                           fontSize: 18.0,
@@ -126,12 +126,12 @@ class _Card extends StatelessWidget{
                   ],
                 ),
                 SizedBox(
-                  height: heightScreen/50,
+                  height: heightScreen*0.018,
                 ),
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: widhtScreen/17+2),
+                      padding: EdgeInsets.only(left: widhtScreen*0.055+2),
                       child: Text("Location",
                         style: TextStyle(
                           fontSize: 15.0,
@@ -148,14 +148,14 @@ class _Card extends StatelessWidget{
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(padding: EdgeInsets.only(top:heightScreen/40,right: widhtScreen/17-3),
+                    Padding(padding: EdgeInsets.only(top:heightScreen*0.025,right: widhtScreen*0.055-3),
                         child:
                         Estrellas(((10/5)+1%5).floor())
                     )
                   ],
                 ),
                 SizedBox(
-                  height: heightScreen/50,
+                  height: heightScreen*0.018,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
