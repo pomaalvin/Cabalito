@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import '../lib/Colors.dart';
 
 class Seller extends StatefulWidget{
@@ -47,18 +48,19 @@ class SellerState extends State<Seller>{
                   ),
                   Container(
                       margin: new EdgeInsets.only(top: 6.0),
-                      padding: new EdgeInsets.only(top:25.0),
+                      padding: new EdgeInsets.only(top:30.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                       ),
                       child: Column(
                         children: [
+
                           Expanded(
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                padding: EdgeInsets.only(left: 50.0 ,right:50.0),
+                                padding: EdgeInsets.only(left: 50.0 ,right:50.0,top: size.height*0.03),
                                 itemBuilder: (context,index){
                                   return _Card(size.width,size.height);
                                 },
@@ -97,31 +99,44 @@ class _Card extends StatelessWidget{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return  Container(
-      margin: EdgeInsets.only(bottom: 20.0),
+      width: size.width*0.80,
+      height: size.height*0.62,
+      margin: EdgeInsets.only(bottom: 25.0),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: BorderListColor),
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10.0,
+              offset: Offset(0.0,10.0),
+            )
+          ]
       ),
       child: Stack(
         children: [
           Column(
             children: [
-              Container(
-                  width: size.width*0.5,
-                  height: size.width*0.5,
-                  decoration: BoxDecoration(
+              Padding(
+                padding: EdgeInsets.only(top: size.height*0.035,bottom: size.height*0.027),
+                child: Container(
+                    width: size.width*0.5,
+                    height: size.width*0.5,
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fill,
                           image: NetworkImage(
                               "https://sa.uia.ac.cr/images/customers-icon-3.png"
                           )
-                      )
-                  )
+                      ),
+                    )
+                ),
               ),
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075),
                     child: Text("Nombre: ",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -130,7 +145,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
                     child: Text("Silvana",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -139,7 +154,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
                     child: Text("Munoz",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -153,7 +168,7 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075),
                     child: Text("Telefono: ",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -162,7 +177,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
                     child: Text("15963255",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -175,7 +190,7 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075,bottom: 20),
                     child: Text("Email: ",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -184,7 +199,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 20,left: 5),
+                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.010,bottom: 20),
                     child: Text("Silvana@gmail.com",
                       style: TextStyle(
                         fontSize: 18.0,
