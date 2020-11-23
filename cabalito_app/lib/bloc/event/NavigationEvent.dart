@@ -1,8 +1,10 @@
+import 'package:cabalitoapp/model/Mechanic.dart';
 import 'dart:io';
 
 import 'package:cabalitoapp/model/Publication.dart';
 import'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/model/Seller.dart';
+import 'package:cabalitoapp/model/Stars.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:equatable/equatable.dart';
@@ -65,4 +67,17 @@ class AddSellerEvent extends NavigationEvent {
   AddSellerEvent(this.seller);
   @override
   List<Object> get props => [seller];
+}
+class ShowMechanicEvent extends NavigationEvent{
+  Mechanic mechanic;
+  ShowMechanicEvent(this.mechanic);
+  @override
+  List<Object> get props => [mechanic];
+}
+class AddQualificationEvent extends NavigationEvent {
+
+  Stars stars;
+  AddQualificationEvent(this.stars);
+  @override
+  List<Object> get props => [stars];
 }

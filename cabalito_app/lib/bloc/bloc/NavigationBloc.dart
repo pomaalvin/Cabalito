@@ -1,19 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
+import 'package:cabalitoapp/model/Mechanic.dart';
+import 'package:cabalitoapp/repository/MechanicRepository.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
+import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/PublicationList.dart';
 import "../../model/Color.dart";
 import 'package:cabalitoapp/repository/SellerRepository.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   PublicationRepository _publicationRepository;
+  MechanicRepository _mechanicRepository;
   SellerRepository _sellerRepository;
-  NavigationBloc(this._publicationRepository,this._sellerRepository);
+  NavigationBloc(this._publicationRepository,this._mechanicRepository,this._sellerRepository);
   @override
   NavigationState get initialState => InitPageState();
 
@@ -28,10 +32,21 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield PublicationPageState();
 
     }
-
     else if(event is MechanicPageEvent){
       yield LoadingPageState();
-      yield MechanicPageState();
+      List<Mechanic> mechanic=await _mechanicRepository.getMechanic();
+      yield MechanicPageState(mechanic);
+    }
+    else if(event is AddQualificationEvent){
+      yield LoadingPageState();
+      bool estado=await _mechanicRepository.addQualification(event.stars);
+      if(estado){
+        List<Mechanic> mechanic=await _mechanicRepository.getMechanic();
+        yield MechanicPageState(mechanic);
+      }
+      else{
+        yield HomePageState();
+      }
     }
     else if(event is SellerPageEvent){
       yield LoadingPageState();
@@ -52,6 +67,19 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<Brand> brands=await  _publicationRepository.getBrands();
 
       yield AddPublicationPageState(colors,brands,cities);
+    }
+    else if(event is AddSellerEvent){
+      try{
+        bool estado=await _sellerRepository.addSeller(event.seller);
+
+      }catch(e){
+      }
+
+      /*if(estado){
+        yield HomePageState();
+      }
+      else{
+      }*/
     }
     else if(event is AddPublicationEvent){
       yield LoadingPageState();

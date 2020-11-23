@@ -49,6 +49,20 @@ class MenuState extends State<Menu>{
             },
           ),
           KFDrawerItem.initWithPage(
+            text: Text("Mecánicos",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.build,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(MechanicPageEvent());
+            },
+          ),
+          KFDrawerItem.initWithPage(
             text: Text("Lista de Publicación",
               style: TextStyle(
                 color: Colors.white,

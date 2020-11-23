@@ -1,7 +1,9 @@
 import 'package:cabalitoapp/ClassBuilder.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/repository/MechanicRepository.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import 'package:cabalitoapp/repository/SellerRepository.dart';
+import 'package:cabalitoapp/screens/SplashScreen.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:cabalitoapp/Menu.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: Color.fromRGBO(73, 24, 89, 1),accentColor: Colors.black),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-          create:(context2)=>NavigationBloc(PublicationRepository(),SellerRepository()),
+          create:(context2)=>NavigationBloc(PublicationRepository(),MechanicRepository(),SellerRepository()),
           child: Menu()),
     );
   }

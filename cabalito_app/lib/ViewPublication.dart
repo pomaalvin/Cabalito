@@ -141,7 +141,7 @@ class _ViewPublications extends State<PublicationsView>{
                         height: size.height*0.1,
                         child: Text(publicationView[0].title,
                           style: TextStyle(
-                              color: Texto2Color,
+                              //color: Texto2Color,
                               fontSize: 15.0
                           ),
                         ),
@@ -179,7 +179,7 @@ class _ViewPublications extends State<PublicationsView>{
                         height: size.height*0.06,
                         child: Text("${publicationView[0].price}",
                           style: TextStyle(
-                              color: Texto2Color,
+                              //color: Texto2Color,
                               fontSize: 15.0
                           ),
                         ),
@@ -286,7 +286,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.03,
                                 child: Text("${publicationView[0].brand}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),
@@ -302,7 +302,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.03,
                                 child: Text("${publicationView[0].model}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),
@@ -318,7 +318,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.03,
                                 child: Text("${publicationView[0].licensePlate}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),
@@ -334,7 +334,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.03,
                                 child: Text("${publicationView[0].Color}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),
@@ -420,7 +420,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.03,
                                 child: Text("${publicationView[0].phoneNumber}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),
@@ -436,7 +436,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 height: size.height*0.04,
                                 child: Text("${publicationView[0].motor}",
                                   style: TextStyle(
-                                      color: Texto2Color,
+                                      //color: Texto2Color,
                                       fontSize: 15.0
                                   ),
                                 ),

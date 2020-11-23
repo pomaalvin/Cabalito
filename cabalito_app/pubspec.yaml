@@ -36,6 +36,8 @@ dependencies:
   equatable: 1.2.0
   shared_preferences: 0.5.12
   flutter_phone_direct_caller: ^1.0.1
+  shimmer: ^1.1.2
+  flutter_rating_bar: ^3.2.0+1
   carousel_slider: ^2.3.1
 
 
@@ -60,8 +62,8 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/logo.png
-    - assets/publication/
-
+    - assets/publication/no_image.jpg
+    - assets/star.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
