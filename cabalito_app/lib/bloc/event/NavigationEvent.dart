@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cabalitoapp/model/Publication.dart';
 import 'package:equatable/equatable.dart';
 
@@ -32,7 +34,8 @@ class UpdateSellerPageEvent extends NavigationEvent {
 }
 class AddPublicationEvent extends NavigationEvent {
   Publication publication;
-  AddPublicationEvent(this.publication);
+  List<File> images;
+  AddPublicationEvent(this.publication,this.images);
   @override
-  List<Object> get props => [publication];
+  List<Object> get props => [publication,images];
 }

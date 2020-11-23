@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
+import 'package:cabalitoapp/model/Brand.dart';
+import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
+import "../../model/Color.dart";
 
 class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   PublicationRepository _publicationRepository;
@@ -17,7 +20,6 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     }
     else if(event is PublicationPageEvent){
       yield LoadingPageState();
-      yield PublicationPageState();
 
     }
     else if(event is MechanicPageEvent){
@@ -38,16 +40,22 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     }
     else if(event is AddPublicationPageEvent){
       yield LoadingPageState();
-      yield AddPublicationPageState();
+      List<Color> colors=await  _publicationRepository.getColors();
+      List<City> cities=await  _publicationRepository.getCities();
+      List<Brand> brands=await  _publicationRepository.getBrands();
+
+      yield AddPublicationPageState(colors,brands,cities);
     }
     else if(event is AddPublicationEvent){
-      //yield LoadingPageState();
-      bool estado=await _publicationRepository.addPublication(event.publication);
-      /*if(estado){
+      yield LoadingPageState();
+      bool estado=await _publicationRepository.addPublication(event.publication,event.images);
+      print(estado);
+      if(estado){
         yield HomePageState();
       }
       else{
-      }*/
+        yield HomePageState();
+      }
     }
   }
 

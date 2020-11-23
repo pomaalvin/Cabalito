@@ -1,4 +1,8 @@
+import 'package:cabalitoapp/model/Brand.dart';
+import 'package:cabalitoapp/model/City.dart';
+import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
+import 'package:cabalitoapp/screens/Loading.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
@@ -14,7 +18,7 @@ abstract class NavigationState extends Equatable{
 class LoadingPageState extends NavigationState{
   const LoadingPageState();
   @override
-  List<Object> get props => ["Loading",Template()];
+  List<Object> get props => ["Loading",Loading()];
 }
 class InitPageState extends NavigationState{
   const InitPageState();
@@ -27,14 +31,20 @@ class HomePageState extends NavigationState{
   List<Object> get props => ["Home",Template()];
 }
 class AddPublicationPageState extends NavigationState{
-  const AddPublicationPageState();
+  List<Color> colors;
+  List<City> cities;
+  List<Brand> brands;
+  AddPublicationPageState(this.colors,this.brands,this.cities);
   @override
-  List<Object> get props => ["Publicacion",AddPublication()];
+  List<Object> get props => ["Publicacion",AddPublication(colors,brands,cities)];
 }
 class PublicationPageState extends NavigationState{
-  const PublicationPageState();
+  List<Color> colors;
+  List<City> cities;
+  List<Brand> brands;
+  PublicationPageState(this.colors,this.brands,this.cities);
   @override
-  List<Object> get props => ["Publication",AddPublication()];
+  List<Object> get props => ["Publication",AddPublication(colors,brands,cities)];
 }
 class MechanicPageState extends NavigationState{
   const MechanicPageState();

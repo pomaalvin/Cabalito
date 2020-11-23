@@ -18,17 +18,22 @@ import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
 
 class AddPublication extends StatefulWidget{
+  List<Color> colors;
+  List<Brand> brands;
+  List<City> cities;
+  AddPublication(this.colors,this.brands,this.cities);
   @override
-  State createState() => _AddPublicationState();
+  State createState() => _AddPublicationState(colors,brands,cities);
 }
 
 class _AddPublicationState extends State<AddPublication>{
+  _AddPublicationState(this.colors,this.brands,this.cities);
+  List<Color> colors;
   Color newColor;
   Brand newBrand;
   City newCity;
-  List<Color> colors=List();
   List<Brand> brands=List();
-  List<City> citys=List();
+  List<City> cities=List();
   TextEditingController title = TextEditingController();
   TextEditingController description = TextEditingController();
   TextEditingController price = TextEditingController();
@@ -68,27 +73,6 @@ class _AddPublicationState extends State<AddPublication>{
   @override
   void initState(){
     super.initState();
-    var cityaux=["La Paz","El Alto" ,"Santa Cruz","Chuquisaca"];
-    var brandaux=["Toyota","Nissan","Mitsubishi","Susuki"];
-    var coloraux=["Azul","Rojo","Verde","Amarillo"];
-    for(int i=0;i<cityaux.length;i++){
-            City city=City();
-            city.city=cityaux[i];
-            city.idCity=i+1;
-            citys.add(city);
-    }
-    for(int i=0;i<brandaux.length;i++){
-      Brand city=Brand();
-      city.brand=brandaux[i];
-      city.idBrand=i+1;
-      brands.add(city);
-    }
-    for(int i=0;i<coloraux.length;i++){
-      Color city=Color();
-      city.color=coloraux[i];
-      city.idColor=i+1;
-      colors.add(city);
-    }
 
   }
   Size size;
@@ -211,7 +195,7 @@ class _AddPublicationState extends State<AddPublication>{
         var alert=AlertItemPublication();
         switch(text) {
           case "Ciudad":
-            var city=await alert.alertCity(context, citys);
+            var city=await alert.alertCity(context, cities);
             if(city!=null){
               setState(() {
                 newCity=city;
@@ -454,7 +438,7 @@ class _AddPublicationState extends State<AddPublication>{
     publication.licensePlate=plate.text;
     print(price.text);
     publication.price=double.parse(price.text);
-    BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication));
+    BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
 
   }
   }
