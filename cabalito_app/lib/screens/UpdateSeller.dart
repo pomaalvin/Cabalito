@@ -1,9 +1,9 @@
-
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
 
@@ -19,21 +19,25 @@ class UpdateSellerState extends State<UpdateSeller>{
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+
   File imageFile;
-  _openGallery() async{
+
+  _openGallery(BuildContext context) async{
     var picture = await ImagePicker.pickImage(source: ImageSource.gallery);
     this.setState(() {
       imageFile=picture;
     });
+    Navigator.of(context).pop();
 
 
     //this.setState({});
   }
-  _openCamera() async{
+  _openCamera(BuildContext context) async{
     var picture = await ImagePicker.pickImage(source: ImageSource.camera);
     this.setState(() {
       imageFile=picture;
     });
+    Navigator.of(context).pop();
   }
 
 
@@ -55,7 +59,7 @@ class UpdateSellerState extends State<UpdateSeller>{
               child: Center(
                 child:
                 Container(
-                  child:Text("Registro",
+                  child:Text("Actualizar",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -99,48 +103,75 @@ class UpdateSellerState extends State<UpdateSeller>{
                                       children: [
                                         Column(
                                           children: [
-                                            Container(
-                                                width: size.width*0.5,
-                                                height: size.width*0.5,
-                                                decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                        fit: BoxFit.fill,
-                                                        image: NetworkImage(
-                                                            "https://sa.uia.ac.cr/images/customers-icon-3.png"
-                                                        )
-                                                    )
-                                                )
-                                            ),
-                                            RaisedButton(color:PrimaryColor,onPressed: (){
-                                              _showChoiceDialog(context);
-                                            },child: Text("Seleccione una imagen", style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15.0
-                                            )
-                                            )
-                                            ),
+                                            _decideImageView(),
+                                            IconButton(
+                                                icon: Icon(Icons.add_a_photo),
+                                                iconSize: size.width*0.1,
+                                                color: PrimaryColor,
+
+                                                onPressed: () {
+                                                  _showChoiceDialog(context);
+                                                }),
                                             buildLabel("Nombre: "),
                                             Padding(
-                                              padding: EdgeInsets.only(top: 10, left: 1),
+                                              padding: EdgeInsets.only(top: 10, left: size.width*0.05),
                                               child: TextField(controller: name,
                                                   style: TextStyle(fontSize: 15),
                                                   decoration: InputDecoration(hintStyle: TextStyle(
-                                                      color: Colors.white
-                                                  ))),
+                                                      color: Colors.white,
+                                                      ),
+                                                      enabledBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: Colors.grey),
+
+                                                      ),
+                                                      focusedBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: PrimaryColor),
+
+                                                      ),
+                                                      )),
                                             ),
                                             buildLabel("Apellido: "),
                                             Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                padding: EdgeInsets.only(top: 10, left: size.width*0.05),
                                                 child: TextField(controller: lastname,
-                                                  style: TextStyle(fontSize: 15),)
+                                                  style: TextStyle(fontSize: 15),
+                                                    decoration: InputDecoration(hintStyle: TextStyle(
+                                                      color: Colors.white,
+                                                       ),
+                                                      enabledBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: Colors.grey),
+
+                                                      ),
+                                                      focusedBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: PrimaryColor),
+
+                                                      ),
+                                                    )),
                                             ),
                                             buildLabel("Telefono: "),
                                             Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                padding: EdgeInsets.only(top: 10, left: size.width*0.05),
                                                 child: TextField(controller: phone,
-                                                  style: TextStyle(fontSize: 15),)
+                                                  style: TextStyle(fontSize: 15),
+                                                    decoration: InputDecoration(hintStyle: TextStyle(
+                                                      color: Colors.white,
+                                                    ),
+                                                      enabledBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: Colors.grey),
+
+                                                      ),
+                                                      focusedBorder: UnderlineInputBorder(
+                                                        borderSide: BorderSide(color: PrimaryColor),
+
+                                                      ),
+                                                    )),
                                             ),
-                                            buildButton("Actualizar", PrimaryColor)
+                                            Row(
+                                              children: [
+                                                buildButton("Actualizar", PrimaryColor),
+                                                buildButton("Cambiar Contraseña", PrimaryColor)
+                                              ],
+                                            )
                                           ],
                                         )
                                       ],
@@ -161,22 +192,50 @@ class UpdateSellerState extends State<UpdateSeller>{
         )
     );
   }
+  Widget _decideImageView(){
+    if(imageFile==null){
+      return Container(
+          width: size.width*0.5,
+          height: size.width*0.5,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(
+                      "https://sa.uia.ac.cr/images/customers-icon-3.png"
+                  )
+              )
+          )
+      );
+    }else{
+      return Image.file(
+          imageFile,
+          width: size.width*0.5,
+          height: size.width*0.5);
+    }
+  }
   Widget buildLabel(String textLabel) {
-    return Padding(
-      padding: EdgeInsets.only(top: 20, left: 5),
-      child: Text(textLabel,
-        style: TextStyle(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+          Padding(
+          padding: EdgeInsets.only(top: size.height*0.03, left: size.width*0.05),
+          child: Text(textLabel,
+          style: TextStyle(
           fontSize: 18.0,
           color: TitleColor,
-        ),
-      ),
+
+          ),
+          ),
+          ),
+      ],
     );
   }
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, left: 5),
+      padding: EdgeInsets.only(top: 20, left: size.width*0.02),
       child: Container(
+        width: size.width*0.35,
         color: buttonColor,
         child: FlatButton(
           shape: RoundedRectangleBorder(
@@ -186,7 +245,7 @@ class UpdateSellerState extends State<UpdateSeller>{
             buttonText,
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 20.0
+                fontSize: 18.0
             ),
           ),
         ),
@@ -201,20 +260,24 @@ class UpdateSellerState extends State<UpdateSeller>{
         content: SingleChildScrollView(
           child: ListBody(
             children: [
-              GestureDetector(
-                child: Text("Galeria"),
-                onTap: (){
-                  _openGallery();
-                },
-              ),
-              Padding(padding: EdgeInsets.all(5.0)),
-              GestureDetector(
-                child: Text("Camera"
-                ),
-                onTap: (){
-                  _openCamera();
-                },
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: IconButton(icon: Icon(Icons.add_photo_alternate),
+                          onPressed: () {
+                            _openGallery(context);
+                          }),
+                    ),
+                    Padding(padding: EdgeInsets.all(5.0)),
+                    GestureDetector(
+                      child: IconButton(icon: Icon(Icons.camera_enhance),
+                          onPressed: () {
+                            _openCamera(context);
+                          }),
+                    ),
+                ],
               )
+
             ],
           ),
         ),
