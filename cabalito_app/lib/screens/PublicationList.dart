@@ -1,16 +1,27 @@
+import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kf_drawer/kf_drawer.dart';
 import '../lib/Colors.dart';
+import '../lib/ApiUrl.dart' as api;
 
 class PublicationList extends StatefulWidget{
+  List<ListPublication> listPublications;
+  PublicationList(this.listPublications);
   @override
-  State createState() => _PublicationList();
+  State createState() => _PublicationList(listPublications);
 }
 
 class _PublicationList extends State<PublicationList>{
+  _PublicationList(this.listPublications);
+  List<ListPublication> listPublications=List();
   @override
   void initState(){
     super.initState();
+
   }
   Size size;
   @override
@@ -36,88 +47,6 @@ class _PublicationList extends State<PublicationList>{
                               child: Busqueda()
                           ),
                         ),
-                  /*
-                        Container(
-                            margin: new EdgeInsets.only(top: 6.0),
-                            padding: new EdgeInsets.only(top:25.0),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
-                            ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  child: ScrollConfiguration(
-                                    behavior: MyBehavior(),
-                                    child: ListView.builder(
-                                      padding: EdgeInsets.only(left: size.width/7 ,right: size.width/7),
-                                      itemBuilder: (context,index){
-                                        return Container(
-                                          width: size.width,
-                                          height: size.height,
-                                          color: Colors.red,
-                                        );
-                                          //_Publications(size.width,size.height);
-                                          //_Card(size.width,size.height);
-                                      },
-                                      itemCount: 20,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                        ),
-                        */
-                        /*
-                        Expanded(
-                          child: ScrollConfiguration(
-                            behavior: MyBehavior(),
-                            child: GridView.builder(
-                              padding: EdgeInsets.all(0),
-                              gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 1,
-                                  crossAxisSpacing: 0,
-                                  mainAxisSpacing: 2
-                              ),
-                              itemBuilder: (context, index){
-                                return Container(
-                                    color: Colors.black.withOpacity(0.5),
-                                    child: Column(
-                                      children: [
-                                        /*
-                                        Container(
-                                            width: size.width*0.5,
-                                            height: size.width*0.5*0.8,
-                                            decoration: BoxDecoration(
-                                                image: DecorationImage(
-                                                    fit: BoxFit.fill,
-                                                    image: NetworkImage(
-                                                        "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484366.jpg"
-                                                    )
-                                                )
-                                            )
-                                        ),
-                                        */
-                                        Expanded(
-                                            child: Center(
-                                              child:  Container(
-                                                height: size.height*0.2,
-                                                width: size.width,
-                                                color: Colors.blue,
-                                                child: Text("hola"),
-                                              ),
-                                              //Estrellas(((index/5)+1%5).floor()),
-                                            )
-                                        ),
-                                      ],
-                                    )
-                                );
-                              },
-                              itemCount: 20,
-                            ),
-                          ),
-                        )
-                        */
                         Expanded(
                           child: Stack(
                             children: <Widget>[
@@ -132,9 +61,10 @@ class _PublicationList extends State<PublicationList>{
                                           child: ListView.builder(
                                             padding: EdgeInsets.only(left: size.width/9 ,right: size.width/9),
                                             itemBuilder: (context,index){
-                                              return _ViewPublic(size.width,size.height);
+
+                                              return _ViewPublic(size.width,size.height,listPublications[index]);
                                             },
-                                            itemCount: 10,
+                                            itemCount: listPublications.length,
                                           ),
                                         ),
                                       ),
@@ -158,25 +88,42 @@ class _PublicationList extends State<PublicationList>{
 }
 
 class _ViewPublic extends StatelessWidget{
+
+  KFDrawerController _drawerController;
   var width;
   var height;
-
-  _ViewPublic(this.width, this.height);
-
-  Color color= PrimaryColor;
-  @override
+  ListPublication listPublication;
+  _ViewPublic(this.width, this.height,this.listPublication);
   Widget build(BuildContext context) {
+
     return
-        GestureDetector(
-          onPanDown: (dt){
-          },
-          child: Container(
 
-            padding: const EdgeInsets.fromLTRB(0,10,0,10),
 
-            width: width,
-            height: height*0.23,
-            color: Colors.transparent,
+        Container(
+
+          padding: const EdgeInsets.fromLTRB(0,10,0,10),
+
+          width: width,
+          height: height*0.23,
+          color: Colors.transparent,
+          child: GestureDetector(
+
+            onTap: () async {
+
+              print("Ingresa");
+              BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent(listPublication.idPublication));
+             // var  listPublication=await alert.alertColor(context, listPublications);
+              //if(listPublication!=null){
+               // setState(() {
+                //  newColor=color;
+                //});
+              //}
+
+              //_drawerController.close();
+              //BlocProvider.of<NavigationBloc>(context).add(AddPublicationPageEvent());
+            },
+
+
             child: Container(
               width: width,
               height: height*0.1,
@@ -202,10 +149,12 @@ class _ViewPublic extends StatelessWidget{
                       children: [
                         Container(
                           width: width*0.32,
-                          height: height*0.15,
-
+                          height: height*0.155,
                           decoration: BoxDecoration(
-                            color: Colors.grey[350],
+                            image: DecorationImage(
+                              image: NetworkImage(api.url+"image/"+listPublication.imagePath),
+                              fit: BoxFit.fill
+                            ),
                             borderRadius: BorderRadius.circular(15.0),
                           ),
                         ),
@@ -225,12 +174,12 @@ class _ViewPublic extends StatelessWidget{
                               width: width*0.35,
                               height: height*0.05,
                               color: Colors.transparent,
-                              child: Text("Publication Title",
+                              child: Text(listPublication.title,
                                 //textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16.0
+                                    fontSize: 15.0
                                 ),
                               ),
                             ),
@@ -240,10 +189,10 @@ class _ViewPublic extends StatelessWidget{
                                   width: width*0.35,
                                   height: height*0.05,
                                   color: Colors.transparent,
-                                  child: Text("Price: Bs. 350",
+                                  child: Text("Precio: Bs. ${listPublication.price}",
                                     style: TextStyle(
                                         color: Colors.black54,
-                                        fontSize: 16.0
+                                        fontSize: 14.0
                                     ),
                                   ),
                                 ),
@@ -261,6 +210,7 @@ class _ViewPublic extends StatelessWidget{
             ),
           ),
         );
+
   }
 
 }

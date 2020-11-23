@@ -1,22 +1,35 @@
+import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:kf_drawer/kf_drawer.dart';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'lib/Colors.dart';
+import 'model/PublicationView.dart';
+import 'lib/ApiUrl.dart' as api;
 
-class PublicationView extends KFDrawerContent{
+class PublicationsView extends KFDrawerContent{
+  List<PublicationView> publication;
+  List<ListPublication> publicationPaths;
+  PublicationsView(this.publication, this.publicationPaths);
+
   @override
-  State createState() => _ViewPublication();
+  State createState() => _ViewPublications(publication,publicationPaths);
 }
 
-class _ViewPublication extends State<PublicationView>{
-  var widhtScreen;
-  var heightScreen;
+class _ViewPublications extends State<PublicationsView>{
 
+
+  List<PublicationView> publicationView = List();
+  List<ListPublication> publicationPaths = List();
+  _ViewPublications(this.publicationView,this.publicationPaths);
+  List<String> images = List();
   @override
   void initState(){
     super.initState();
+    for(int i=0;i<publicationPaths.length;i++) {
+      images.add(api.url+"image/"+publicationPaths[i].imagePath);
+    }
   }
 
   Size size;
@@ -32,10 +45,6 @@ class _ViewPublication extends State<PublicationView>{
 
         ListView(
           children: [
-            SizedBox(
-              width: size.width*0.01,
-              height: size.height*0.005,
-            ),
             Row(
               children: [
                 SizedBox(
@@ -46,7 +55,37 @@ class _ViewPublication extends State<PublicationView>{
                   color: Colors.grey,
                   width: size.width*0.98,
                   height: size.height*0.5,
+                  child: CarouselSlider(
 
+                    options: CarouselOptions(
+                        height: 400.0,
+                      aspectRatio: 16/9,
+                      viewportFraction: 0.8,
+                      initialPage: 0,
+                      enableInfiniteScroll: false,
+                      reverse: true,
+                      autoPlay: false,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+
+                    ),
+
+                    items: images.map((ind) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.symmetric(horizontal: 5.0),
+                              decoration: BoxDecoration(color: Colors.transparent),
+                              child: Image.network( ind ,fit: BoxFit.fill),
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
                 )
               ],
             ),
@@ -74,7 +113,7 @@ class _ViewPublication extends State<PublicationView>{
                         color: Colors.transparent,
                         width: size.width*0.88,
                         height: size.height*0.05,
-                        child: Text("Publication Title",
+                        child: Text(publicationView[0].title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: color3,
@@ -100,7 +139,7 @@ class _ViewPublication extends State<PublicationView>{
                         color: Colors.transparent,
                         width: size.width*0.88,
                         height: size.height*0.1,
-                        child: Text("Description",
+                        child: Text(publicationView[0].title,
                           style: TextStyle(
                               color: Texto2Color,
                               fontSize: 15.0
@@ -115,7 +154,7 @@ class _ViewPublication extends State<PublicationView>{
                         color: Colors.transparent,
                         width: size.width*0.88,
                         height: size.height*0.03,
-                        child: Text("Price",
+                        child: Text("Precio",
                           style: TextStyle(
                               color: color3,
                               fontSize: 15.0
@@ -138,7 +177,7 @@ class _ViewPublication extends State<PublicationView>{
                         color: Colors.transparent,
                         width: size.width*0.88,
                         height: size.height*0.06,
-                        child: Text("price",
+                        child: Text("${publicationView[0].price}",
                           style: TextStyle(
                               color: Texto2Color,
                               fontSize: 15.0
@@ -160,7 +199,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("Brand",
+                                child: Text("Marca",
                                   style: TextStyle(
                                       color: color3,
                                       fontSize: 15.0
@@ -176,7 +215,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("Model",
+                                child: Text("Modelo",
                                   style: TextStyle(
                                       color: color3,
                                       fontSize: 15.0
@@ -192,7 +231,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("Plate",
+                                child: Text("Placa",
                                   style: TextStyle(
                                       color: color3,
                                       fontSize: 15.0
@@ -245,7 +284,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("brand",
+                                child: Text("${publicationView[0].brand}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -261,7 +300,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("model",
+                                child: Text("${publicationView[0].model}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -277,7 +316,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.03,
-                                child: Text("plate",
+                                child: Text("${publicationView[0].licensePlate}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -293,7 +332,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.205,
                                 height: size.height*0.03,
-                                child: Text("color",
+                                child: Text("${publicationView[0].Color}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -328,7 +367,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.655,
                                 height: size.height*0.03,
-                                child: Text("D. Number",
+                                child: Text("D. Numero",
                                   style: TextStyle(
                                       color: color3,
                                       fontSize: 15.0
@@ -379,7 +418,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.655,
                                 height: size.height*0.03,
-                                child: Text("d. number",
+                                child: Text("${publicationView[0].phoneNumber}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -395,7 +434,7 @@ class _ViewPublication extends State<PublicationView>{
                                 color: Colors.transparent,
                                 width: size.width*0.225,
                                 height: size.height*0.04,
-                                child: Text("Motor",
+                                child: Text("${publicationView[0].motor}",
                                   style: TextStyle(
                                       color: Texto2Color,
                                       fontSize: 15.0
@@ -439,7 +478,7 @@ class _ViewPublication extends State<PublicationView>{
                               children: [
                                 GestureDetector(
                                   onPanDown: (dt) async{
-                                    FlutterPhoneDirectCaller.callNumber("78787878");
+                                    FlutterPhoneDirectCaller.callNumber("${publicationView[0].phoneNumber}");
                                     //print("boton");
                                   },
                                   child: Container(
@@ -480,15 +519,6 @@ class _ViewPublication extends State<PublicationView>{
           ],
         ),
 
-          Material(
-            shadowColor: Colors.transparent,
-            //color: Colors.transparent,
-            color: Colors.transparent,
-            child: IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: widget.onMenuPressed,
-            ),
-          ),
         ],
       ),
     );

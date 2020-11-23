@@ -59,7 +59,7 @@ class MenuState extends State<Menu>{
             ),
             onPressed: (){
               _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(PublicationListEvent());
+              BlocProvider.of<NavigationBloc>(context).add(PublicationListsEvent());
             },
           ),
           KFDrawerItem.initWithPage(

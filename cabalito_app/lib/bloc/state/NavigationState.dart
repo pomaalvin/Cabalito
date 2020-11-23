@@ -1,6 +1,8 @@
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
+import 'package:cabalitoapp/model/PublicationList.dart';
+import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/Loading.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
@@ -46,14 +48,18 @@ class PublicationPageState extends NavigationState{
   List<Object> get props => ["Publication"];
 }
 class PublicationViewState extends NavigationState{
-  const PublicationViewState();
+  List<PublicationView> publicationsView;
+  List<ListPublication> publicationPaths;
+  PublicationViewState(this.publicationsView,this.publicationPaths);
   @override
-  List<Object> get props => ["Publication",PublicationView()];
+  List<Object> get props => ["Publication",PublicationsView(publicationsView,publicationPaths)];
 }
+
 class PublicationListState extends NavigationState{
-  const PublicationListState();
+  List<ListPublication> listPublication;
+  PublicationListState(this.listPublication);
   @override
-  List<Object> get props => ["Publication",PublicationList()];
+  List<Object> get props => ["Publicacion",PublicationList(listPublication)];
 }
 class MechanicPageState extends NavigationState{
   const MechanicPageState();

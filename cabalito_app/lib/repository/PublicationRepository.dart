@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Publication.dart';
+import 'package:cabalitoapp/model/PublicationList.dart';
+import 'package:cabalitoapp/model/PublicationView.dart';
+import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:http/http.dart' as http;
 import '../lib/ApiUrl.dart' as api;
 import 'dart:async';
@@ -131,6 +134,108 @@ class PublicationRepository{
       });
       if(response.statusCode==200){
         return cities;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
+
+  Future<List<ListPublication>> getpublicationLists()async {
+    try{
+      List<ListPublication> listPublications=List();
+      var url=api.url + "publications/?n=${5}&i=${0}";
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      List resCol = jsonDecode(response.body);
+      print(response.body);
+      resCol.forEach((element) {
+        ListPublication newPublicationList=ListPublication();
+        newPublicationList.idPublication=element["idPublication"];
+        newPublicationList.price=element["price"];
+        newPublicationList.title=element["title"];
+        newPublicationList.imagePath=element["imagePath"];
+        listPublications.add(newPublicationList);
+      });
+      if(response.statusCode==200){
+        return listPublications;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
+  Future<List<PublicationView>> getpublicationView(int idPublication)async {
+    try{
+      List<PublicationView> publicationView=List();
+      var url=api.url + "publications/idd?idPublication=${idPublication.toString()}";
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      print(response.body);
+      print(url);
+      var element = jsonDecode(response.body);
+        PublicationView newPublicationView=PublicationView();
+        newPublicationView.title=element["title"];
+        newPublicationView.description=element["description"];
+        newPublicationView.price=element["price"];
+        newPublicationView.brand=element["brand"];
+        newPublicationView.model=element["model"];
+        newPublicationView.licensePlate=element["licensePlate"];
+        newPublicationView.motor=element["motor"];
+        newPublicationView.phoneNumber=element["phoneNumber"];
+        newPublicationView.doorNumber=element["doorNumber"];
+        newPublicationView.Color=element["color"];
+        newPublicationView.City=element["city"];
+        publicationView.add(newPublicationView);
+
+      if(response.statusCode==200){
+        return publicationView;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
+  Future<List<ListPublication>> getpublicationPaths(int idPublication)async {
+    try{
+      List<ListPublication> listPublications=List();
+      var url=api.url + "publications/paths?idPublication=${idPublication.toString()}";
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      List resCol = jsonDecode(response.body);
+      print(response.body);
+      resCol.forEach((element) {
+        ListPublication newPublicationList=ListPublication();
+        newPublicationList.idPublication=element["idPublication"];
+        newPublicationList.imagePath=element["imagePath"];
+        listPublications.add(newPublicationList);
+      });
+      if(response.statusCode==200){
+        return listPublications;
       }
       else{
         return null;
