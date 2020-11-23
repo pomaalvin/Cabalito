@@ -2,6 +2,7 @@ import 'package:cabalitoapp/Home.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
+import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
@@ -47,7 +48,51 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(AddPublicationPageEvent());
             },
           ),
+          KFDrawerItem.initWithPage(
+            text: Text("Lista de Publicación",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.view_list,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(PublicationListEvent());
+            },
+          ),
+          KFDrawerItem.initWithPage(
+            text: Text("Registro usuario",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.group_add,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(RegisterSellerPageEvent());
+            },
+          ),
 
+          /*
+          KFDrawerItem.initWithPage(
+            text: Text("Publicación",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.view_list,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent());
+            },
+          ),
+          */
         ]
     );
   }

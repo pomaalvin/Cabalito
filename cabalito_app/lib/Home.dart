@@ -3,9 +3,15 @@ import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/lib/Colors.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
+import 'package:cabalitoapp/screens/PublicationList.dart';
+import 'package:cabalitoapp/screens/Seller.dart';
+import 'package:cabalitoapp/screens/Template.dart';
+import 'package:cabalitoapp/screens/UpdateSeller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+
+import 'ViewPublication.dart';
 
 class Home extends KFDrawerContent{
   @override

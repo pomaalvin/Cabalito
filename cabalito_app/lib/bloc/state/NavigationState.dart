@@ -4,9 +4,11 @@ import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/Loading.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
+import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
+import 'package:cabalitoapp/screens/Template2.dart';
 import 'package:cabalitoapp/screens/UpdateSeller.dart';
 import 'package:equatable/equatable.dart';
 
@@ -28,7 +30,7 @@ class InitPageState extends NavigationState{
 class HomePageState extends NavigationState{
   const HomePageState();
   @override
-  List<Object> get props => ["Home",Template()];
+  List<Object> get props => ["Home",Template2()];
 }
 class AddPublicationPageState extends NavigationState{
   List<Color> colors;
@@ -46,6 +48,16 @@ class PublicationPageState extends NavigationState{
   @override
   List<Object> get props => ["Publication",AddPublication(colors,brands,cities)];
 }
+class PublicationViewState extends NavigationState{
+  const PublicationViewState();
+  @override
+  List<Object> get props => ["Publication",PublicationView()];
+}
+class PublicationListState extends NavigationState{
+  const PublicationListState();
+  @override
+  List<Object> get props => ["Publication",PublicationList()];
+}
 class MechanicPageState extends NavigationState{
   const MechanicPageState();
   @override
@@ -59,10 +71,15 @@ class SellerPageState extends NavigationState{
 class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
   @override
-  List<Object> get props => ["RegisterSeller",RegisterSeller()];
+  List<Object> get props => ["Registro",RegisterSeller()];
 }
 class UpdateSellerPageState extends NavigationState{
   const UpdateSellerPageState();
   @override
   List<Object> get props => ["UpdateSeller",UpdateSeller()];
+}
+class AddSellerPageState extends NavigationState{
+  const AddSellerPageState();
+  @override
+  List<Object> get props => ["Registro",RegisterSeller()];
 }

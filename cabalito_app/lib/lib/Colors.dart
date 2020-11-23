@@ -7,3 +7,5 @@ var SubtitleColor=Color.fromRGBO(128, 128, 128, 1);
 var color3=Colors.black;
 var color4=Colors.white;
 var BorderListColor = Color.fromRGBO(212,212, 213, 1);
+var Texto1Color=Color.fromRGBO(255, 255, 226, 1);
+var Texto2Color=Colors.black54;

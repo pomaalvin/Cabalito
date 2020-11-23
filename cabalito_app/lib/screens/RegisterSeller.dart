@@ -1,6 +1,12 @@
+
 import 'dart:ui';
+
+import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../lib/Colors.dart';
 
 class RegisterSeller extends StatefulWidget{
@@ -9,6 +15,14 @@ class RegisterSeller extends StatefulWidget{
 }
 
 class RegisterSellerState extends State<RegisterSeller>{
+
+  TextEditingController name = TextEditingController();
+  TextEditingController lastname = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
+
   @override
   void initState(){
     super.initState();
@@ -21,21 +35,6 @@ class RegisterSellerState extends State<RegisterSeller>{
         backgroundColor: PrimaryColor,
         body: Column(
           children: <Widget>[
-            Container(
-              height:60,
-              child: Center(
-                child:
-                Container(
-                  child:Text("Registro",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: Stack(
                 children: <Widget>[
@@ -60,7 +59,89 @@ class RegisterSellerState extends State<RegisterSeller>{
                               child: ListView.builder(
                                 padding: EdgeInsets.only(left: 50.0 ,right:50.0),
                                 itemBuilder: (context,index){
-                                  return _Card(size.width,size.height);
+                                  return Container(
+                                    margin: EdgeInsets.only(bottom: 20.0),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(width: 0, color: BorderListColor),
+                                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            //buildLabel("Nombre: "),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10, left: 1),
+                                              child: TextField(controller: name,
+                                                  style: TextStyle(fontSize: 15),
+                                                  decoration: InputDecoration(hintStyle: TextStyle(
+                                                      color: Colors.black
+                                                  ),
+                                                      hintText: "Nombre"
+                                                  )
+                                              ),
+                                            ),
+                                            // buildLabel("Apellido: "),
+                                            Padding(
+                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                child: TextField(controller: lastname,
+                                                    style: TextStyle(fontSize: 15),
+                                                    decoration: InputDecoration(hintStyle: TextStyle(
+                                                        color: Colors.black
+                                                    ),
+                                                        hintText: "Apellido"
+                                                    ))
+                                            ),
+                                            //buildLabel("Telefono: "),
+                                            Padding(
+                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                child: TextField(controller: phone,
+                                                    style: TextStyle(fontSize: 15),decoration: InputDecoration(hintStyle: TextStyle(
+                                                        color: Colors.black
+                                                    ),
+                                                        hintText: "Telefono"
+                                                    ))
+                                            ),
+                                            //buildLabel("Email: "),
+                                            Padding(
+                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                child: TextField(controller: email,
+                                                    style: TextStyle(fontSize: 15),
+                                                    decoration: InputDecoration(hintStyle: TextStyle(
+                                                        color: Colors.black
+                                                    ),
+                                                        hintText: "Email"
+                                                    ))
+                                            ),
+                                            // buildLabel("Contraseña"),
+                                            Padding(
+                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                child: TextField(controller: confirmPassword,
+                                                    style: TextStyle(fontSize: 15),
+                                                    obscureText: true,
+                                                    decoration: InputDecoration(hintStyle: TextStyle(
+                                                        color: Colors.black
+                                                    ),
+                                                        hintText: "Contraseña"
+                                                    ))
+                                            ),
+                                            //buildLabel("Confirmar Contraseña"),
+                                            Padding(
+                                                padding: EdgeInsets.only(top: 10, left: 1),
+                                                child: TextField(controller: password,
+                                                    obscureText: true,
+                                                    style: TextStyle(fontSize: 15),decoration: InputDecoration(hintStyle: TextStyle(
+                                                        color: Colors.black
+                                                    ),
+                                                        hintText: "Confirmar contraseña"
+                                                    ))
+                                            ),
+                                            buildButton("Registrar", PrimaryColor)
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  );;
                                 },
                                 itemCount: 1,
                               ),
@@ -76,95 +157,6 @@ class RegisterSellerState extends State<RegisterSeller>{
         )
     );
   }
-}
-class MyBehavior extends ScrollBehavior {
-  @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
-    return child;
-  }
-}
-
-class _Card extends StatelessWidget {
-
-
-  TextEditingController name = TextEditingController();
-  TextEditingController lastname = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController password = TextEditingController();
-  TextEditingController confirmPassword = TextEditingController();
-
-  Size size;
-  var widhtScreen;
-  var heightScreen;
-
-  _Card(this.widhtScreen, this.heightScreen);
-
-  Color color = Color.fromRGBO(20, 61, 89, 1);
-
-  @override
-  Widget build(BuildContext context) {
-    size = MediaQuery
-        .of(context)
-        .size;
-    return Container(
-      margin: EdgeInsets.only(bottom: 20.0),
-      decoration: BoxDecoration(
-        border: Border.all(width: 0, color: BorderListColor),
-        borderRadius: BorderRadius.all(Radius.circular(30.0)),
-      ),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              buildLabel("Nombre: "),
-              Padding(
-                padding: EdgeInsets.only(top: 10, left: 1),
-                child: TextField(controller: name,
-                    style: TextStyle(fontSize: 15),
-                    decoration: InputDecoration(hintStyle: TextStyle(
-                        color: Colors.black
-                    ))),
-              ),
-              buildLabel("Apellido: "),
-              Padding(
-                  padding: EdgeInsets.only(top: 10, left: 1),
-                  child: TextField(controller: lastname,
-                    style: TextStyle(fontSize: 15),)
-              ),
-              buildLabel("Telefono: "),
-              Padding(
-                  padding: EdgeInsets.only(top: 10, left: 1),
-                  child: TextField(controller: phone,
-                    style: TextStyle(fontSize: 15),)
-              ),
-              buildLabel("Email: "),
-              Padding(
-                  padding: EdgeInsets.only(top: 10, left: 1),
-                  child: TextField(controller: email,
-                    style: TextStyle(fontSize: 15),)
-              ),
-              buildLabel("Contraseña"),
-              Padding(
-                  padding: EdgeInsets.only(top: 10, left: 1),
-                  child: TextField(controller: confirmPassword,
-                    style: TextStyle(fontSize: 15),)
-              ),
-              buildLabel("Confirmar Contraseña"),
-              Padding(
-                  padding: EdgeInsets.only(top: 10, left: 1),
-                  child: TextField(controller: password,
-                    style: TextStyle(fontSize: 15),)
-              ),
-              buildButton("Registrar", PrimaryColor)
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
   Widget buildLabel(String textLabel) {
     return Padding(
       padding: EdgeInsets.only(top: 20, left: 5),
@@ -186,6 +178,9 @@ class _Card extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0)),
           ),
+          onPressed: (){
+            _addSeller(context);
+          },
           child: Text(
             buttonText,
             style: TextStyle(
@@ -197,4 +192,26 @@ class _Card extends StatelessWidget {
       ),
     );
   }
+
+  _addSeller(context){
+    Seller seller=Seller();
+    seller.firstName=name.text;
+    seller.lastName=lastname.text;
+    seller.phoneNumber=phone.text;
+    seller.email=email.text;
+    seller.password=password.text;
+    seller.imagePath="https://sa.uia.ac.cr/images/customers-icon-3.png";
+    print("Presionado");
+    BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
+    print("Presionado");
+  }
 }
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
+}
+
+

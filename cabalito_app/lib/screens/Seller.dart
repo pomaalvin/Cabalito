@@ -141,6 +141,7 @@ class _Card extends StatelessWidget{
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
+
                       ),
                     ),
                   ),

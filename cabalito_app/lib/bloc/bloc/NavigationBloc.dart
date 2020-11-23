@@ -5,10 +5,12 @@ import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import "../../model/Color.dart";
+import 'package:cabalitoapp/repository/SellerRepository.dart';
 
 class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   PublicationRepository _publicationRepository;
-  NavigationBloc(this._publicationRepository);
+  SellerRepository _sellerRepository;
+  NavigationBloc(this._publicationRepository,this._sellerRepository);
   @override
   NavigationState get initialState => InitPageState();
 
@@ -20,7 +22,16 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     }
     else if(event is PublicationPageEvent){
       yield LoadingPageState();
+      yield PublicationPageState();
 
+    }
+    else if(event is PublicationViewEvent){
+      yield LoadingPageState();
+      yield PublicationViewState();
+    }
+    else if(event is PublicationListEvent){
+      yield LoadingPageState();
+      yield PublicationListState();
     }
     else if(event is MechanicPageEvent){
       yield LoadingPageState();

@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:cabalitoapp/model/Publication.dart';
+import'package:cabalitoapp/model/Publication.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class NavigationEvent extends Equatable{}
@@ -13,6 +15,14 @@ class AddPublicationPageEvent extends NavigationEvent {
   List<Object> get props => [];
 }
 class PublicationPageEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
+class PublicationViewEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
+class PublicationListEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
@@ -38,4 +48,11 @@ class AddPublicationEvent extends NavigationEvent {
   AddPublicationEvent(this.publication,this.images);
   @override
   List<Object> get props => [publication,images];
+}
+class AddSellerEvent extends NavigationEvent {
+
+  Seller seller;
+  AddSellerEvent(this.seller);
+  @override
+  List<Object> get props => [seller];
 }
