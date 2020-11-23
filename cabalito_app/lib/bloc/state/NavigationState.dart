@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
@@ -23,12 +24,17 @@ class InitPageState extends NavigationState{
 class HomePageState extends NavigationState{
   const HomePageState();
   @override
-  List<Object> get props => ["Home"];
+  List<Object> get props => ["Home",Template()];
+}
+class AddPublicationPageState extends NavigationState{
+  const AddPublicationPageState();
+  @override
+  List<Object> get props => ["Publicacion",AddPublication()];
 }
 class PublicationPageState extends NavigationState{
   const PublicationPageState();
   @override
-  List<Object> get props => ["Publication",PublicationView()];
+  List<Object> get props => ["Publication",AddPublication()];
 }
 class MechanicPageState extends NavigationState{
   const MechanicPageState();

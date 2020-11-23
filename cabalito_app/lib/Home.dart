@@ -1,6 +1,7 @@
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/lib/Colors.dart';
+import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
@@ -34,11 +35,12 @@ class _HomeState extends State<Home>{
             children: <Widget>[
               Column(
                 children: [
+                  SizedBox(
+                    height:size.height*0.13,
+                  ),
                   Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(top:size.height*0.13),
-                        child: MechanicList(),
-                      )
+
+                        child: stateNavigation.props[1]
                   ),
                 ],
               ),
@@ -83,10 +85,10 @@ class ShapePainter extends CustomPainter {
     Paint paint = Paint();
     Size size1=Size(size.width, size.height+7);
     path.lineTo(0, size1.height);
-    path.quadraticBezierTo(size1.width* 0.10, size1.height*0.8,   size1.width*0.2, size1.height*0.77);
-    path.quadraticBezierTo(size1.width*0.21, size1.height*0.76, size1.width*0.3, size1.height*0.75);
-    path.quadraticBezierTo(size1.width*0.5, size1.height*0.75, size1.width*0.7,  size1.height*0.75);
-    path.quadraticBezierTo(size1.width*0.95, size1.height*0.75, size1.width,  size1.height*0.66);
+    path.quadraticBezierTo(size1.width* 0.02, size1.height*0.78,   size1.width*0.1, size1.height*0.75);
+    path.quadraticBezierTo(size1.width*0.15, size1.height*0.75, size1.width*0.3, size1.height*0.75);
+    path.quadraticBezierTo(size1.width*0.5, size1.height*0.75, size1.width,  size1.height*0.75);
+    path.quadraticBezierTo(size1.width*0.99, size1.height*0.75, size1.width,  size1.height*0.75);
     path.lineTo(size1.width, 0);
     path.close();
 
@@ -94,10 +96,10 @@ class ShapePainter extends CustomPainter {
     canvas.drawPath(path, paint);
     path =Path();
     path.lineTo(0, size.height);
-    path.quadraticBezierTo(size.width* 0.10, size.height*0.8,   size.width*0.2, size.height*0.77);
-    path.quadraticBezierTo(size.width*0.21, size.height*0.76, size.width*0.3, size.height*0.75);
-    path.quadraticBezierTo(size.width*0.5, size.height*0.75, size.width*0.7,  size.height*0.75);
-    path.quadraticBezierTo(size.width*0.95, size.height*0.75, size.width,  size.height*0.66);
+    path.quadraticBezierTo(size.width* 0.02, size.height*0.78,   size.width*0.1, size.height*0.75);
+    path.quadraticBezierTo(size.width*0.15, size.height*0.75, size.width*0.3, size.height*0.75);
+    path.quadraticBezierTo(size.width*0.5, size.height*0.75, size.width,  size.height*0.75);
+    path.quadraticBezierTo(size.width*0.99, size.height*0.75, size.width,  size.height*0.75);
     path.lineTo(size.width, 0);
     path.close();
 

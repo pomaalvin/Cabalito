@@ -5,6 +5,10 @@ class HomePageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
+class AddPublicationPageEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
 class PublicationPageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
