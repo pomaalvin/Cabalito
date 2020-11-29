@@ -18,6 +18,8 @@ class PublicationList extends StatefulWidget{
 class _PublicationList extends State<PublicationList>{
   _PublicationList(this.listPublications);
   List<ListPublication> listPublications=List();
+
+  TextEditingController buscarPublicacion = TextEditingController();
   @override
   void initState(){
     super.initState();
@@ -44,7 +46,7 @@ class _PublicationList extends State<PublicationList>{
                           height: 100,
                           padding: EdgeInsets.only(left:size.width*0.08,right:size.width*0.08),
                           child: Center(
-                              child: Busqueda()
+                              child: Busqueda(buscarPublicacion)
                           ),
                         ),
                         Expanded(
@@ -66,6 +68,7 @@ class _PublicationList extends State<PublicationList>{
                                             },
                                             itemCount: listPublications.length,
                                           ),
+
                                         ),
                                       ),
                                     ],
@@ -224,6 +227,10 @@ class MyBehavior extends ScrollBehavior {
 }
 
 class Busqueda extends StatelessWidget{
+  TextEditingController controller;
+  Busqueda(this.controller);
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -232,6 +239,7 @@ class Busqueda extends StatelessWidget{
           border: Border.all(color: color3.withOpacity(0.4),width: 2)
       ),
       child: TextField(
+        controller: controller,
         cursorColor: color3.withOpacity(0.6),
         cursorWidth: 1,
         style: TextStyle(color: color3.withOpacity(0.6),fontSize: 18),
@@ -239,7 +247,7 @@ class Busqueda extends StatelessWidget{
           fillColor: Colors.white,
           border: InputBorder.none,
           contentPadding: EdgeInsets.only(left: 10,top: 15,bottom: 0,right: 0),
-          hintText: "Buscar mecánicos",
+          hintText: "Buscar publicacion",
           suffixIcon:Icon(Icons.search,color: color3.withOpacity(0.6),) ,
 
           hintStyle: TextStyle(color: color3.withOpacity(0.3)),

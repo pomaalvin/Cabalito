@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'lib/Colors.dart';
-import 'model/PublicationView.dart';
-import 'lib/ApiUrl.dart' as api;
+import '../lib/Colors.dart';
+import '../model/PublicationView.dart';
+import '../lib/ApiUrl.dart' as api;
 
 class PublicationsView extends KFDrawerContent{
   List<PublicationView> publication;
@@ -18,18 +18,19 @@ class PublicationsView extends KFDrawerContent{
 }
 
 class _ViewPublications extends State<PublicationsView>{
-
-
   List<PublicationView> publicationView = List();
   List<ListPublication> publicationPaths = List();
   _ViewPublications(this.publicationView,this.publicationPaths);
   List<String> images = List();
+
+  int val=0;
   @override
   void initState(){
     super.initState();
     for(int i=0;i<publicationPaths.length;i++) {
       images.add(api.url+"image/"+publicationPaths[i].imagePath);
     }
+
   }
 
   Size size;
@@ -52,18 +53,17 @@ class _ViewPublications extends State<PublicationsView>{
                   height: size.height*0.003,
                 ),
                 Container(
-                  color: Colors.grey,
+                  color: Colors.white,
                   width: size.width*0.98,
                   height: size.height*0.5,
                   child: CarouselSlider(
-
                     options: CarouselOptions(
-                        height: 400.0,
+                        height: 280.0,
                       aspectRatio: 16/9,
                       viewportFraction: 0.8,
                       initialPage: 0,
                       enableInfiniteScroll: false,
-                      reverse: true,
+                      reverse: false,
                       autoPlay: false,
                       autoPlayInterval: Duration(seconds: 3),
                       autoPlayAnimationDuration: Duration(milliseconds: 800),
@@ -73,20 +73,50 @@ class _ViewPublications extends State<PublicationsView>{
 
                     ),
 
-                    items: images.map((ind) {
+                    items: images.asMap().entries.map((ind) {
                       return Builder(
                         builder: (BuildContext context) {
                           return Container(
                               width: MediaQuery.of(context).size.width,
+                             // height: size.height*0.2,
+
                               margin: EdgeInsets.symmetric(horizontal: 5.0),
                               decoration: BoxDecoration(color: Colors.transparent),
-                              child: Image.network( ind ,fit: BoxFit.fill),
+                              child:
+                                    GestureDetector(
+
+                                      //onHorizontalDragEnd: (dt) {
+
+                                        //val=ind.key;
+                                        //print("ggg1 ${val}");
+                                      //},
+                                      child: Image.network( ind.value ,fit: BoxFit.fill),
+                                      onPanEnd: (dt){
+                                        val=ind.key;
+                                        print("ggg ${val}");
+                                      },
+                                      onPanDown: (dt){
+                                          val=ind.key;
+                                          print("ggg ${val}");
+                                      },
+                                    ),
+
                           );
                         },
                       );
                     }).toList(),
                   ),
                 )
+
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  child: images.length>1?SelectedPhoto(images.length,val):Container(),
+
+                ),
               ],
             ),
             Row(
@@ -516,6 +546,7 @@ class _ViewPublications extends State<PublicationsView>{
                 ],
               ),
             ),
+
           ],
         ),
 
@@ -524,4 +555,76 @@ class _ViewPublications extends State<PublicationsView>{
     );
   }
 }
-//omprecet
+
+
+
+
+
+
+class SelectedPhoto extends StatelessWidget{
+  final int numberofDots;
+  final int phoneIndex;
+  SelectedPhoto(this.numberofDots,this.phoneIndex);
+  Widget _inactivePath(){
+    return new Container(
+      child: new Padding(
+        padding: const EdgeInsets.only(left: 3.0, right: 3.0),
+        child: Container(
+          height: 8.0,
+          width: 8.0,
+          decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(4.0)
+          ),
+        ),
+
+      ),
+    );
+  }
+  Widget _activePath(){
+    return new Container(
+      child: new Padding(
+        padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+        child: Container(
+          height: 10.0,
+          width: 10.0,
+          decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(5.0),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    spreadRadius: 0.0,
+                    blurRadius: 2.0
+                )
+              ]
+          ),
+        ),
+
+      ),
+
+    );
+  }
+
+  List<Widget> _buildDots(){
+    List<Widget> docs = [];
+    for(int i=0;i<numberofDots;i++){
+      docs.add(
+          i==phoneIndex?_activePath():_inactivePath()
+      );
+    }
+    return docs;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: _buildDots(),
+      ),
+    );
+  }
+
+}
+

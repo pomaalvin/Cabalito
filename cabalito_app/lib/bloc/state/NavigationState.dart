@@ -15,7 +15,7 @@ import 'package:cabalitoapp/screens/Template2.dart';
 import 'package:cabalitoapp/screens/UpdateSeller.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../ViewPublication.dart';
+import '../../screens/ViewPublication.dart';
 
 abstract class NavigationState extends Equatable{
   const NavigationState();
