@@ -146,7 +146,8 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                         borderSide: BorderSide(color: PrimaryColor),
 
                                                       ),
-                                                    )),
+                                                    )
+                                                ),
                                             ),
                                             buildLabel("Telefono: "),
                                             Padding(
