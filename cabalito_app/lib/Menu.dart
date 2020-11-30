@@ -116,7 +116,9 @@ class MenuState extends State<Menu>{
             ),
             onPressed: (){
               _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(SellerPageEvent());
+              BlocProvider.of<NavigationBloc>(context).add(ViewSellerPageEvent());
+
+
             },
           ),
 
