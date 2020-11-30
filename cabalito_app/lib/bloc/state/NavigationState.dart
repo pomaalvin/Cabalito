@@ -5,6 +5,7 @@ import 'package:cabalitoapp/model/Mechanic.dart';
 import 'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/Loading.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
@@ -77,10 +78,11 @@ class MechanicPageState extends NavigationState{
   @override
   List<Object> get props => ["Mecánicos",MechanicList(this.mechList)];
 }
-class SellerPageState extends NavigationState{
-  const SellerPageState();
+class ViewSellerPageState extends NavigationState{
+  Seller seller;
+  ViewSellerPageState(this.seller);
   @override
-  List<Object> get props => ["Seller",Seller()];
+  List<Object> get props => ["Contacto",ViewSeller(this.seller)];
 }
 class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
@@ -90,7 +92,7 @@ class RegisterSellerPageState extends NavigationState{
 class UpdateSellerPageState extends NavigationState{
   const UpdateSellerPageState();
   @override
-  List<Object> get props => ["UpdateSeller",UpdateSeller()];
+  List<Object> get props => ["Actualizar Datos",UpdateSeller()];
 }
 class AddSellerPageState extends NavigationState{
   const AddSellerPageState();

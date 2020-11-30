@@ -51,33 +51,12 @@ class UpdateSellerState extends State<UpdateSeller>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: PrimaryColor,
+
         body: Column(
           children: <Widget>[
-            Container(
-              height:60,
-              child: Center(
-                child:
-                Container(
-                  child:Text("Actualizar",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: Stack(
                 children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: SecondaryColor,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
-                    ),
-                  ),
                   Container(
                       margin: new EdgeInsets.only(top: 6.0),
                       padding: new EdgeInsets.only(top:25.0),
@@ -146,7 +125,8 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                         borderSide: BorderSide(color: PrimaryColor),
 
                                                       ),
-                                                    )),
+                                                    )
+                                                ),
                                             ),
                                             buildLabel("Telefono: "),
                                             Padding(

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/model/Mechanic.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/repository/MechanicRepository.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
@@ -48,9 +49,15 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
         yield HomePageState();
       }
     }
-    else if(event is SellerPageEvent){
+    else if(event is ViewSellerPageEvent){
       yield LoadingPageState();
-      yield SellerPageState();
+      Seller seller =new Seller();
+      try{
+        seller=await _sellerRepository.getSeller();
+        yield ViewSellerPageState(seller);
+      }catch(e){
+        print(e);
+      }
     }
     else if(event is RegisterSellerPageEvent){
       yield LoadingPageState();
@@ -71,15 +78,12 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is AddSellerEvent){
       try{
         bool estado=await _sellerRepository.addSeller(event.seller);
-
+        if(estado){
+          yield  HomePageState();
+        }
       }catch(e){
+        print(e);
       }
-
-      /*if(estado){
-        yield HomePageState();
-      }
-      else{
-      }*/
     }
     else if(event is AddPublicationEvent){
       yield LoadingPageState();

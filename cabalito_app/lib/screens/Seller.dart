@@ -1,15 +1,21 @@
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import '../lib/Colors.dart';
+import '../lib/ApiUrl.dart' as api;
 
-class Seller extends StatefulWidget{
+class ViewSeller extends StatefulWidget{
+  Seller seller;
+  ViewSeller(this.seller);
   @override
-  State createState() => SellerState();
+  State createState() => _ViewSellerState(seller);
 }
 
-class SellerState extends State<Seller>{
-  @override
+class _ViewSellerState extends State<ViewSeller>{
+  Seller seller;
+  _ViewSellerState(this.seller);
+
   @override
   void initState(){
     super.initState();
@@ -19,39 +25,12 @@ class SellerState extends State<Seller>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: PrimaryColor,
-        body: Column(
-          children: <Widget>[
-            Container(
-              height:60,
-              child: Center(
-                child:
-                Container(
-                  child:Text("Contacto",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.0
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: SecondaryColor,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
-                    ),
-                  ),
-                  Container(
+        body: Container(
                       margin: new EdgeInsets.only(top: 6.0),
                       padding: new EdgeInsets.only(top:30.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
+                        //borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                       ),
                       child: Column(
                         children: [
@@ -62,7 +41,7 @@ class SellerState extends State<Seller>{
                               child: ListView.builder(
                                 padding: EdgeInsets.only(left: 50.0 ,right:50.0,top: size.height*0.03),
                                 itemBuilder: (context,index){
-                                  return _Card(size.width,size.height);
+                                  return _Card(size.width,size.height,seller);
                                 },
                                 itemCount: 1,
                               ),
@@ -70,12 +49,7 @@ class SellerState extends State<Seller>{
                           ),
                         ],
                       )
-                  ),
-                ],
-              ),
-            ),
-          ],
-        )
+                  )
     );
   }
 }
@@ -91,8 +65,9 @@ class _Card extends StatelessWidget{
   Size size;
   var widhtScreen;
   var heightScreen;
+  Seller seller;
 
-  _Card(this.widhtScreen, this.heightScreen);
+  _Card(this.widhtScreen, this.heightScreen, this.seller);
 
   Color color= PrimaryColor;
   @override
@@ -118,19 +93,15 @@ class _Card extends StatelessWidget{
         children: [
           Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: size.height*0.035,bottom: size.height*0.027),
-                child: Container(
-                    width: size.width*0.5,
-                    height: size.width*0.5,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                              "https://sa.uia.ac.cr/images/customers-icon-3.png"
-                          )
-                      ),
-                    )
+              Container(
+                width: size.width*0.5,
+                height: size.width*0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
+                      fit: BoxFit.fill
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
               ),
               Row(
@@ -147,7 +118,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
-                    child: Text("Silvana",
+                    child: Text(seller.firstName,
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
@@ -156,7 +127,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
-                    child: Text("Munoz",
+                    child: Text(seller.lastName,
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
@@ -179,7 +150,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
-                    child: Text("15963255",
+                    child: Text(seller.phoneNumber,
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
@@ -201,7 +172,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 25,left: widhtScreen*0.010,bottom: 20),
-                    child: Text("Silvana@gmail.com",
+                    child: Text(seller.email,
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
