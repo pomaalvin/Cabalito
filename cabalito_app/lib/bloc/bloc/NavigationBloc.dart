@@ -10,6 +10,7 @@ import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
+import 'package:cabalitoapp/screens/SplashScreen.dart';
 import "../../model/Color.dart";
 import 'package:cabalitoapp/repository/SellerRepository.dart';
 
@@ -30,12 +31,14 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is PublicationPageEvent){
       yield LoadingPageState();
       yield PublicationPageState();
-
     }
     else if(event is MechanicPageEvent){
       yield LoadingPageState();
       List<Mechanic> mechanic=await _mechanicRepository.getMechanic();
       yield MechanicPageState(mechanic);
+    }
+    else if(event is SplashScreenEvent){
+      yield SplashScreenState1();
     }
     else if(event is AddQualificationEvent){
       yield LoadingPageState();

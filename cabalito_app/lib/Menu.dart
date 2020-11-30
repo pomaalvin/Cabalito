@@ -136,6 +136,20 @@ class MenuState extends State<Menu>{
             },
           ),
 
+          KFDrawerItem.initWithPage(
+            text: Text("Splash",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.phone,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(SplashScreenEvent());
+            },
+          ),
           /*
           KFDrawerItem.initWithPage(
             text: Text("Publicación",

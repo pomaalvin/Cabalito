@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
@@ -13,6 +14,7 @@ import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:cabalitoapp/screens/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/SellerPublicationList.dart';
+import 'package:cabalitoapp/screens/SplashScreen.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:cabalitoapp/screens/Template2.dart';
 import 'package:cabalitoapp/screens/UpdateSeller.dart';
@@ -27,6 +29,11 @@ class LoadingPageState extends NavigationState{
   const LoadingPageState();
   @override
   List<Object> get props => ["Loading",Loading()];
+}
+class SplashScreenState1 extends NavigationState{
+  const SplashScreenState1();
+  @override
+  List<Object> get props => ["Loading",SplashScreenView()];
 }
 class InitPageState extends NavigationState{
   const InitPageState();

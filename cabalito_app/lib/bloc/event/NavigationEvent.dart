@@ -13,6 +13,10 @@ import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
 
 abstract class NavigationEvent extends Equatable{}
+class SplashScreenEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
 class HomePageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
