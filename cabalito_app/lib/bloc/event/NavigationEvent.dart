@@ -8,6 +8,9 @@ import 'package:cabalitoapp/model/Stars.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:equatable/equatable.dart';
+import 'package:cabalitoapp/model/Brand.dart';
+import 'package:cabalitoapp/model/City.dart';
+import 'package:cabalitoapp/model/Color.dart';
 
 abstract class NavigationEvent extends Equatable{}
 class HomePageEvent extends NavigationEvent {
@@ -100,4 +103,14 @@ class SellerPublicationViewEvent extends NavigationEvent{
   SellerPublicationViewEvent(this.idPublication);
   @override
   List<Object> get props =>[idPublication];
+}
+class PublicationSearchEvent extends NavigationEvent{
+  Color newColor;
+  Brand newBrand;
+  City newCity;
+  int numPuertas;
+  String search;
+  PublicationSearchEvent(this.newCity,this.newColor,this.newBrand,this.numPuertas,this.search);
+  @override
+  List<Object> get props =>[newCity,newColor,newBrand,numPuertas,search];
 }

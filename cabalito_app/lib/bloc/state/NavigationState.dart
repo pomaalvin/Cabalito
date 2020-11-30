@@ -65,9 +65,13 @@ class PublicationListState extends NavigationState{
   List<Color> colors;
   List<City> cities;
   List<Brand> brands;
-  PublicationListState(this.listPublication,this.colors,this.brands,this.cities);
+  Color newColor;
+  int numPue;
+  Brand newBrand;
+  City newCity;
+  PublicationListState(this.listPublication,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
   @override
-  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities)];
+  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
 
 }
 class SellerPublicationListState extends NavigationState{
@@ -104,3 +108,21 @@ class AddSellerPageState extends NavigationState{
   @override
   List<Object> get props => ["Registro",RegisterSeller()];
 }
+class PublicationSearchState extends NavigationState{
+  List<ListPublication> listPublication;
+  List<Color> colors;
+  List<City> cities;
+  List<Brand> brands;
+
+  Color newColor;
+  int numPue;
+  Brand newBrand;
+  City newCity;
+  PublicationSearchState(this.listPublication,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
+  @override
+  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
+}
+
+
+
+

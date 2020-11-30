@@ -274,4 +274,55 @@ class PublicationRepository{
 
     }
   }
+
+  Future<List<ListPublication>> getpublicationSearch(City city, Color color, Brand brand, int numPuertas, String search)async {
+    try{
+      List<ListPublication> listPublications=List();
+      String ruta="";
+      if(city!=null){
+        ruta=ruta+"&idCity=${city.idCity}";
+      }
+      if(color!=null){
+        ruta=ruta+"&idColor=${color.idColor}";
+        print("color es de ${color.idColor}");
+      }
+      if(brand!=null){
+        ruta=ruta+"&idBrand=${brand.idBrand}";
+      }
+      if(numPuertas!=null){
+        ruta=ruta+"&doorNumber=${numPuertas.toString()}";
+      }
+      if(search!=""){
+        ruta=ruta+"&title=${search.toString()}";
+      }
+      print(ruta);
+      var url=api.url + "publications/?n=${5}&i=${0}"+ruta;
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
+      print(response.body);
+      resCol.forEach((element) {
+        ListPublication newPublicationList=ListPublication();
+        newPublicationList.idPublication=element["idPublication"];
+        newPublicationList.price=element["price"];
+        newPublicationList.title=element["title"];
+        newPublicationList.imagePath=element["imagePath"];
+        listPublications.add(newPublicationList);
+      });
+      if(response.statusCode==200){
+        return listPublications;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
 }
