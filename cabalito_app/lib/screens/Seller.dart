@@ -93,19 +93,15 @@ class _Card extends StatelessWidget{
         children: [
           Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: size.height*0.035,bottom: size.height*0.027),
-                child: Container(
-                    width: size.width*0.5,
-                    height: size.width*0.5,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.fill,
-                          image: NetworkImage(
-                              "https://sa.uia.ac.cr/images/customers-icon-3.png"
-                          )
-                      ),
-                    )
+              Container(
+                width: size.width*0.5,
+                height: size.width*0.5,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
+                      fit: BoxFit.fill
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
                 ),
               ),
               Row(

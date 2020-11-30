@@ -37,18 +37,7 @@ class RegisterSellerState extends State<RegisterSeller>{
             Expanded(
               child: Stack(
                 children: <Widget>[
-                  Container(
-                      width: size.width*0.5,
-                      height: size.width*0.5,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(
-                                "https://sa.uia.ac.cr/images/customers-icon-3.png"
-                            )
-                        ),
-                      )
-                  ),
+
                   Container(
                       margin: new EdgeInsets.only(top: 6.0),
                       padding: new EdgeInsets.only(top:25.0),
@@ -74,6 +63,18 @@ class RegisterSellerState extends State<RegisterSeller>{
                                       children: [
                                         Column(
                                           children: [
+                                            Container(
+                                                width: size.width*0.5,
+                                                height: size.width*0.5,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.fill,
+                                                      image: NetworkImage(
+                                                          "https://sa.uia.ac.cr/images/customers-icon-3.png"
+                                                      )
+                                                  ),
+                                                )
+                                            ),
                                             Padding(
                                               padding: EdgeInsets.only(top: 10, left: 1),
                                               child: TextField(controller: name,
