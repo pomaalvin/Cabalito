@@ -103,8 +103,11 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     }
     else if(event is PublicationListsEvent){
       yield LoadingPageState();
+      List<Color> colors=await  _publicationRepository.getColors();
+      List<City> cities=await  _publicationRepository.getCities();
+      List<Brand> brands=await  _publicationRepository.getBrands();
       List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists();
-      yield PublicationListState(publicationLists);
+      yield PublicationListState(publicationLists,colors,brands,cities);
       /*if(estado){
 
       }

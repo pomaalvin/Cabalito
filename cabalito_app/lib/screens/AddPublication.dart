@@ -272,7 +272,6 @@ class _AddPublicationState extends State<AddPublication>{
           text,
               style:TextStyle(color:val?color4.withOpacity(0.5):color4.withOpacity(0.5).withBlue(200).withGreen(200))),
         ),
-
       ),
     );
   }

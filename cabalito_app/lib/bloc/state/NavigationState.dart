@@ -62,9 +62,13 @@ class PublicationViewState extends NavigationState{
 }
 class PublicationListState extends NavigationState{
   List<ListPublication> listPublication;
-  PublicationListState(this.listPublication);
+  List<Color> colors;
+  List<City> cities;
+  List<Brand> brands;
+  PublicationListState(this.listPublication,this.colors,this.brands,this.cities);
   @override
-  List<Object> get props => ["Publicación",PublicationList(listPublication)];
+  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities)];
+
 }
 class SellerPublicationListState extends NavigationState{
   List<ListPublication> listPublication;
