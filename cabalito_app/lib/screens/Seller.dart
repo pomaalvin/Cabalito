@@ -100,7 +100,7 @@ class _Card extends StatelessWidget{
                 margin: EdgeInsets.only(top: heightScreen*0.05),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
+                      image: seller.imagePath=="vacio"?(AssetImage("assets/user.png")):(NetworkImage(api.url+"sellerImage/"+seller.imagePath)),
                       fit: BoxFit.fill
                   ),
                   borderRadius: BorderRadius.circular(15.0),

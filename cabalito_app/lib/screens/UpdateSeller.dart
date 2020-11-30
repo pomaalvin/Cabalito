@@ -109,10 +109,7 @@ class UpdateSellerState extends State<UpdateSeller>{
                                             input(lastname,seller.lastName),
                                             buildLabel("Telefono: "),
                                             input(phone,seller.phoneNumber),
-
-
                                           ],
-
                                         ),
                                         Row(
                                           children: [
@@ -147,7 +144,7 @@ class UpdateSellerState extends State<UpdateSeller>{
           decoration: BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
+                  image: seller.imagePath=="vacio"?(AssetImage("assets/user.png")):(NetworkImage(api.url+"sellerImage/"+seller.imagePath)),
                   ),
             borderRadius: BorderRadius.circular(15.0),
               )
@@ -233,6 +230,44 @@ class UpdateSellerState extends State<UpdateSeller>{
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(context: context, builder: (BuildContext context) {
       return AlertDialog(
+        title: Text("Seleccione una opción",style:
+        TextStyle(
+            color: PrimaryColor,
+            fontSize: 18.0),
+        ),
+        backgroundColor: SecondaryColor,
+        content: SingleChildScrollView(
+
+          child: ListBody(
+            children: [
+              Row(
+                children: [
+                  GestureDetector(
+                    child: IconButton(icon: Icon(Icons.add_photo_alternate),iconSize: size.width*0.1,color: PrimaryColor,
+                        onPressed: () {
+                          _openGallery(context);
+                        }),
+                  ),
+                  Padding(padding: EdgeInsets.all(5.0)),
+                  GestureDetector(
+                    child: IconButton(icon: Icon(Icons.camera_enhance),iconSize: size.width*0.1,color: PrimaryColor,
+                        onPressed: () {
+                          _openCamera(context);
+                        }),
+                  ),
+                ],
+              )
+
+            ],
+          ),
+        ),
+      );
+    });
+  }
+
+ /* Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(context: context, builder: (BuildContext context) {
+      return AlertDialog(
         title: Text("Seleccione una opción"
         ),
         backgroundColor: SecondaryColor,
@@ -262,7 +297,8 @@ class UpdateSellerState extends State<UpdateSeller>{
         ),
       );
     });
-  }
+  }*/
+
   _buttonAction(context, String option){
     if(option=="Actualizar"){
       _updateSeller(context, seller);

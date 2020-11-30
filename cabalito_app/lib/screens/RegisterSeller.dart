@@ -71,10 +71,8 @@ class RegisterSellerState extends State<RegisterSeller>{
                                                 decoration: BoxDecoration(
                                                   border: Border.all(width: 5, color: PrimaryColor),
                                                   image: DecorationImage(
-                                                      fit: BoxFit.fill,
-                                                      image: NetworkImage(api.url+"sellerImage/imageSeller/VcZZOLfM6J7cAaN161Dq.png"
-                                                      ),
-
+                                                    image: AssetImage("assets/user.png"),
+                                                    fit: BoxFit.cover,
                                                   ),
                                                   borderRadius: BorderRadius.circular(15.0),
                                                 )
@@ -177,7 +175,7 @@ class RegisterSellerState extends State<RegisterSeller>{
     seller.phoneNumber=phone.text;
     seller.email=email.text;
     seller.password=password.text;
-    seller.imagePath="imageSeller/1Fj7u55XIZ7rTip4Obtt.png";
+    seller.imagePath="vacio";
     if(password.text==confirmPassword.text) {
       BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
       }
