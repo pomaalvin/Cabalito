@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:http/http.dart' as http;
 import '../lib/ApiUrl.dart' as api;
@@ -25,7 +26,7 @@ class SellerRepository{
       print(e);
     }
   }
-  Future<bool> updateSeller(Seller seller)async {
+  Future<bool> updateSeller(Seller seller,File imageFile)async {
     try{
       var url=api.url + "seller";
       print(url);
@@ -37,7 +38,9 @@ class SellerRepository{
       );
       print(response.statusCode);
       if(response.statusCode==200){
-        return true;
+        var resPub = jsonDecode(response.body);
+        var idSeller=resPub["idSeller"];
+        return await uploadImages(imageFile,idSeller);
       }
       else{
         return false;
@@ -77,6 +80,26 @@ class SellerRepository{
       print(e);
       return null;
 
+    }
+  }
+  Future<bool> uploadImages(File imageFile,idSeller)async{
+    try{
+
+      var uri = Uri.parse(api.url + "/seller/image?idSeller"+idSeller.toString());
+      var request = http.MultipartRequest('PUT', uri)
+        ..fields['idSeller'] = idSeller.toString();
+        request.files.add(await http.MultipartFile.fromPath("images", imageFile.path));
+      var response = await request.send();
+      if(response.statusCode==200){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    catch(e){
+      print(e);
+      return false;
     }
   }
 }

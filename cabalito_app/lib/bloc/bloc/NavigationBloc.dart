@@ -9,8 +9,6 @@ import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
-import 'package:cabalitoapp/screens/MechanicList.dart';
-import 'package:cabalitoapp/screens/PublicationList.dart';
 import "../../model/Color.dart";
 import 'package:cabalitoapp/repository/SellerRepository.dart';
 
@@ -59,14 +57,35 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
         print(e);
       }
     }
+    else if(event is UpdateSellerPageEvent){
+      yield LoadingPageState();
+      Seller seller =new Seller();
+      try{
+        seller=await _sellerRepository.getSeller();
+        yield  UpdateSellerPageState(seller);
+      }catch(e){
+        print(e);
+      }
+
+    }
+    else if(event is UpdateSellerEvent){
+      yield LoadingPageState();
+      try{
+        bool estado=await _sellerRepository.updateSeller(event.seller,event.imageFile);
+        if(estado){
+          Seller seller =new Seller();
+          seller=await _sellerRepository.getSeller();
+          yield  UpdateSellerPageState(seller);
+        }
+      }catch(e){
+        print(e);
+      }
+    }
     else if(event is RegisterSellerPageEvent){
       yield LoadingPageState();
       yield RegisterSellerPageState();
     }
-    else if(event is UpdateSellerPageEvent){
-      yield LoadingPageState();
-      yield UpdateSellerPageState();
-    }
+
     else if(event is AddPublicationPageEvent){
       yield LoadingPageState();
       List<Color> colors=await  _publicationRepository.getColors();
