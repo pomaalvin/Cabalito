@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../lib/Colors.dart';
-
+import '../lib/ApiUrl.dart' as api;
 class RegisterSeller extends StatefulWidget{
   @override
   State createState() => RegisterSellerState();
@@ -37,12 +37,11 @@ class RegisterSellerState extends State<RegisterSeller>{
             Expanded(
               child: Stack(
                 children: <Widget>[
-
                   Container(
-                      margin: new EdgeInsets.only(top: 6.0),
-                      padding: new EdgeInsets.only(top:25.0),
+                      margin: new EdgeInsets.only(top: size.height*0.03),
+                      //padding: new EdgeInsets.only(top: size.height*0.05),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        //color: Colors.white,
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                       ),
                       child: Column(
@@ -51,10 +50,11 @@ class RegisterSellerState extends State<RegisterSeller>{
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                padding: EdgeInsets.only(left: 50.0 ,right:50.0),
+                                padding: EdgeInsets.only(left: size.width*0.1 ,right: size.width*0.1),
                                 itemBuilder: (context,index){
                                   return Container(
-                                    margin: EdgeInsets.only(bottom: 20.0),
+                                    margin: EdgeInsets.only(top: size.height*0.05,
+                                        bottom: size.height*0.01),
                                     decoration: BoxDecoration(
                                       border: Border.all(width: 0, color: BorderListColor),
                                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -66,115 +66,25 @@ class RegisterSellerState extends State<RegisterSeller>{
                                             Container(
                                                 width: size.width*0.5,
                                                 height: size.width*0.5,
+                                                margin: EdgeInsets.only(top: size.height*0.05),
+
                                                 decoration: BoxDecoration(
+                                                  border: Border.all(width: 5, color: PrimaryColor),
                                                   image: DecorationImage(
                                                       fit: BoxFit.fill,
-                                                      image: NetworkImage(
-                                                          "https://sa.uia.ac.cr/images/customers-icon-3.png"
-                                                      )
+                                                      image: NetworkImage(api.url+"sellerImage/imageSeller/VcZZOLfM6J7cAaN161Dq.png"
+                                                      ),
+
                                                   ),
+                                                  borderRadius: BorderRadius.circular(15.0),
                                                 )
                                             ),
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 10, left: 1),
-                                              child: TextField(controller: name,
-                                                  style: TextStyle(fontSize: 15),
-                                                  decoration: InputDecoration(hintStyle: TextStyle(
-                                                      color: Colors.black
-                                                  ),
-                                                      enabledBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.grey),
-
-                                                      ),
-                                                      focusedBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: PrimaryColor),
-                                                      ),
-                                                      hintText: "Nombre"
-                                                  )
-                                              ),
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
-                                                child: TextField(controller: lastname,
-                                                    style: TextStyle(fontSize: 15),
-                                                    decoration: InputDecoration(hintStyle: TextStyle(
-                                                        color: Colors.black
-                                                    ),
-                                                        enabledBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.grey),
-
-                                                        ),
-                                                        focusedBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: PrimaryColor),
-
-                                                        ),
-                                                        hintText: "Apellido"
-                                                    ))
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
-                                                child: TextField(controller: phone,
-                                                    style: TextStyle(fontSize: 15),decoration: InputDecoration(hintStyle: TextStyle(
-                                                        color: Colors.black
-                                                    ),enabledBorder: UnderlineInputBorder(
-                                                      borderSide: BorderSide(color: Colors.grey),
-
-                                                    ),
-                                                        focusedBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: PrimaryColor),
-
-                                                        ),
-                                                        hintText: "Telefono"
-                                                    ))
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
-                                                child: TextField(controller: email,
-                                                    style: TextStyle(fontSize: 15),
-                                                    keyboardType:TextInputType.emailAddress,
-                                                    decoration: InputDecoration(hintStyle: TextStyle(
-                                                        color: Colors.black
-                                                    ),
-                                                        enabledBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.grey),
-
-                                                        ),
-                                                        focusedBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: PrimaryColor),
-
-                                                        ),
-                                                        hintText: "Email"
-                                                    ))
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
-                                                child: TextField(controller: confirmPassword,
-                                                    style: TextStyle(fontSize: 15),
-                                                    obscureText: true,
-                                                    decoration: InputDecoration(hintStyle: TextStyle(
-                                                        color: Colors.black
-                                                    ),
-                                                        enabledBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.grey),
-
-                                                        ),
-                                                        focusedBorder: UnderlineInputBorder(
-                                                          borderSide: BorderSide(color: PrimaryColor),
-
-                                                        ),
-                                                        hintText: "Contraseña"
-                                                    ))
-                                            ),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: 1),
-                                                child: TextField(controller: password,
-                                                    obscureText: true,
-                                                    style: TextStyle(fontSize: 15),decoration: InputDecoration(hintStyle: TextStyle(
-                                                        color: Colors.black
-                                                    ),
-                                                        hintText: "Confirmar contraseña"
-                                                    ))
-                                            ),
+                                            input(name,"Nombre"),
+                                            input(lastname,"Apellido"),
+                                            input(phone,"Teléfono"),
+                                            input(email,"Email"),
+                                            input(password,"Contraseña"),
+                                            input(confirmPassword,"Confirmar contraseña"),
                                             buildButton("Registrar", PrimaryColor)
                                           ],
                                         )
@@ -196,9 +106,32 @@ class RegisterSellerState extends State<RegisterSeller>{
         )
     );
   }
+  Widget input(TextEditingController controller, String hint){
+    return Padding(
+      padding: EdgeInsets.only(top: size.height*0.05, left: size.width*0.05),
+      child: TextField(controller: controller,
+          cursorWidth: 1,
+          style: TextStyle(fontSize: 18),
+          decoration: InputDecoration(hintStyle: TextStyle(
+              color: Colors.black
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey),
+
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: PrimaryColor),
+
+              ),
+              hintText: hint
+          )
+      ),
+    );
+
+  }
   Widget buildLabel(String textLabel) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, left: 5),
+      padding: EdgeInsets.only(top:size.height*0.05, left: size.width*0.05),
       child: Text(textLabel,
         style: TextStyle(
           fontSize: 18.0,
@@ -210,13 +143,18 @@ class RegisterSellerState extends State<RegisterSeller>{
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, left: 5),
+      padding: EdgeInsets.only(top: size.height*0.05, left: size.width*0.02,bottom: size.height*0.05),
       child: Container(
-        color: buttonColor,
-        child: FlatButton(
+        width: size.width*0.35,
+        height: size.height*0.08,
+        child: RaisedButton(
+          elevation: 10.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(60.0)),
+            borderRadius: BorderRadius.circular(15.0),
           ),
+          color: buttonColor,
+          highlightElevation: 10.0,
+          disabledColor: BorderListColor,
           onPressed: (){
             _addSeller(context);
           },
@@ -224,7 +162,7 @@ class RegisterSellerState extends State<RegisterSeller>{
             buttonText,
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 25.0
+                fontSize: 18.0
             ),
           ),
         ),

@@ -57,7 +57,8 @@ class UpdateSellerPageEvent extends NavigationEvent {
 class UpdateSellerEvent extends NavigationEvent {
   Seller seller;
   File imageFile;
-  UpdateSellerEvent(this.seller, this.imageFile);
+  bool flag;
+  UpdateSellerEvent(this.seller, this.imageFile,this.flag);
 
   @override
   List<Object> get props => [seller,imageFile];

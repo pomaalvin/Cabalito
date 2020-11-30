@@ -71,7 +71,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is UpdateSellerEvent){
       yield LoadingPageState();
       try{
-        bool estado=await _sellerRepository.updateSeller(event.seller,event.imageFile);
+        bool estado=await _sellerRepository.updateSeller(event.seller,event.imageFile,event.flag);
         if(estado){
           Seller seller =new Seller();
           seller=await _sellerRepository.getSeller();
@@ -151,6 +151,4 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield AddPublicationPageState(colors,brands,cities,true,null);
     }
   }
-
-
 }

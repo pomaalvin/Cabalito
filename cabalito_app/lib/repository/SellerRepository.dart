@@ -26,7 +26,7 @@ class SellerRepository{
       print(e);
     }
   }
-  Future<bool> updateSeller(Seller seller,File imageFile)async {
+  Future<bool> updateSeller(Seller seller,File imageFile, bool flag)async {
     try{
       var url=api.url + "seller";
       print(url);
@@ -40,7 +40,11 @@ class SellerRepository{
       if(response.statusCode==200){
         var resPub = jsonDecode(response.body);
         var idSeller=resPub["idSeller"];
-        return await uploadImages(imageFile,idSeller);
+        if(flag){
+          return await uploadImages(imageFile,idSeller);
+        } else{
+          return true;
+        }
       }
       else{
         return false;

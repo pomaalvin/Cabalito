@@ -61,6 +61,7 @@ class UpdateSellerState extends State<UpdateSeller>{
   @override
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
+
     return new Scaffold(
 
         body: Column(
@@ -103,69 +104,12 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                   _showChoiceDialog(context);
                                                 }),
                                             buildLabel("Nombre: "),
-                                            Padding(
-                                              padding: EdgeInsets.only(top: 10, left: size.width*0.05),
-                                              child: TextField(
-                                                  controller: name,
-
-                                                  style: TextStyle(fontSize: 15),
-                                                  decoration: InputDecoration(
-                                                    hintText:seller.firstName,
-                                                    hintStyle: TextStyle(
-                                                      color: Colors.black,
-                                                      ),
-                                                      enabledBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.grey),
-
-                                                      ),
-                                                      focusedBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: PrimaryColor),
-
-                                                      ),
-
-                                                      )),
-                                            ),
+                                            input(name,seller.firstName),
                                             buildLabel("Apellido: "),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: size.width*0.05),
-                                                child: TextField(controller: lastname,
-                                                  style: TextStyle(fontSize: 15),
-                                                    decoration: InputDecoration(
-                                                      hintText:seller.lastName,
-                                                      hintStyle: TextStyle(
-                                                        color: Colors.black,
-                                                       ),
-                                                      enabledBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.grey),
-
-                                                      ),
-                                                      focusedBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: PrimaryColor),
-
-                                                      ),
-                                                    )
-                                                ),
-                                            ),
+                                            input(lastname,seller.lastName),
                                             buildLabel("Telefono: "),
-                                            Padding(
-                                                padding: EdgeInsets.only(top: 10, left: size.width*0.05),
-                                                child: TextField(controller: phone,
-                                                  style: TextStyle(fontSize: 15),
-                                                    decoration: InputDecoration(
-                                                      hintText:seller.phoneNumber,
-                                                      hintStyle: TextStyle(
-                                                        color: Colors.black,
-                                                    ),
-                                                      enabledBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: Colors.grey),
+                                            input(phone,seller.phoneNumber),
 
-                                                      ),
-                                                      focusedBorder: UnderlineInputBorder(
-                                                        borderSide: BorderSide(color: PrimaryColor),
-
-                                                      ),
-                                                    )),
-                                            ),
 
                                           ],
 
@@ -204,7 +148,8 @@ class UpdateSellerState extends State<UpdateSeller>{
               image: DecorationImage(
                   fit: BoxFit.fill,
                   image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
-                  )
+                  ),
+            borderRadius: BorderRadius.circular(15.0),
               )
 
       );
@@ -214,6 +159,30 @@ class UpdateSellerState extends State<UpdateSeller>{
           width: size.width*0.5,
           height: size.width*0.5);
     }
+  }
+  Widget input(TextEditingController controller, String hint){
+    return  Padding(
+      padding: EdgeInsets.only(top: size.height*0.03, left: size.width*0.05),
+      child: TextField(
+          controller: controller,
+          style: TextStyle(fontSize: 18),
+          decoration: InputDecoration(
+            hintText: hint,
+            hintStyle: TextStyle(
+              color: Colors.black,
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey),
+
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: PrimaryColor),
+
+            ),
+
+          )),
+    );
+
   }
   Widget buildLabel(String textLabel) {
     return Row(
@@ -235,15 +204,18 @@ class UpdateSellerState extends State<UpdateSeller>{
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: size.height*0.85, left: size.width*0.02,bottom: size.height*0.05),
+      padding: EdgeInsets.only(top: size.height*0.95, left: size.width*0.02,bottom: size.height*0.05),
       child: Container(
         width: size.width*0.35,
-        color: buttonColor,
-        child: FlatButton(
+        height: size.height*0.08,
+        child: RaisedButton(
+          elevation: 10.0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(30.0)),
-
+            borderRadius: BorderRadius.circular(15.0),
           ),
+          color: buttonColor,
+          highlightElevation: 10.0,
+          disabledColor: BorderListColor,
           onPressed: (){
             _buttonAction(context, buttonText);
           },
@@ -263,20 +235,21 @@ class UpdateSellerState extends State<UpdateSeller>{
       return AlertDialog(
         title: Text("Seleccione una opción"
         ),
+        backgroundColor: SecondaryColor,
         content: SingleChildScrollView(
           child: ListBody(
             children: [
               Row(
                 children: [
                   GestureDetector(
-                    child: IconButton(icon: Icon(Icons.add_photo_alternate),
+                    child: IconButton(icon: Icon(Icons.add_photo_alternate),iconSize: size.width*0.1,color: PrimaryColor,
                         onPressed: () {
                           _openGallery(context);
                         }),
                   ),
                   Padding(padding: EdgeInsets.all(5.0)),
                   GestureDetector(
-                    child: IconButton(icon: Icon(Icons.camera_enhance),
+                    child: IconButton(icon: Icon(Icons.camera_enhance),iconSize: size.width*0.1,color: PrimaryColor,
                         onPressed: () {
                           _openCamera(context);
                         }),
@@ -306,11 +279,11 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(phone.text.isNotEmpty){
       seller.phoneNumber=phone.text;
     }
+    bool flag=true;
     if(imageFile==null){
-      imageFile=(api.url+"sellerImage/"+seller.imagePath) as File;
+      flag=false;
     }
-    //seller.imagePath="imageSeller/1Fj7u55XIZ7rTip4Obtt.png";
-    BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile));
+    BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,flag));
 
   }
 

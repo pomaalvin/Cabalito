@@ -2,6 +2,7 @@ import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 import '../lib/Colors.dart';
 import '../lib/ApiUrl.dart' as api;
 
@@ -39,7 +40,7 @@ class _ViewSellerState extends State<ViewSeller>{
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                padding: EdgeInsets.only(left: 50.0 ,right:50.0,top: size.height*0.03),
+                                padding: EdgeInsets.only(left: size.width*0.10 ,right:size.width*0.10,top: size.height*0.03),
                                 itemBuilder: (context,index){
                                   return _Card(size.width,size.height,seller);
                                 },
@@ -75,7 +76,7 @@ class _Card extends StatelessWidget{
     size=MediaQuery.of(context).size;
     return  Container(
       width: size.width*0.80,
-      height: size.height*0.62,
+      height: size.height*0.7,
       margin: EdgeInsets.only(bottom: 25.0),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: BorderListColor),
@@ -96,6 +97,7 @@ class _Card extends StatelessWidget{
               Container(
                 width: size.width*0.5,
                 height: size.width*0.5,
+                margin: EdgeInsets.only(top: heightScreen*0.05),
                 decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
@@ -107,17 +109,17 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
                     child: Text("Nombre: ",
                       style: TextStyle(
                         fontSize: 18.0,
-                        color: TitleColor,
+                        color: PrimaryColor,
 
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
                     child: Text(seller.firstName,
                       style: TextStyle(
                         fontSize: 18.0,
@@ -126,7 +128,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
                     child: Text(seller.lastName,
                       style: TextStyle(
                         fontSize: 18.0,
@@ -140,16 +142,16 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
                     child: Text("Telefono: ",
                       style: TextStyle(
                         fontSize: 18.0,
-                        color: TitleColor,
+                        color: PrimaryColor,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.01),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
                     child: Text(seller.phoneNumber,
                       style: TextStyle(
                         fontSize: 18.0,
@@ -162,16 +164,16 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.075,bottom: 20),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075,bottom: 20),
                     child: Text("Email: ",
                       style: TextStyle(
                         fontSize: 18.0,
-                        color: TitleColor,
+                        color: PrimaryColor,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 25,left: widhtScreen*0.010,bottom: 20),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.010,bottom: 20),
                     child: Text(seller.email,
                       style: TextStyle(
                         fontSize: 18.0,
