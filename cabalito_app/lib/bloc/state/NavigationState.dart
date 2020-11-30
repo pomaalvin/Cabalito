@@ -70,7 +70,7 @@ class MechanicPageState extends NavigationState{
 class SellerPageState extends NavigationState{
   const SellerPageState();
   @override
-  List<Object> get props => ["Seller",Seller()];
+  List<Object> get props => ["Contacto",Seller()];
 }
 class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
@@ -80,7 +80,7 @@ class RegisterSellerPageState extends NavigationState{
 class UpdateSellerPageState extends NavigationState{
   const UpdateSellerPageState();
   @override
-  List<Object> get props => ["UpdateSeller",UpdateSeller()];
+  List<Object> get props => ["Actualizar Datos",UpdateSeller()];
 }
 class AddSellerPageState extends NavigationState{
   const AddSellerPageState();

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'ClassBuilder.dart';
+import 'model/Seller.dart';
 
 class Menu extends StatefulWidget{
   @override
@@ -88,6 +89,34 @@ class MenuState extends State<Menu>{
             onPressed: (){
               _drawerController.close();
               BlocProvider.of<NavigationBloc>(context).add(RegisterSellerPageEvent());
+            },
+          ),
+          KFDrawerItem.initWithPage(
+            text: Text("Editar perfil",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.edit,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(UpdateSellerPageEvent());
+            },
+          ),
+          KFDrawerItem.initWithPage(
+            text: Text("Ver perfil",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.supervisor_account,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(SellerPageEvent());
             },
           ),
 

@@ -71,15 +71,12 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is AddSellerEvent){
       try{
         bool estado=await _sellerRepository.addSeller(event.seller);
-
+        if(estado){
+          yield  HomePageState();
+        }
       }catch(e){
+        print(e);
       }
-
-      /*if(estado){
-        yield HomePageState();
-      }
-      else{
-      }*/
     }
     else if(event is AddPublicationEvent){
       yield LoadingPageState();

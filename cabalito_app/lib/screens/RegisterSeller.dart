@@ -32,17 +32,22 @@ class RegisterSellerState extends State<RegisterSeller>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
-        backgroundColor: PrimaryColor,
         body: Column(
           children: <Widget>[
             Expanded(
               child: Stack(
                 children: <Widget>[
                   Container(
-                    decoration: BoxDecoration(
-                      color: SecondaryColor,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
-                    ),
+                      width: size.width*0.5,
+                      height: size.width*0.5,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                                "https://sa.uia.ac.cr/images/customers-icon-3.png"
+                            )
+                        ),
+                      )
                   ),
                   Container(
                       margin: new EdgeInsets.only(top: 6.0),
@@ -233,7 +238,10 @@ class RegisterSellerState extends State<RegisterSeller>{
     seller.email=email.text;
     seller.password=password.text;
     seller.imagePath="https://sa.uia.ac.cr/images/customers-icon-3.png";
-    BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
+    if(password.text==confirmPassword.text) {
+      BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
+      }
+
   }
 }
 class MyBehavior extends ScrollBehavior {
