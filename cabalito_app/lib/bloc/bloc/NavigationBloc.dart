@@ -66,7 +66,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<City> cities=await  _publicationRepository.getCities();
       List<Brand> brands=await  _publicationRepository.getBrands();
 
-      yield AddPublicationPageState(colors,brands,cities);
+      yield AddPublicationPageState(colors,brands,cities,false,null);
     }
     else if(event is AddSellerEvent){
       try{
@@ -92,6 +92,11 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
         yield HomePageState();
       }
     }
+    else if(event is SellerPublicationEvent){
+      yield LoadingPageState();
+      List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList();
+      yield SellerPublicationListState(publicationLists);
+    }
     else if(event is PublicationListsEvent){
       yield LoadingPageState();
       List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists();
@@ -108,6 +113,16 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<PublicationView> publicationsViews=await  _publicationRepository.getpublicationView(event.idPublication);
       List<ListPublication> publicationsPaths=await  _publicationRepository.getpublicationPaths(event.idPublication);
       yield PublicationViewState(publicationsViews,publicationsPaths);
+    }
+    else if(event is SellerPublicationViewEvent){
+      yield LoadingPageState();
+      List<PublicationView> publicationsViews=await  _publicationRepository.getpublicationView(event.idPublication);
+      List<ListPublication> publicationsPaths=await  _publicationRepository.getpublicationPaths(event.idPublication);
+      List<Color> colors=await  _publicationRepository.getColors();
+      List<City> cities=await  _publicationRepository.getCities();
+      List<Brand> brands=await  _publicationRepository.getBrands();
+
+      yield AddPublicationPageState(colors,brands,cities,true,publicationsViews[0]);
     }
   }
 

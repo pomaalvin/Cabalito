@@ -24,7 +24,7 @@ class PublicationRepository{
           body: jsonEncode(publication.toJson())
       );
       if(response.statusCode==200){
-        var resPub = jsonDecode(response.body);
+        var resPub = json.decode(utf8.decode(response.bodyBytes));
         var idPublication=resPub["idPublication"];
         return await uploadImages(images,idPublication);
       }
@@ -67,7 +67,7 @@ class PublicationRepository{
             'Content-Type': 'application/json; charset=UTF-8',
           }
       );
-      List resCol = jsonDecode(response.body);
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
       resCol.forEach((element) {
         Color newColor=Color();
         newColor.idColor=element["idColor"];
@@ -96,7 +96,7 @@ class PublicationRepository{
             'Content-Type': 'application/json; charset=UTF-8',
           }
       );
-      List resCol = jsonDecode(response.body);
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
       resCol.forEach((element) {
         Brand newBrand=Brand();
         newBrand.idBrand=element["idBrand"];
@@ -125,7 +125,7 @@ class PublicationRepository{
             'Content-Type': 'application/json; charset=UTF-8',
           }
       );
-      List resCol = jsonDecode(response.body);
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
       resCol.forEach((element) {
         City newCity=City();
         newCity.idCity=element["idCity"];
@@ -145,7 +145,34 @@ class PublicationRepository{
 
     }
   }
+  Future<List<ListPublication>> getSellerPublicationList()async {
+    try{
+      List<ListPublication> listPublications=List();
+      var url=api.url + "seller/publications/?n=5&i=0";
+      final response = await http.get(url
+      );
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
+      resCol.forEach((element) {
+        ListPublication newPublicationList=ListPublication();
+        newPublicationList.idPublication=element["idPublication"];
+        newPublicationList.price=element["price"];
+        newPublicationList.title=element["title"];
+        newPublicationList.imagePath=element["imagePath"];
+        listPublications.add(newPublicationList);
+      });
+      if(response.statusCode==200){
+        return listPublications;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
 
+    }
+  }
   Future<List<ListPublication>> getpublicationLists()async {
     try{
       List<ListPublication> listPublications=List();
@@ -155,7 +182,7 @@ class PublicationRepository{
             'Content-Type': 'application/json; charset=UTF-8',
           }
       );
-      List resCol = jsonDecode(response.body);
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
       print(response.body);
       resCol.forEach((element) {
         ListPublication newPublicationList=ListPublication();
@@ -189,7 +216,7 @@ class PublicationRepository{
       );
       print(response.body);
       print(url);
-      var element = jsonDecode(response.body);
+      var element =  json.decode(utf8.decode(response.bodyBytes));
         PublicationView newPublicationView=PublicationView();
         newPublicationView.title=element["title"];
         newPublicationView.description=element["description"];
@@ -226,7 +253,7 @@ class PublicationRepository{
             'Content-Type': 'application/json; charset=UTF-8',
           }
       );
-      List resCol = jsonDecode(response.body);
+      List resCol =  json.decode(utf8.decode(response.bodyBytes));
       print(response.body);
       resCol.forEach((element) {
         ListPublication newPublicationList=ListPublication();

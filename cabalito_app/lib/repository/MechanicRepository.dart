@@ -15,7 +15,7 @@ class MechanicRepository{
         'Content-Type':'application/json; charset=UTF-8',
         }
       );
-      List mechanic=jsonDecode(response.body);
+      List mechanic= json.decode(utf8.decode(response.bodyBytes));
       mechanic.forEach((element) {
         Mechanic newMechanic=Mechanic();
         newMechanic.idMechanic=element["idMechanic"];

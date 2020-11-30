@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/lib/Alerts.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
@@ -22,17 +23,22 @@ class AddPublication extends StatefulWidget{
   List<Color> colors;
   List<Brand> brands;
   List<City> cities;
-  AddPublication(this.colors,this.brands,this.cities);
+  bool modify;
+  Publication publication;
+  AddPublication(this.colors,this.brands,this.cities,this.modify,this.publication);
   @override
-  State createState() => _AddPublicationState(colors,brands,cities);
+  State createState() => _AddPublicationState(colors,brands,cities,modify,publication);
 }
 
 class _AddPublicationState extends State<AddPublication>{
-  _AddPublicationState(this.colors,this.brands,this.cities);
+  List<bool>_validationInputs=[true,true,true,true,true,true];
+  _AddPublicationState(this.colors,this.brands,this.cities,this.modify,this.publication);
   List<Color> colors;
   Color newColor;
   Brand newBrand;
   City newCity;
+  bool modify;
+  Publication publication;
   List<Brand> brands=List();
   List<City> cities=List();
   TextEditingController title = TextEditingController();
@@ -70,7 +76,17 @@ class _AddPublicationState extends State<AddPublication>{
   }
 
 
-
+  setPublication(){
+    if(publication!=null){
+      title.text=publication.title!=null?publication.title:"";
+      description.text=publication.description!=null?publication.description:"";
+      plate.text=publication.licensePlate!=null?publication.licensePlate:"";
+      model.text=publication.model!=null?publication.model.toString():"";
+      dNumber.text=publication.doorNumber!=null?publication.doorNumber.toString():"";
+      motor.text=publication.motor!=null?publication.motor.toString():"";
+      price.text=publication.price!=null?publication.price.toString():"";
+    }
+  }
   @override
   void initState(){
     super.initState();
@@ -92,6 +108,19 @@ class _AddPublicationState extends State<AddPublication>{
                   child: ListView(
                     padding: EdgeInsets.only(top: size.height*0.02),
                     children: [
+                      modify?Padding(padding: EdgeInsets.symmetric(horizontal: size.width*0.3,vertical: 20),
+                      child: GestureDetector(
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: colorError,
+                          ),
+                          child: Center(
+                            child: Text("Eliminar Publicacion",style: TextStyle(color: color4),),
+                          ),
+                        ),
+                      ),):Container(),
                       Padding(
                         padding:EdgeInsets.symmetric(horizontal: size.width*0.25),
                         child: Material(
@@ -104,9 +133,12 @@ class _AddPublicationState extends State<AddPublication>{
                                 child: Container(
                                   height:size.width*0.5,
                                   decoration: BoxDecoration(
+                                     border: Border.all(color: _validationInputs[5]?Colors.transparent:colorError,width: 1.5),
+                                    borderRadius: BorderRadius.circular(size.height*0.01),
                                     image: DecorationImage(
                                         image: imagePublication.length==0?AssetImage("assets/publication/no_image.jpg"):FileImage(imageSelected),
-                                        fit: BoxFit.cover
+                                        fit: BoxFit.cover,
+
                                     ),
                                   ),
                                 ),
@@ -124,7 +156,7 @@ class _AddPublicationState extends State<AddPublication>{
                       SizedBox(height: 15),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: input(title,size.width*0.8,"Titulo",20.0,TextInputType.text),
+                        child: input(title,size.width*0.8,"Titulo*",20.0,TextInputType.text,_validationInputs[0]),
                       ),
                       SizedBox(height: 15,),
                       Padding(
@@ -137,9 +169,9 @@ class _AddPublicationState extends State<AddPublication>{
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            buttonInput(null, size.width*0.25, "Marca", size.height*0.07,TextInputType.text),
-                            buttonInput(null, size.width*0.25, "Color", size.height*0.07,TextInputType.number),
-                            buttonInput(null, size.width*0.25, "Ciudad", size.height*0.07,TextInputType.number),
+                            buttonInput(null, size.width*0.25, "Marca*", size.height*0.07,TextInputType.text,_validationInputs[1]),
+                            buttonInput(null, size.width*0.25, "Color*", size.height*0.07,TextInputType.number,_validationInputs[2]),
+                            buttonInput(null, size.width*0.25, "Ciudad*", size.height*0.07,TextInputType.number,_validationInputs[3]),
                           ],
                         ),
                       ),
@@ -149,8 +181,8 @@ class _AddPublicationState extends State<AddPublication>{
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            input(plate, size.width*0.35, "Placa", size.height*0.02,TextInputType.text),
-                            input(model, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number),
+                            input(plate, size.width*0.35, "Placa", size.height*0.02,TextInputType.text,true),
+                            input(model, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number,true),
                           ],
                         ),
                       ),
@@ -160,9 +192,9 @@ class _AddPublicationState extends State<AddPublication>{
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            input(dNumber, size.width*0.25, "N° Puertas",size.height*0.02,TextInputType.number),
-                            input(motor, size.width*0.25, "Motor",size.height*0.02,TextInputType.text),
-                            input(price, size.width*0.25, "Precio",size.height*0.02,TextInputType.text),
+                            input(dNumber, size.width*0.25, "N° Puertas",size.height*0.02,TextInputType.number,true),
+                            input(motor, size.width*0.25, "Motor",size.height*0.02,TextInputType.text,true),
+                            input(price, size.width*0.25, "Precio*",size.height*0.02,TextInputType.text,_validationInputs[4]),
                           ],
                         ),
                       ),
@@ -179,7 +211,7 @@ class _AddPublicationState extends State<AddPublication>{
                                 _addPublication();
                           },
                           child: Center(
-                            child: Text("Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
+                            child: Text(modify?"Modificar":"Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
                           ),
                         ),
                       )
@@ -190,12 +222,12 @@ class _AddPublicationState extends State<AddPublication>{
               ),
     );
   }
-  Widget buttonInput(controller,width,text,height,type,){
+  Widget buttonInput(controller,width,text,height,type,val){
     return GestureDetector(
       onTap: ()async {
         var alert=AlertItemPublication();
         switch(text) {
-          case "Ciudad":
+          case "Ciudad*":
             FocusScope.of(context).requestFocus(new FocusNode());
             var city=await alert.alertCity(context, cities);
             if(city!=null){
@@ -204,7 +236,7 @@ class _AddPublicationState extends State<AddPublication>{
               });
             }
             break;
-          case "Marca":
+          case "Marca*":
             FocusScope.of(context).requestFocus(new FocusNode());
             var brand=await alert.alertBrand(context, brands);
             if(brand!=null){
@@ -213,7 +245,7 @@ class _AddPublicationState extends State<AddPublication>{
               });
             }
             break;
-          case "Color":
+          case "Color*":
             FocusScope.of(context).requestFocus(new FocusNode());
              var color =await alert.alertColor(context, colors);
              if(color!=null){
@@ -230,11 +262,15 @@ class _AddPublicationState extends State<AddPublication>{
         alignment: Alignment.center,
         decoration: BoxDecoration(
             color: PrimaryColor,
-            border: Border.all(color: PrimaryColor,width: 0),
+            border: Border.all(color: val?PrimaryColor:colorError,width: val?0:2),
             borderRadius: BorderRadius.circular(height*0.1)
         ),
         child: Center(
-          child: Text(text=="Marca"&&newBrand!=null?newBrand.brand:text=="Color"&&newColor!=null?newColor.color:text=="Ciudad"&&newCity!=null?newCity.city:text,style:TextStyle(color:color4.withOpacity(0.5))),
+          child: Text(text=="Marca*"&&newBrand!=null?newBrand.brand:
+          text=="Color*"&&newColor!=null?newColor.color:
+          text=="Ciudad*"&&newCity!=null?newCity.city:
+          text,
+              style:TextStyle(color:val?color4.withOpacity(0.5):color4.withOpacity(0.5).withBlue(200).withGreen(200))),
         ),
 
       ),
@@ -269,12 +305,12 @@ class _AddPublicationState extends State<AddPublication>{
           ),
         );
   }
-  Widget input(controller,width,text,font,type){
+  Widget input(controller,width,text,font,type,val){
     return Container(
         width: width,
           alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: PrimaryColor,width: 0),
+          border: Border.all(color: val?PrimaryColor:colorError,width: val?0:1.5),
           borderRadius: BorderRadius.circular(font*0.3)
         ),
         child:TextField(
@@ -282,14 +318,14 @@ class _AddPublicationState extends State<AddPublication>{
             keyboardType: type,
             cursorColor: color3,
             cursorWidth: 1,
-            style: TextStyle(color: PrimaryColor,fontSize: font,
+            style: TextStyle(color: val?PrimaryColor:colorError,fontSize: font,
               height: 1,),
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5.0),
 
                 fillColor: Colors.white,
                 border: InputBorder.none,
-                hintStyle: TextStyle(color: PrimaryColor.withOpacity(0.6)),
+                hintStyle: TextStyle(color: val?PrimaryColor.withOpacity(0.6):colorError.withOpacity(0.6)),
                 hintText: text
             ),
           ),
@@ -428,21 +464,44 @@ class _AddPublicationState extends State<AddPublication>{
   }
 
   _addPublication(){
-    Publication publication= Publication();
-    publication.idColor=newColor.idColor;
-    publication.idBrand=newBrand.idBrand;
-    publication.idCity=newCity.idCity;
-    publication.datePublication=DateTime.now();
-    publication.description=description.text;
-    print(dNumber.text);
-    publication.doorNumber=int.parse(dNumber.text);
-    publication.model=int.parse(model.text);
-    publication.title=title.text;
-    publication.motor=motor.text;
-    publication.licensePlate=plate.text;
-    print(price.text);
-    publication.price=double.parse(price.text);
-    BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
+    if(_verificarCampos()){
+      Publication publication= Publication();
+      publication.idColor=newColor.idColor;
+      publication.idBrand=newBrand.idBrand;
+      publication.idCity=newCity.idCity;
+      publication.datePublication=DateTime.now();
+      publication.description=description.text;
+      print(dNumber.text);
+      publication.doorNumber=int.parse(dNumber.text);
+      publication.model=int.parse(model.text);
+      publication.title=title.text;
+      publication.motor=motor.text;
+      publication.licensePlate=plate.text;
+      print(price.text);
+      publication.price=double.parse(price.text);
+      BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
+    }
 
+  }
+  _verificarCampos(){
+    var ver=true;
+    setState(() {
+      if(title.text.isEmpty) {_validationInputs[0]=false;ver=false;}
+      else  _validationInputs[0]=true;
+      if(newBrand==null) {_validationInputs[1]=false;ver=false;}
+      else  _validationInputs[1]=true;
+      if(newColor==null) {_validationInputs[2]=false;ver=false;}
+      else  _validationInputs[2]=true;
+      if(newCity==null) {_validationInputs[3]=false;ver=false;}
+      else  _validationInputs[3]=true;
+      if(price.text.isEmpty) {_validationInputs[4]=false;ver=false;}
+      else  _validationInputs[4]=true;
+      if(imagePublication.length==0) {_validationInputs[5]=false;ver=false;}
+      else  _validationInputs[5]=true;
+    });
+    if(!ver){
+      alertError("Llene todos los campos requeridos",context);
+    }
+    return ver;
   }
   }

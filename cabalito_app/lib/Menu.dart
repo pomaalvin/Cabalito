@@ -77,6 +77,20 @@ class MenuState extends State<Menu>{
             },
           ),
           KFDrawerItem.initWithPage(
+            text: Text("Mis Publicaciones",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.supervised_user_circle,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(SellerPublicationEvent());
+            },
+          ),
+          KFDrawerItem.initWithPage(
             text: Text("Registro usuario",
               style: TextStyle(
                 color: Colors.white,

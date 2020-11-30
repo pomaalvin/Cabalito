@@ -81,3 +81,14 @@ class AddQualificationEvent extends NavigationEvent {
   @override
   List<Object> get props => [stars];
 }
+class SellerPublicationEvent extends NavigationEvent {
+  SellerPublicationEvent();
+  @override
+  List<Object> get props => [];
+}
+class SellerPublicationViewEvent extends NavigationEvent{
+  int idPublication;
+  SellerPublicationViewEvent(this.idPublication);
+  @override
+  List<Object> get props =>[idPublication];
+}
