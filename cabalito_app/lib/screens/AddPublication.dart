@@ -29,7 +29,6 @@ class AddPublication extends StatefulWidget{
   @override
   State createState() => _AddPublicationState(colors,brands,cities,modify,publication);
 }
-
 class _AddPublicationState extends State<AddPublication>{
   List<bool>_validationInputs=[true,true,true,true,true,true];
   _AddPublicationState(this.colors,this.brands,this.cities,this.modify,this.publication);

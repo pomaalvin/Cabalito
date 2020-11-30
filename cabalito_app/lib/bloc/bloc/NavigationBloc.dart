@@ -129,7 +129,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<City> cities=await  _publicationRepository.getCities();
       List<Brand> brands=await  _publicationRepository.getBrands();
 
-      yield AddPublicationPageState(colors,brands,cities,true,publicationsViews[0]);
+      yield AddPublicationPageState(colors,brands,cities,true,null);
     }
   }
 
