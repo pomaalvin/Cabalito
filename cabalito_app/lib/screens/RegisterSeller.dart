@@ -131,6 +131,7 @@ class RegisterSellerState extends State<RegisterSeller>{
                                                 padding: EdgeInsets.only(top: 10, left: 1),
                                                 child: TextField(controller: email,
                                                     style: TextStyle(fontSize: 15),
+                                                    keyboardType:TextInputType.emailAddress,
                                                     decoration: InputDecoration(hintStyle: TextStyle(
                                                         color: Colors.black
                                                     ),
@@ -238,7 +239,7 @@ class RegisterSellerState extends State<RegisterSeller>{
     seller.phoneNumber=phone.text;
     seller.email=email.text;
     seller.password=password.text;
-    seller.imagePath="https://sa.uia.ac.cr/images/customers-icon-3.png";
+    seller.imagePath="imageSeller/1Fj7u55XIZ7rTip4Obtt.png";
     if(password.text==confirmPassword.text) {
       BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
       }

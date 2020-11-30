@@ -1,18 +1,29 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
-
+import '../lib/ApiUrl.dart' as api;
 class UpdateSeller extends StatefulWidget{
+  Seller seller;
+
+  UpdateSeller(this.seller);
+
   @override
-  State createState() => UpdateSellerState();
+  State createState() => UpdateSellerState(seller);
 }
 
 class UpdateSellerState extends State<UpdateSeller>{
+  Seller seller;
+  UpdateSellerState(this.seller);
+
   TextEditingController name = TextEditingController();
   TextEditingController lastname = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -94,10 +105,14 @@ class UpdateSellerState extends State<UpdateSeller>{
                                             buildLabel("Nombre: "),
                                             Padding(
                                               padding: EdgeInsets.only(top: 10, left: size.width*0.05),
-                                              child: TextField(controller: name,
+                                              child: TextField(
+                                                  controller: name,
+
                                                   style: TextStyle(fontSize: 15),
-                                                  decoration: InputDecoration(hintStyle: TextStyle(
-                                                      color: Colors.white,
+                                                  decoration: InputDecoration(
+                                                    hintText:seller.firstName,
+                                                    hintStyle: TextStyle(
+                                                      color: Colors.black,
                                                       ),
                                                       enabledBorder: UnderlineInputBorder(
                                                         borderSide: BorderSide(color: Colors.grey),
@@ -107,6 +122,7 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                         borderSide: BorderSide(color: PrimaryColor),
 
                                                       ),
+
                                                       )),
                                             ),
                                             buildLabel("Apellido: "),
@@ -114,8 +130,10 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                 padding: EdgeInsets.only(top: 10, left: size.width*0.05),
                                                 child: TextField(controller: lastname,
                                                   style: TextStyle(fontSize: 15),
-                                                    decoration: InputDecoration(hintStyle: TextStyle(
-                                                      color: Colors.white,
+                                                    decoration: InputDecoration(
+                                                      hintText:seller.lastName,
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black,
                                                        ),
                                                       enabledBorder: UnderlineInputBorder(
                                                         borderSide: BorderSide(color: Colors.grey),
@@ -133,8 +151,10 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                 padding: EdgeInsets.only(top: 10, left: size.width*0.05),
                                                 child: TextField(controller: phone,
                                                   style: TextStyle(fontSize: 15),
-                                                    decoration: InputDecoration(hintStyle: TextStyle(
-                                                      color: Colors.white,
+                                                    decoration: InputDecoration(
+                                                      hintText:seller.phoneNumber,
+                                                      hintStyle: TextStyle(
+                                                        color: Colors.black,
                                                     ),
                                                       enabledBorder: UnderlineInputBorder(
                                                         borderSide: BorderSide(color: Colors.grey),
@@ -146,12 +166,14 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                       ),
                                                     )),
                                             ),
-                                            Row(
-                                              children: [
-                                                buildButton("Actualizar", PrimaryColor),
-                                                buildButton("Cambiar Contraseña", PrimaryColor)
-                                              ],
-                                            )
+
+                                          ],
+
+                                        ),
+                                        Row(
+                                          children: [
+                                            buildButton("Actualizar", PrimaryColor),
+                                            buildButton("Cambiar Contraseña", PrimaryColor)
                                           ],
                                         )
                                       ],
@@ -177,14 +199,14 @@ class UpdateSellerState extends State<UpdateSeller>{
       return Container(
           width: size.width*0.5,
           height: size.width*0.5,
+
           decoration: BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: NetworkImage(
-                      "https://sa.uia.ac.cr/images/customers-icon-3.png"
+                  image: NetworkImage(api.url+"sellerImage/"+seller.imagePath),
                   )
               )
-          )
+
       );
     }else{
       return Image.file(
@@ -213,14 +235,18 @@ class UpdateSellerState extends State<UpdateSeller>{
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: 20, left: size.width*0.02),
+      padding: EdgeInsets.only(top: size.height*0.85, left: size.width*0.02,bottom: size.height*0.05),
       child: Container(
         width: size.width*0.35,
         color: buttonColor,
         child: FlatButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(30.0)),
+
           ),
+          onPressed: (){
+            _buttonAction(context, buttonText);
+          },
           child: Text(
             buttonText,
             style: TextStyle(
@@ -232,29 +258,29 @@ class UpdateSellerState extends State<UpdateSeller>{
       ),
     );
   }
-  Future<void> _showChoiceDialog(BuildContext context){
-    return showDialog(context: context,builder: (BuildContext context){
+  Future<void> _showChoiceDialog(BuildContext context) {
+    return showDialog(context: context, builder: (BuildContext context) {
       return AlertDialog(
         title: Text("Seleccione una opción"
         ),
         content: SingleChildScrollView(
           child: ListBody(
             children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      child: IconButton(icon: Icon(Icons.add_photo_alternate),
-                          onPressed: () {
-                            _openGallery(context);
-                          }),
-                    ),
-                    Padding(padding: EdgeInsets.all(5.0)),
-                    GestureDetector(
-                      child: IconButton(icon: Icon(Icons.camera_enhance),
-                          onPressed: () {
-                            _openCamera(context);
-                          }),
-                    ),
+              Row(
+                children: [
+                  GestureDetector(
+                    child: IconButton(icon: Icon(Icons.add_photo_alternate),
+                        onPressed: () {
+                          _openGallery(context);
+                        }),
+                  ),
+                  Padding(padding: EdgeInsets.all(5.0)),
+                  GestureDetector(
+                    child: IconButton(icon: Icon(Icons.camera_enhance),
+                        onPressed: () {
+                          _openCamera(context);
+                        }),
+                  ),
                 ],
               )
 
@@ -264,6 +290,30 @@ class UpdateSellerState extends State<UpdateSeller>{
       );
     });
   }
+  _buttonAction(context, String option){
+    if(option=="Actualizar"){
+      _updateSeller(context, seller);
+    }
+    if(option=="Cambiar Contraseña"){}
+  }
+  _updateSeller(context,Seller seller){
+    if(name.text.isNotEmpty){
+      seller.firstName=name.text;
+    }
+    if(lastname.text.isNotEmpty){
+      seller.lastName=lastname.text;
+    }
+    if(phone.text.isNotEmpty){
+      seller.phoneNumber=phone.text;
+    }
+    if(imageFile==null){
+      imageFile=(api.url+"sellerImage/"+seller.imagePath) as File;
+    }
+    //seller.imagePath="imageSeller/1Fj7u55XIZ7rTip4Obtt.png";
+    BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile));
+
+  }
+
 }
 class MyBehavior extends ScrollBehavior {
   @override
