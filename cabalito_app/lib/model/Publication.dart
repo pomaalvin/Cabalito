@@ -14,7 +14,7 @@ class Publication {
   double _price;
   DateTime _datePublication;
   int _status;
-
+  List <String> _images;
   Publication();
 
   int get status => _status;
@@ -100,6 +100,13 @@ class Publication {
   set idPublication(int value) {
     _idPublication = value;
   }
+
+  List<String> get images => _images;
+
+  set images(List<String> value) {
+    _images = value;
+  }
+
   Map toJson()=>{
   'idPublication':idPublication,
    'idSeller':idSeller,

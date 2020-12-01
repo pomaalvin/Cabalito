@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cabalito App',
-      theme: ThemeData(primaryColor: Color.fromRGBO(73, 24, 89, 1),accentColor: Colors.black),
+      theme: ThemeData(primaryColor: Color.fromRGBO(73, 24, 89, 1),accentColor: Colors.black,fontFamily: "SourceSansPro"),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
           create:(context2)=>NavigationBloc(PublicationRepository(),MechanicRepository(),SellerRepository()),

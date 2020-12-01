@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
+import '../lib/ApiUrl.dart' as api;
 
 
 class AddPublication extends StatefulWidget{
@@ -49,6 +50,7 @@ class _AddPublicationState extends State<AddPublication>{
   TextEditingController motor = TextEditingController();
   List<File> imagePublication=List();
   File imageSelected;
+  String imageNetworkSelected;
   _openGallery() async{
     var imagePicker = ImagePicker();
     var picture=await imagePicker.getImage(source:  ImageSource.gallery);
@@ -76,6 +78,7 @@ class _AddPublicationState extends State<AddPublication>{
 
 
   setPublication(){
+
     if(publication!=null){
       title.text=publication.title!=null?publication.title:"";
       description.text=publication.description!=null?publication.description:"";
@@ -84,141 +87,189 @@ class _AddPublicationState extends State<AddPublication>{
       dNumber.text=publication.doorNumber!=null?publication.doorNumber.toString():"";
       motor.text=publication.motor!=null?publication.motor.toString():"";
       price.text=publication.price!=null?publication.price.toString():"";
+      Color color=colors.singleWhere((element) {
+        if(element.idColor==publication.idColor){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+      newColor=color;
+      City city=cities.singleWhere((element) {
+        if(element.idCity==publication.idCity){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+      newCity=city;
+      Brand brand=brands.singleWhere((element) {
+        if(element.idBrand==publication.idBrand){
+          return true;
+        }
+        else{
+          return false;
+        }
+      });
+      newBrand=brand;
+      if(publication.images.length!=0){
+
+        imageNetworkSelected=publication.images[0];
+      }
     }
   }
   @override
   void initState(){
     super.initState();
-
+    setPublication();
   }
   Size size;
   @override
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     size=Size(size.width,size.height-size.height*0.13);
-    return new Scaffold(
-        backgroundColor: Colors.transparent,
-        body:
-              Container(
-                height:size.height,
-                child: Center(
-                child: ScrollConfiguration(
-                  behavior: MyBehavior(),
-                  child: ListView(
-                    padding: EdgeInsets.only(top: size.height*0.02),
-                    children: [
-                      modify?Padding(padding: EdgeInsets.symmetric(horizontal: size.width*0.3,vertical: 20),
-                      child: GestureDetector(
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: colorError,
-                          ),
-                          child: Center(
-                            child: Text("Eliminar Publicacion",style: TextStyle(color: color4),),
-                          ),
-                        ),
-                      ),):Container(),
-                      Padding(
-                        padding:EdgeInsets.symmetric(horizontal: size.width*0.25),
-                        child: Material(
-                            elevation:1,
-                            shadowColor: PrimaryColor,
-                            borderRadius:BorderRadius.circular(size.height*0.01),
-                            child:ClipRRect(
-                              borderRadius: BorderRadius.circular(size.height*0.01),
-                              child: Container(
+    return WillPopScope(
+      onWillPop: ()async {
+        BlocProvider.of<NavigationBloc>(context).add(SellerPublicationEvent());
+        return false;
+      },
+      child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body:
+                Container(
+                  height:size.height,
+                  child: Center(
+                  child: ScrollConfiguration(
+                    behavior: MyBehavior(),
+                    child: ListView(
+                      padding: EdgeInsets.only(top: size.height*0.02),
+                      children: [
+                        Padding(
+                          padding:EdgeInsets.symmetric(horizontal: size.width*0.25),
+                          child: Material(
+                              elevation:1,
+                              shadowColor: PrimaryColor,
+                              borderRadius:BorderRadius.circular(size.height*0.01),
+                              child:ClipRRect(
+                                borderRadius: BorderRadius.circular(size.height*0.01),
                                 child: Container(
-                                  height:size.width*0.5,
-                                  decoration: BoxDecoration(
-                                     border: Border.all(color: _validationInputs[5]?Colors.transparent:colorError,width: 1.5),
-                                    borderRadius: BorderRadius.circular(size.height*0.01),
-                                    image: DecorationImage(
-                                        image: imagePublication.length==0?AssetImage("assets/publication/no_image.jpg"):FileImage(imageSelected),
-                                        fit: BoxFit.cover,
+                                  child: Container(
+                                    height:size.width*0.5,
+                                    decoration: BoxDecoration(
+                                       border: Border.all(color: _validationInputs[5]?Colors.transparent:colorError,width: 1.5),
+                                      borderRadius: BorderRadius.circular(size.height*0.01),
+                                      image: DecorationImage(
+                                          image: imageSelected!=null?FileImage(imageSelected):imageNetworkSelected!=null?NetworkImage(api.url+"image/"+imageNetworkSelected):AssetImage("assets/publication/no_image.jpg"),
+                                          fit: BoxFit.cover,
 
+                                      ),
                                     ),
+
+                                    child: Stack(
+                                          children: [
+                                            Positioned(
+                                              bottom:0,
+                                              right: 0,
+                                              child: Container(
+                                                width:size.height*0.06,
+                                                height:size.height*0.06,
+                                                decoration: BoxDecoration(
+
+                                                  color:color4.withOpacity(0.4),
+                                                  borderRadius: BorderRadius.circular(size.height*0.01)
+                                                ),
+                                                child: Center(
+                                                  child: Icon(
+                                                      Icons.delete,
+                                                    color: color3.withOpacity(0.8),
+                                                  ),
+                                                )
+                                              ),
+                                            ),
+                                          ],
+                                        )
                                   ),
                                 ),
-                              ),
-                            )
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: imageList(),
-                      ),
-                      SizedBox(height: 15),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: input(title,size.width*0.8,"Titulo*",20.0,TextInputType.text,_validationInputs[0]),
-                      ),
-                      SizedBox(height: 15,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: inputArea(description, size.width*0.8, 140.0, "Descripcion", 15.0),
-                      ),
-                      SizedBox(height: 15),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            buttonInput(null, size.width*0.25, "Marca*", size.height*0.07,TextInputType.text,_validationInputs[1]),
-                            buttonInput(null, size.width*0.25, "Color*", size.height*0.07,TextInputType.number,_validationInputs[2]),
-                            buttonInput(null, size.width*0.25, "Ciudad*", size.height*0.07,TextInputType.number,_validationInputs[3]),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: size.height*0.02,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            input(plate, size.width*0.35, "Placa", size.height*0.02,TextInputType.text,true),
-                            input(model, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number,true),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: size.height*0.02,),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            input(dNumber, size.width*0.25, "N° Puertas",size.height*0.02,TextInputType.number,true),
-                            input(motor, size.width*0.25, "Motor",size.height*0.02,TextInputType.text,true),
-                            input(price, size.width*0.25, "Precio*",size.height*0.02,TextInputType.text,_validationInputs[4]),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: size.height*0.02,),
-
-                      Container(
-                        width: size.width,
-                        height: size.height*0.08,
-
-                        child: MaterialButton(
-
-                          color:PrimaryColor,
-                          onPressed: (){
-                                _addPublication();
-                          },
-                          child: Center(
-                            child: Text(modify?"Modificar":"Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
+                              )
                           ),
                         ),
-                      )
-                    ],
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: imageList(),
+                        ),
+                        SizedBox(height: 15),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: input(title,size.width*0.8,"Titulo*",20.0,TextInputType.text,_validationInputs[0]),
+                        ),
+                        SizedBox(height: 15,),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: inputArea(description, size.width*0.8, 140.0, "Descripcion", 15.0),
+                        ),
+                        SizedBox(height: 15),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              buttonInput(null, size.width*0.25, "Marca*", size.height*0.07,TextInputType.text,_validationInputs[1]),
+                              buttonInput(null, size.width*0.25, "Color*", size.height*0.07,TextInputType.number,_validationInputs[2]),
+                              buttonInput(null, size.width*0.25, "Ciudad*", size.height*0.07,TextInputType.number,_validationInputs[3]),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: size.height*0.02,),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              input(plate, size.width*0.35, "Placa", size.height*0.02,TextInputType.text,true),
+                              input(model, size.width*0.35, "Modelo",size.height*0.02,TextInputType.number,true),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: size.height*0.02,),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              input(dNumber, size.width*0.25, "N° Puertas",size.height*0.02,TextInputType.number,true),
+                              input(motor, size.width*0.25, "Motor",size.height*0.02,TextInputType.text,true),
+                              input(price, size.width*0.25, "Precio*",size.height*0.02,TextInputType.text,_validationInputs[4]),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: size.height*0.02,),
+
+                        Container(
+                          width: size.width,
+                          height: size.height*0.08,
+
+                          child: MaterialButton(
+
+                            color:PrimaryColor,
+                            onPressed: (){
+                                  _addPublication();
+                            },
+                            child: Center(
+                              child: Text(modify?"Modificar":"Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
+            ),
                 ),
-          ),
-              ),
+      ),
     );
   }
   Widget buttonInput(controller,width,text,height,type,val){
@@ -352,7 +403,7 @@ class _AddPublicationState extends State<AddPublication>{
                     crossAxisCount: 1,
                     mainAxisSpacing: 10
                 ),
-                itemCount: imagePublication.length+1,
+                itemCount: publication!=null?publication.images.length+imagePublication.length+1:imagePublication.length+1,
                 scrollDirection: Axis.horizontal,
                 padding:  EdgeInsets.all(size.height*0.07*0.1),
                 itemBuilder: (context,index){
@@ -381,14 +432,26 @@ class _AddPublicationState extends State<AddPublication>{
                       ),
                     );
                   }
-                  else{
+                  else if(index<imagePublication.length){
                     return GestureDetector(
                       onTap: (){
                         setState(() {
                           imageSelected=imagePublication[index-1];
+                          imageNetworkSelected=null;
                         });
                       },
-                      child: CardImage(imagePublication[index-1], size)
+                      child: CardImage(imagePublication[index-1], size,null)
+                    );
+                  }
+                  else {
+                    return GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            imageNetworkSelected=publication.images[index-imagePublication.length-1];
+                            imageSelected=null;
+                          });
+                        },
+                        child: CardImage(null, size,publication.images[index-imagePublication.length-1])
                     );
                   }
                 }

@@ -205,6 +205,47 @@ class PublicationRepository{
 
     }
   }
+  Future<Publication> getpublicationEdit(int idPublication)async {
+    try{
+      var url=api.url + "publications/idd?idPublication=${idPublication.toString()}";
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      print(response.body);
+      print(url);
+      var element =  json.decode(utf8.decode(response.bodyBytes));
+      Publication newPublication=Publication();
+      newPublication.title=element["title"];
+      newPublication.description=element["description"];
+      newPublication.price=element["price"];
+      newPublication.idBrand=element["idBrand"];
+      newPublication.model=element["model"];
+      newPublication.licensePlate=element["licensePlate"];
+      newPublication.motor=element["motor"];
+      newPublication.doorNumber=element["doorNumber"];
+      newPublication.idColor=element["idColor"];
+      newPublication.idCity=element["idCity"];
+      var images=element["images"] as List;
+      newPublication.images=List();
+      for (var value in images) {
+        newPublication.images.add(value["path"]);
+      }
+
+      if(response.statusCode==200){
+        return newPublication;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
   Future<List<PublicationView>> getpublicationView(int idPublication)async {
     try{
       List<PublicationView> publicationView=List();

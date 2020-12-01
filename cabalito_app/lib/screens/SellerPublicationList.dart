@@ -88,18 +88,10 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
     return Container(
           width: width-1,
           height: height,
-          decoration:  BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(5.0),
-            border: Border.all(color: BorderListColor,
-                width: 2),
-            //#D4D4D5
-
-          ),
           child: GestureDetector(
 
             onTap: () async {
-              BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent(listPublication.idPublication));
+              BlocProvider.of<NavigationBloc>(context).add(SellerPublicationViewEvent(listPublication.idPublication));
             },
 
 
@@ -111,74 +103,129 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
                     width: width,
                     height: height,
                     decoration: BoxDecoration(
-                        color: PrimaryColor,
-                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(height*0.03),bottomRight: Radius.circular(height*0.03))
+                        color: PrimaryColor.withOpacity(0.8),
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10),topLeft: Radius.circular(10),topRight: Radius.circular(10))
                     ),
                   ),
                 ),
                 Container(
-                  height: height*0.93,
-                  decoration: BoxDecoration(
-                      color: color4,
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(height*0.03),bottomRight: Radius.circular(height*0.03))
+                  height: height,
+
+                  decoration:  BoxDecoration(
+                    color: color4,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: BorderListColor,
+                        width: 1),
+                    //#D4D4D5
+
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                          width: width*0.30,
-                          height: height*0.93,
-                          child: Center(
-                            child: Container(
-                              width: width*0.27>height?height*0.9:width*0.27,
-                              height: width*0.27>height?height*0.9:width*0.27,
+                            Container(
+                              width: height,
+                              height: height,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: NetworkImage(api.url+"image/"+listPublication.imagePath),
                                     fit: BoxFit.fill
                                 ),
-                                borderRadius: BorderRadius.circular(15.0),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
                               ),
                             ),
-                          )
+                      SizedBox(
+                        width: width*0.02,
                       ),
-                      Container(
-                        width: width*0.65-4,
-                        height: height*0.93-4,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: height*0.3-4,
-                              padding: EdgeInsets.symmetric(horizontal: width*0.02),
-                              child: Center(
-                                  child: Container(
-                                    width: width,
-                                    child: AutoSizeText(listPublication.title,
-                                      textAlign: TextAlign.left,
-                                      maxLines: 2,
-                                      maxFontSize: 21,
-                                      style: TextStyle(color:color3,fontSize: 21,fontWeight: FontWeight.bold),
-                                    ),
-                                  )
-                              ),
-                            ),
-                            Container(
-                              height: height*0.12,
-                              padding: EdgeInsets.symmetric(horizontal: width*0.02),
-                              child: Center(
-                                  child: Container(
-                                    width: width,
-                                    child: AutoSizeText("Precio: "+listPublication.price.toString()+r" $",
-                                      textAlign: TextAlign.left,
-                                      maxLines: 2,
-                                      maxFontSize: 21,
-                                      style: TextStyle(color:color3,fontSize: 21),
-                                    ),
-                                  )
-                              ),
-                            ),
+                      Expanded(
 
+                        child: Stack(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: height*0.28-4,
+                                      padding: EdgeInsets.symmetric(horizontal: width*0.02),
+                                      child: Center(
+                                          child: Container(
+                                            width: width,
+                                            child: AutoSizeText(listPublication.title,
+                                              textAlign: TextAlign.left,
+                                              maxLines: 2,
+                                              maxFontSize: 21,
+                                              style: TextStyle(color:color3,fontSize: 21,fontWeight: FontWeight.bold),
+                                            ),
+                                          )
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: height*0.1,
+                                    ),
+                                    Container(
+                                      height: height*0.13,
+                                      padding: EdgeInsets.symmetric(horizontal: width*0.02),
+                                      child: Center(
+                                          child: Container(
+                                            width: width,
+                                            child: AutoSizeText("Precio: "+listPublication.price.toString()+r" $",
+                                              textAlign: TextAlign.left,
+                                              maxLines: 1,
+                                              maxFontSize: 21,
+                                              style: TextStyle(color:color3,fontSize: 21),
+                                            ),
+                                          )
+                                      ),
+                                    ),
+                                  ],
+                                )),
+
+                                Container(
+                                  child: Center(
+                                    child: Row(
+                                      children: [/*
+                                        GestureDetector(
+                                          child: Container(
+                                            height:height*0.18,
+                                            width:width*0.3,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(3),
+                                                color: color4
+                                            ),
+                                            child: Center(
+                                              child: Icon(Icons.edit,size:height*0.2,color: PrimaryColor,),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: width*0.03,
+                                        ),*/
+                                      ],
+                                    ),
+                                  )
+                                  )
+
+                              ],
+                            ),
+                            Positioned(
+                            bottom: 0,
+                              right: 0,
+                              child:
+                            GestureDetector(
+                              child: Container(
+                                width: height*0.25,
+                                height: height*0.25,
+                                decoration: BoxDecoration(color:colorError.withOpacity(1),
+                                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
+
+                                ),
+                                child: Center(
+                                  child: Icon(Icons.delete_forever,size:height*0.15,color: color4,),
+                                ),
+                              ),
+                            ),)
                           ],
                         ),
                       )

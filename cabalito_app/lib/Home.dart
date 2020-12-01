@@ -7,6 +7,7 @@ import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:cabalitoapp/screens/Seller.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:cabalitoapp/screens/UpdateSeller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
@@ -41,7 +42,7 @@ class _HomeState extends State<Home>{
                   ),
                   Expanded(
 
-                        child: stateNavigation.props[1]
+                        child: stateNavigation.props[2]
                   ),
                 ],
               ),
@@ -57,16 +58,38 @@ class _HomeState extends State<Home>{
                           child: Row(
                             children:[IconButton(
                               icon: Icon(Icons.menu, color: Colors.white,size: size.height*0.035),
-                              onPressed: widget.onMenuPressed,
+                              onPressed: (){
+                                FocusScope.of(context).requestFocus(new FocusNode());
+                                widget.onMenuPressed();},
                             ),
                             ],
                           ),
                         ),
-                        Container(
-                          width: size.width,
-                          child: Center(
-                            child: Text(stateNavigation.props[0],style: TextStyle(color: color4,fontSize: size.height*0.035),),
-                          ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: statusBarHeight,
+                            ),
+                            SizedBox(
+                                height: size.height*0.17*0.56,
+                                child:Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: size.width,
+                                      child: Center(
+                                        child: Text(stateNavigation.props[0],style: TextStyle(color: color4,fontSize: size.height*0.035),),
+                                      ),
+                                    ),
+                                    stateNavigation.props[1]==null?Container():Container(
+                                      width: size.width,
+                                      child: Center(
+                                        child: Text(stateNavigation.props[1],style: TextStyle(color: color4.withOpacity(0.7),fontSize: size.height*0.02),),
+                                      ),
+                                    )
+                                  ],
+                                )
+                            )],
                         )
                       ],
                     )

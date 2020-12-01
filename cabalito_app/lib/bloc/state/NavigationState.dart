@@ -24,19 +24,21 @@ abstract class NavigationState extends Equatable{
   const NavigationState();
 }
 class LoadingPageState extends NavigationState{
-  const LoadingPageState();
+  String title;
+  String subtitle;
+  LoadingPageState(this.title,this.subtitle);
   @override
-  List<Object> get props => ["Loading",Loading()];
+  List<Object> get props => [title,subtitle,Loading()];
 }
 class InitPageState extends NavigationState{
   const InitPageState();
   @override
-  List<Object> get props => ["Home",Template()];
+  List<Object> get props => ["Home",null,Template()];
 }
 class HomePageState extends NavigationState{
   const HomePageState();
   @override
-  List<Object> get props => ["Home",Template2()];
+  List<Object> get props => ["Home",null,Template2()];
 }
 class AddPublicationPageState extends NavigationState{
   List<Color> colors;
@@ -46,7 +48,7 @@ class AddPublicationPageState extends NavigationState{
   Publication publication;
   AddPublicationPageState(this.colors,this.brands,this.cities,this.modify,this.publication);
   @override
-  List<Object> get props => ["Publicación",AddPublication(colors,brands,cities,modify,publication)];
+  List<Object> get props => ["Mis Publicaciones",modify?"Modificar":"Agregar",AddPublication(colors,brands,cities,modify,publication)];
 }
 class PublicationPageState extends NavigationState{
   PublicationPageState();
@@ -58,7 +60,7 @@ class PublicationViewState extends NavigationState{
   List<ListPublication> publicationPaths;
   PublicationViewState(this.publicationsView,this.publicationPaths);
   @override
-  List<Object> get props => ["Publication",PublicationsView(publicationsView,publicationPaths)];
+  List<Object> get props => ["Publication","Ver",PublicationsView(publicationsView,publicationPaths)];
 }
 class PublicationListState extends NavigationState{
   List<ListPublication> listPublication;
@@ -67,40 +69,40 @@ class PublicationListState extends NavigationState{
   List<Brand> brands;
   PublicationListState(this.listPublication,this.colors,this.brands,this.cities);
   @override
-  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities)];
+  List<Object> get props => ["Publicacion",null,PublicationList(listPublication,colors,brands,cities)];
 
 }
 class SellerPublicationListState extends NavigationState{
   List<ListPublication> listPublication;
   SellerPublicationListState(this.listPublication);
   @override
-  List<Object> get props => ["Publicación",SellerPublicationList(listPublication)];
+  List<Object> get props => ["Mis Publicaciones",null,SellerPublicationList(listPublication)];
 }
 class MechanicPageState extends NavigationState{
   List<Mechanic> mechList;
   MechanicPageState(this.mechList);
   @override
-  List<Object> get props => ["Mecánicos",MechanicList(this.mechList)];
+  List<Object> get props => ["Mecánicos",null,MechanicList(this.mechList)];
 }
 class ViewSellerPageState extends NavigationState{
   Seller seller;
   ViewSellerPageState(this.seller);
   @override
-  List<Object> get props => ["Contacto",ViewSeller(this.seller)];
+  List<Object> get props => ["Usuario",null,ViewSeller(this.seller)];
 }
 class RegisterSellerPageState extends NavigationState{
   const RegisterSellerPageState();
   @override
-  List<Object> get props => ["Registro",RegisterSeller()];
+  List<Object> get props => ["Registro",null,RegisterSeller()];
 }
 class UpdateSellerPageState extends NavigationState{
   Seller seller;
   UpdateSellerPageState(this.seller);
   @override
-  List<Object> get props => ["Actualizar Datos",UpdateSeller(this.seller)];
+  List<Object> get props => ["Usuario","modificar",UpdateSeller(this.seller)];
 }
 class AddSellerPageState extends NavigationState{
   const AddSellerPageState();
   @override
-  List<Object> get props => ["Registro",RegisterSeller()];
+  List<Object> get props => ["Usuario","Registro",RegisterSeller()];
 }
