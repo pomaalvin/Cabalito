@@ -1,3 +1,4 @@
+
 import 'dart:io';
 import 'dart:ui';
 
@@ -7,6 +8,7 @@ import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../lib/Colors.dart';
@@ -24,11 +26,14 @@ class UpdateSellerState extends State<UpdateSeller>{
   Seller seller;
   UpdateSellerState(this.seller);
 
+  String mensaje="";
+
   TextEditingController name = TextEditingController();
   TextEditingController lastname = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
   File imageFile;
@@ -86,10 +91,6 @@ class UpdateSellerState extends State<UpdateSeller>{
                                 itemBuilder: (context,index){
                                   return Container(
                                     margin: EdgeInsets.only(bottom: 20.0),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(width: 0, color: BorderListColor),
-                                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                                    ),
                                     child: Stack(
                                       children: [
                                         Column(
@@ -103,12 +104,11 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                 onPressed: () {
                                                   _showChoiceDialog(context);
                                                 }),
-                                            buildLabel("Nombre: "),
-                                            input(name,seller.firstName),
-                                            buildLabel("Apellido: "),
-                                            input(lastname,seller.lastName),
-                                            buildLabel("Telefono: "),
-                                            input(phone,seller.phoneNumber),
+                                            input(name,"Nombre: "+seller.firstName,true),
+
+                                            input(lastname,"Apellido: "+seller.lastName,true),
+
+                                            input(phone,"Telefono: "+seller.phoneNumber,true),
                                           ],
                                         ),
                                         Row(
@@ -140,15 +140,14 @@ class UpdateSellerState extends State<UpdateSeller>{
       return Container(
           width: size.width*0.5,
           height: size.width*0.5,
-
           decoration: BoxDecoration(
+            border: Border.all(width: 4, color: PrimaryColor),
               image: DecorationImage(
                   fit: BoxFit.fill,
                   image: seller.imagePath=="vacio"?(AssetImage("assets/user.png")):(NetworkImage(api.url+"sellerImage/"+seller.imagePath)),
                   ),
             borderRadius: BorderRadius.circular(15.0),
               )
-
       );
     }else{
       return Image.file(
@@ -157,16 +156,17 @@ class UpdateSellerState extends State<UpdateSeller>{
           height: size.width*0.5);
     }
   }
-  Widget input(TextEditingController controller, String hint){
+  Widget input(TextEditingController controller, String hint, bool flag){
     return  Padding(
-      padding: EdgeInsets.only(top: size.height*0.03, left: size.width*0.05),
+      padding: EdgeInsets.only(top: size.height*0.015, left: size.width*0.05),
       child: TextField(
           controller: controller,
+          obscureText: flag,
           style: TextStyle(fontSize: 18),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
@@ -181,27 +181,10 @@ class UpdateSellerState extends State<UpdateSeller>{
     );
 
   }
-  Widget buildLabel(String textLabel) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-          Padding(
-          padding: EdgeInsets.only(top: size.height*0.03, left: size.width*0.05),
-          child: Text(textLabel,
-          style: TextStyle(
-          fontSize: 18.0,
-          color: TitleColor,
-
-          ),
-          ),
-          ),
-      ],
-    );
-  }
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: size.height*0.95, left: size.width*0.02,bottom: size.height*0.05),
+      padding: EdgeInsets.only(top: size.height*0.7, left: size.width*0.02),
       child: Container(
         width: size.width*0.35,
         height: size.height*0.08,
@@ -218,6 +201,7 @@ class UpdateSellerState extends State<UpdateSeller>{
           },
           child: Text(
             buttonText,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0
@@ -264,31 +248,60 @@ class UpdateSellerState extends State<UpdateSeller>{
       );
     });
   }
-
- /* Future<void> _showChoiceDialog(BuildContext context) {
+  /*decoration: BoxDecoration(
+  color: SecondaryColor,
+  shape: BoxShape.rectangle,
+  borderRadius: BorderRadius.circular(17),*/
+  Future<void> _changePassword(BuildContext context) {
     return showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Seleccione una opción"
-        ),
-        backgroundColor: SecondaryColor,
-        content: SingleChildScrollView(
-          child: ListBody(
+
+      return Dialog(
+        child: Container(
+          height: size.height*0.45,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(17),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10.0,
+                  offset: Offset(0.0,10.0),
+                )
+              ]
+          ),
+          child: Column(
             children: [
-              Row(
+              Column(
                 children: [
-                  GestureDetector(
-                    child: IconButton(icon: Icon(Icons.add_photo_alternate),iconSize: size.width*0.1,color: PrimaryColor,
-                        onPressed: () {
-                          _openGallery(context);
-                        }),
-                  ),
-                  Padding(padding: EdgeInsets.all(5.0)),
-                  GestureDetector(
-                    child: IconButton(icon: Icon(Icons.camera_enhance),iconSize: size.width*0.1,color: PrimaryColor,
-                        onPressed: () {
-                          _openCamera(context);
-                        }),
-                  ),
+                  input(password,"Contraseña",true),
+                  input(newPassword,"Nueva contraseña",true),
+                  input(confirmPassword,"Confirmar contraseña",true),
+                 RaisedButton(
+                      elevation: 10.0,
+
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      color: PrimaryColor,
+                      highlightElevation: 10.0,
+                      disabledColor: BorderListColor,
+                      onPressed: (){
+                        _change();
+                      },
+                      child: Text(
+                        "Cambiar",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0
+                        ),
+                      ),
+                    ),
+                  Text(mensaje,style: TextStyle(
+                    color: Colors.black
+                  ),)
+
                 ],
               )
 
@@ -297,13 +310,48 @@ class UpdateSellerState extends State<UpdateSeller>{
         ),
       );
     });
-  }*/
+  }
+  _change() async {
+    print("----------------------------------------------");
+    print(seller.idSeller);
+    print(seller.password);
+    print(password.text);
+    print(newPassword.text);
+    print(confirmPassword.text);
+    if(seller.password==password.text && newPassword.text==confirmPassword.text){
+      seller.password=newPassword.text;
+      BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,false));
+      setState(() {
+        mensaje="Éxito";
+      });
+      Navigator.pop(context);
+    }else{
+      setState(() {
+        mensaje="No coinciden los campos";
+      });
+    }
+    setState(() {
+      limpiar();
+    });
+
+  }
 
   _buttonAction(context, String option){
     if(option=="Actualizar"){
       _updateSeller(context, seller);
     }
-    if(option=="Cambiar Contraseña"){}
+    if(option=="Cambiar Contraseña"){
+      _changePassword(context);
+    }
+    if(option=="Cambiar"){
+      mensaje="";
+      _change();
+    }
+  }
+  limpiar(){
+    password.text="";
+    newPassword.text="";
+    confirmPassword.text="";
   }
   _updateSeller(context,Seller seller){
     if(name.text.isNotEmpty){

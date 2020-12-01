@@ -6,6 +6,9 @@ import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../lib/Colors.dart';
 import '../lib/ApiUrl.dart' as api;
@@ -32,6 +35,7 @@ class RegisterSellerState extends State<RegisterSeller>{
   Widget build(BuildContext context) {
     size=MediaQuery.of(context).size;
     return new Scaffold(
+      backgroundColor: Colors.white,
         body: Column(
           children: <Widget>[
             Expanded(
@@ -45,6 +49,7 @@ class RegisterSellerState extends State<RegisterSeller>{
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
                       ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             child: ScrollConfiguration(
@@ -53,30 +58,24 @@ class RegisterSellerState extends State<RegisterSeller>{
                                 padding: EdgeInsets.only(left: size.width*0.1 ,right: size.width*0.1),
                                 itemBuilder: (context,index){
                                   return Container(
-                                    margin: EdgeInsets.only(top: size.height*0.05,
-                                        bottom: size.height*0.01),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(width: 0, color: BorderListColor),
-                                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                                    ),
                                     child: Stack(
                                       children: [
                                         Column(
+
                                           children: [
                                             Container(
-                                                width: size.width*0.5,
-                                                height: size.width*0.5,
-                                                margin: EdgeInsets.only(top: size.height*0.05),
-
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(width: 5, color: PrimaryColor),
-                                                  image: DecorationImage(
-                                                    image: AssetImage("assets/user.png"),
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                  borderRadius: BorderRadius.circular(15.0),
-                                                )
-                                            ),
+                                                margin: EdgeInsets.only(top: size.height*0.02, left: size.width*0.05),
+                                                  width: size.width*0.5,
+                                                  height: size.width*0.5,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(width: 4, color: PrimaryColor),
+                                                    image: DecorationImage(
+                                                      image: AssetImage("assets/user.png"),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                    borderRadius: BorderRadius.circular(15.0),
+                                                  )
+                                              ),
                                             input(name,"Nombre"),
                                             input(lastname,"Apellido"),
                                             input(phone,"Teléfono"),
@@ -105,14 +104,17 @@ class RegisterSellerState extends State<RegisterSeller>{
     );
   }
   Widget input(TextEditingController controller, String hint){
-    return Padding(
+    return Container(
       padding: EdgeInsets.only(top: size.height*0.05, left: size.width*0.05),
+      width: size.width*0.75,
+
       child: TextField(controller: controller,
           cursorWidth: 1,
           style: TextStyle(fontSize: 18),
           decoration: InputDecoration(hintStyle: TextStyle(
-              color: Colors.black
+              color: Colors.grey
               ),
+              border: InputBorder.none,
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey),
 
@@ -121,22 +123,15 @@ class RegisterSellerState extends State<RegisterSeller>{
                 borderSide: BorderSide(color: PrimaryColor),
 
               ),
-              hintText: hint
-          )
-      ),
-    );
+              hintText: hint,
 
-  }
-  Widget buildLabel(String textLabel) {
-    return Padding(
-      padding: EdgeInsets.only(top:size.height*0.05, left: size.width*0.05),
-      child: Text(textLabel,
-        style: TextStyle(
-          fontSize: 18.0,
-          color: TitleColor,
-        ),
-      ),
-    );
+
+            //  borderRadius: BorderRadius.circular(15.0),
+            )
+
+          )
+      );
+
   }
 
   Widget buildButton(String buttonText, Color buttonColor) {

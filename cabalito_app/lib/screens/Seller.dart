@@ -27,7 +27,7 @@ class _ViewSellerState extends State<ViewSeller>{
     size=MediaQuery.of(context).size;
     return new Scaffold(
         body: Container(
-                      margin: new EdgeInsets.only(top: 6.0),
+                      margin: new EdgeInsets.only(top: 1.0),
                       padding: new EdgeInsets.only(top:30.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -76,30 +76,22 @@ class _Card extends StatelessWidget{
     size=MediaQuery.of(context).size;
     return  Container(
       width: size.width*0.80,
-      height: size.height*0.7,
-      margin: EdgeInsets.only(bottom: 25.0),
+      height: size.height*0.75,
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: BorderListColor),
         borderRadius: BorderRadius.all(Radius.circular(30.0)),
         color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              blurRadius: 10.0,
-              offset: Offset(0.0,10.0),
-            )
-          ]
       ),
       child: Stack(
         children: [
           Column(
             children: [
               Container(
-                width: size.width*0.5,
-                height: size.width*0.5,
-                margin: EdgeInsets.only(top: heightScreen*0.05),
+                width: size.width*0.7,
+                height: size.width*0.7,
                 decoration: BoxDecoration(
+                  border: Border.all(width: 4, color: PrimaryColor),
                   image: DecorationImage(
+
                       image: seller.imagePath=="vacio"?(AssetImage("assets/user.png")):(NetworkImage(api.url+"sellerImage/"+seller.imagePath)),
                       fit: BoxFit.fill
                   ),
@@ -109,17 +101,17 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
+                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.075),
                     child: Text("Nombre: ",
                       style: TextStyle(
                         fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
                         color: PrimaryColor,
-
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
+                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.01),
                     child: Text(seller.firstName,
                       style: TextStyle(
                         fontSize: 18.0,
@@ -128,7 +120,7 @@ class _Card extends StatelessWidget{
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
+                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.01),
                     child: Text(seller.lastName,
                       style: TextStyle(
                         fontSize: 18.0,
@@ -146,6 +138,7 @@ class _Card extends StatelessWidget{
                     child: Text("Telefono: ",
                       style: TextStyle(
                         fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
                         color: PrimaryColor,
                       ),
                     ),
@@ -167,6 +160,7 @@ class _Card extends StatelessWidget{
                     padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075,bottom: 20),
                     child: Text("Email: ",
                       style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                         color: PrimaryColor,
                       ),
