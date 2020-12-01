@@ -1,5 +1,6 @@
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cabalitoapp/model/Brand.dart';
@@ -19,12 +20,16 @@ class PublicationList extends StatefulWidget{
   List<Color> colors;
   List<Brand> brands;
   List<City> cities;
-  PublicationList(this.listPublications,this.colors,this.brands,this.cities);
+  Color newColor;
+  int numPue;
+  Brand newBrand;
+  City newCity;
+  PublicationList(this.listPublications,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
   @override
-  State createState() => _PublicationList(listPublications,colors,brands,cities);
+  State createState() => _PublicationList(listPublications,colors,brands,cities,newColor,newCity,newBrand,numPue);
 }
 class _PublicationList extends State<PublicationList>{
-  _PublicationList(this.listPublications,this.colors,this.brands,this.cities);
+  _PublicationList(this.listPublications,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
   List<Color> colors=List();
   List<Brand> brands=List();
   List<City> cities=List();
@@ -235,9 +240,7 @@ class _PublicationList extends State<PublicationList>{
                         Expanded(
                           child: Stack(
                             children: <Widget>[
-
                               Container(
-
                                   child: Column(
                                     children: [
                                       Expanded(
@@ -246,12 +249,10 @@ class _PublicationList extends State<PublicationList>{
                                           child: ListView.builder(
                                             padding: EdgeInsets.only(left: size.width/9 ,right: size.width/9),
                                             itemBuilder: (context,index){
-
                                               return _ViewPublic(size.width,size.height,listPublications[index]);
                                             },
                                             itemCount: listPublications.length,
                                           ),
-
                                         ),
                                       ),
                                     ],
@@ -270,8 +271,45 @@ class _PublicationList extends State<PublicationList>{
       ),
     );
   }
+  Widget Busqueda(controller){
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: PrimaryColor.withOpacity(0.6),width: 2)
+      ),
+      child: TextField(
+        controller: controller,
+        cursorColor: PrimaryColor.withOpacity(0.6),
+        cursorWidth: 1,
+        style: TextStyle(color: color3.withOpacity(0.6),fontSize: 18),
+        decoration: InputDecoration(
+          fillColor: PrimaryColor,
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.only(left: 10,top: 15,bottom: 0,right: 0),
+          hintText: "Buscar publicacion",
+          suffixIcon: GestureDetector(
+            child: Icon(Icons.search,color: PrimaryColor,),
+            onTap: () async {
+              print("ingrese");
+              //listPublication=null;
+              setState(() {
 
+                BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text));
+              });
+            },
+          ) ,
+          hintStyle: TextStyle(color: PrimaryColor.withOpacity(0.7)),
+          // focusColor: Colors.white,
+          // labelStyle: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
+  }
+  listaSearchAct(List<ListPublication> listPublication) {
+    listPublications=listPublication;
+  }
 }
+
 
 class _ViewPublic extends StatelessWidget{
   KFDrawerController _drawerController;
@@ -320,7 +358,7 @@ class _ViewPublic extends StatelessWidget{
                               image: NetworkImage(api.url+"image/"+listPublication.imagePath),
                               fit: BoxFit.fill
                             ),
-                            borderRadius: BorderRadius.circular(15.0),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ],
@@ -383,37 +421,7 @@ class MyBehavior extends ScrollBehavior {
     return child;
   }
 }
-class Busqueda extends StatelessWidget{
-  TextEditingController controller;
-  Busqueda(this.controller);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: PrimaryColor.withOpacity(0.6),width: 2)
-      ),
-      child: TextField(
-        controller: controller,
-        cursorColor: PrimaryColor.withOpacity(0.6),
-        cursorWidth: 1,
-        style: TextStyle(color: color3.withOpacity(0.6),fontSize: 18),
-        decoration: InputDecoration(
-          fillColor: PrimaryColor,
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(left: 10,top: 15,bottom: 0,right: 0),
-          hintText: "Buscar publicacion",
-          suffixIcon:Icon(Icons.search,color: PrimaryColor,) ,
-
-          hintStyle: TextStyle(color: PrimaryColor.withOpacity(0.7)),
-          // focusColor: Colors.white,
-          // labelStyle: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-}
 
 class AlertItemPublication{
   alertColor(context,List<Color> list)async{

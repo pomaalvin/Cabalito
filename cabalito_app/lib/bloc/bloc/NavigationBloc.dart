@@ -7,9 +7,11 @@ import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/repository/MechanicRepository.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
+import 'package:cabalitoapp/model/Color.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
+import 'package:cabalitoapp/screens/SplashScreen.dart';
 import "../../model/Color.dart";
 import 'package:cabalitoapp/repository/SellerRepository.dart';
 
@@ -30,12 +32,17 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is PublicationPageEvent){
       yield LoadingPageState("Home",null);
       yield PublicationPageState();
-
     }
     else if(event is MechanicPageEvent){
       yield LoadingPageState("Mechanic",null);
       List<Mechanic> mechanic=await _mechanicRepository.getMechanic();
       yield MechanicPageState(mechanic);
+    }
+    else if(event is SplashScreenEvent){
+      yield SplashScreenState1();
+    }
+    else if(event is LogInEvent){
+      yield LogInState();
     }
     else if(event is AddQualificationEvent){
       yield LoadingPageState("Mechanic","Agregar");
@@ -126,8 +133,12 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<Color> colors=await  _publicationRepository.getColors();
       List<City> cities=await  _publicationRepository.getCities();
       List<Brand> brands=await  _publicationRepository.getBrands();
+      Color newColor;
+      int numPue;
+      Brand newBrand;
+      City newCity;
       List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists();
-      yield PublicationListState(publicationLists,colors,brands,cities);
+      yield PublicationListState(publicationLists,colors,brands,cities,newColor,newCity,newBrand,numPue);
       /*if(estado){
 
       }
@@ -149,6 +160,14 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       List<Brand> brands=await  _publicationRepository.getBrands();
 
       yield AddPublicationPageState(colors,brands,cities,true,publicationEdit);
+    }
+    else if(event is PublicationSearchEvent){
+      yield LoadingPageState();
+      List<Color> colors=await  _publicationRepository.getColors();
+      List<City> cities=await  _publicationRepository.getCities();
+      List<Brand> brands=await  _publicationRepository.getBrands();
+      List<ListPublication> publicationsSearchLists=await  _publicationRepository.getpublicationSearch(event.newCity,event.newColor,event.newBrand,event.numPuertas,event.search);
+      yield PublicationSearchState(publicationsSearchLists,colors,brands,cities,event.newColor,event.newCity,event.newBrand,event.numPuertas);
     }
   }
 }

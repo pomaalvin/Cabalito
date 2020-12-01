@@ -92,22 +92,22 @@ class _ViewPublications extends State<PublicationsView>{
                                       //},
                                       child: Image.network( ind.value ,fit: BoxFit.fill),
                                       onPanEnd: (dt){
-                                        val=ind.key;
-                                        print("ggg ${val}");
+                                        setState(() {
+                                          val=ind.key;
+                                        });
                                       },
                                       onPanDown: (dt){
+                                        setState(() {
                                           val=ind.key;
-                                          print("ggg ${val}");
+                                        });
                                       },
                                     ),
-
                           );
                         },
                       );
                     }).toList(),
                   ),
                 )
-
               ],
             ),
             Row(
@@ -115,7 +115,6 @@ class _ViewPublications extends State<PublicationsView>{
               children: [
                 Container(
                   child: images.length>1?SelectedPhoto(images.length,val):Container(),
-
                 ),
               ],
             ),
@@ -397,7 +396,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 color: Colors.transparent,
                                 width: size.width*0.655,
                                 height: size.height*0.03,
-                                child: Text("D. Numero",
+                                child: Text("Puertas",
                                   style: TextStyle(
                                       color: color3,
                                       fontSize: 15.0

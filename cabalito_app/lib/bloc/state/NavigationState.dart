@@ -30,6 +30,16 @@ class LoadingPageState extends NavigationState{
   @override
   List<Object> get props => [title,subtitle,Loading()];
 }
+class SplashScreenState1 extends NavigationState{
+  const SplashScreenState1();
+  @override
+  List<Object> get props => ["Loading",null,SplashScreenView()];
+}
+class LogInState extends NavigationState{
+  const LogInState();
+  @override
+  List<Object> get props => ["Loading",null,LogIn()];
+}
 class InitPageState extends NavigationState{
   const InitPageState();
   @override
@@ -67,9 +77,13 @@ class PublicationListState extends NavigationState{
   List<Color> colors;
   List<City> cities;
   List<Brand> brands;
-  PublicationListState(this.listPublication,this.colors,this.brands,this.cities);
+  Color newColor;
+  int numPue;
+  Brand newBrand;
+  City newCity;
+  PublicationListState(this.listPublication,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
   @override
-  List<Object> get props => ["Publicacion",null,PublicationList(listPublication,colors,brands,cities)];
+  List<Object> get props => ["Publicacion",null,PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
 
 }
 class SellerPublicationListState extends NavigationState{
@@ -106,3 +120,21 @@ class AddSellerPageState extends NavigationState{
   @override
   List<Object> get props => ["Usuario","Registro",RegisterSeller()];
 }
+class PublicationSearchState extends NavigationState{
+  List<ListPublication> listPublication;
+  List<Color> colors;
+  List<City> cities;
+  List<Brand> brands;
+
+  Color newColor;
+  int numPue;
+  Brand newBrand;
+  City newCity;
+  PublicationSearchState(this.listPublication,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
+  @override
+  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
+}
+
+
+
+

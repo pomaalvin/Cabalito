@@ -42,6 +42,7 @@ dependencies:
   flutter_paginator: ^0.0.6
   fluttertoast: ^7.1.5
   auto_size_text: ^2.1.0
+  splashscreen: ^1.2.0
 
 
 dev_dependencies:
