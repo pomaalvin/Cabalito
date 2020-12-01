@@ -21,7 +21,8 @@ class LogInState extends State<LogIn>{
             begin: Alignment.topCenter,
             colors: [
               PrimaryColor,
-              PrimaryColor,
+              Color.fromRGBO(1, 89, 70, 1),
+              SecondaryColor,
             ]
           )
         ),
