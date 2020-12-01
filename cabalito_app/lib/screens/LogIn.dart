@@ -162,6 +162,68 @@ class LogInState extends State<LogIn>{
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        "Encuentranos en:",
+                        style: TextStyle(
+                            color: BorderListColor,
+                            fontSize: 15
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.blue
+                              ),
+                              child: Center(
+                                child: FlatButton(
+                                    onPressed: (){},
+                                    child: Text(
+                                      "Facebook",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15
+                                      ),
+                                    )
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Expanded(
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.redAccent
+                              ),
+                              child: Center(
+                                child: FlatButton(
+                                    onPressed: (){},
+                                    child: Text(
+                                      "Gmail",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15
+                                      ),
+                                    )
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
