@@ -88,7 +88,7 @@ class _PublicationList extends State<SellerPublicationList>{
                                                         CircularProgressIndicator(
 
                                                           backgroundColor: Colors.transparent,
-                                                          valueColor: new AlwaysStoppedAnimation<Color>(cargando?PrimaryColor:Colors.transparent),
+                                                          valueColor: new AlwaysStoppedAnimation<Color>(cargando ||listPublications.length<=5?PrimaryColor:Colors.transparent),
                                                         )
                                                       ],
                                                     )

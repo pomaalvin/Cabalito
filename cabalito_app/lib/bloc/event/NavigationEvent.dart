@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/model/ImagePublicatio.dart';
 import 'package:cabalitoapp/model/Mechanic.dart';
 import 'dart:io';
 
@@ -80,6 +81,14 @@ class AddPublicationEvent extends NavigationEvent {
   AddPublicationEvent(this.publication,this.images);
   @override
   List<Object> get props => [publication,images];
+}
+class ModifyPublicationEvent extends NavigationEvent {
+  Publication publication;
+  List<File> images;
+  List<ImagePublication> imagesDelete;
+  ModifyPublicationEvent(this.publication,this.images,this.imagesDelete);
+  @override
+  List<Object> get props => [publication,images,this.imagesDelete];
 }
 class AddSellerEvent extends NavigationEvent {
 

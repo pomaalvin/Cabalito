@@ -9,6 +9,7 @@ import 'package:cabalitoapp/lib/Alerts.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/Color.dart';
+import 'package:cabalitoapp/model/ImagePublicatio.dart';
 import 'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/publicationItem/AlertItemPublication.dart';
@@ -51,7 +52,8 @@ class _AddPublicationState extends State<AddPublication>{
   TextEditingController motor = TextEditingController();
   List<File> imagePublication=List();
   File imageSelected;
-  String imageNetworkSelected;
+  ImagePublication imageNetworkSelected;
+  List<ImagePublication> imagesDelete=List();
   _openGallery() async{
     var imagePicker = ImagePicker();
     var picture=await imagePicker.getImage(source:  ImageSource.gallery);
@@ -162,7 +164,7 @@ class _AddPublicationState extends State<AddPublication>{
                                        border: Border.all(color: _validationInputs[5]?Colors.transparent:colorError,width: 1.5),
                                       borderRadius: BorderRadius.circular(size.height*0.01),
                                       image: DecorationImage(
-                                          image: imageSelected!=null?FileImage(imageSelected):imageNetworkSelected!=null?NetworkImage(api.url+"image/"+imageNetworkSelected):AssetImage("assets/publication/no_image.jpg"),
+                                          image: imageSelected!=null?FileImage(imageSelected):imageNetworkSelected!=null?NetworkImage(api.url+"image/"+imageNetworkSelected.path):AssetImage("assets/publication/no_image.jpg"),
                                           fit: BoxFit.cover,
 
                                       ),
@@ -173,21 +175,60 @@ class _AddPublicationState extends State<AddPublication>{
                                             Positioned(
                                               bottom:0,
                                               right: 0,
-                                              child: Container(
-                                                width:size.height*0.06,
-                                                height:size.height*0.06,
-                                                decoration: BoxDecoration(
+                                              child: GestureDetector(
+                                                onDoubleTap: (){
+                                                  setState(() {
+                                                    if(imageNetworkSelected!=null){
+                                                      imagesDelete.add(imageNetworkSelected);
+                                                      publication.images.removeWhere((image){
+                                                        return image.idImagePublication==imageNetworkSelected.idImagePublication?true:false;
+                                                      });
+                                                      if(publication.images.length>0){
+                                                        imageSelected=null;
+                                                        imageNetworkSelected=publication.images[0];
+                                                      }
+                                                      else if(imagePublication.length>0){
+                                                        imageSelected=imagePublication[0];
+                                                        imageNetworkSelected=null;
+                                                      }
+                                                      else{
+                                                        imageNetworkSelected=null;
+                                                        imageSelected=null;
+                                                      }
+                                                    }
+                                                    else if(imageSelected!=null){
+                                                      imagePublication.remove(imageSelected);
+                                                      if(imagePublication.length>0){
+                                                        imageSelected=imagePublication[0];
+                                                        imageNetworkSelected=null;
+                                                      }
+                                                      else if(publication!=null&&publication.images.length>0){
+                                                        imageSelected=null;
+                                                        imageNetworkSelected=publication.images[0];
+                                                      }
+                                                      else{
+                                                        imageNetworkSelected=null;
+                                                        imageSelected=null;
+                                                      }
+                                                    }
+                                                  });
+                                                },
+                                                child: Container(
+                                                    width:size.height*0.06,
+                                                    height:size.height*0.06,
+                                                    decoration: BoxDecoration(
 
-                                                  color:color4.withOpacity(0.4),
-                                                  borderRadius: BorderRadius.circular(size.height*0.01)
+                                                        color:color4.withOpacity(0.4),
+                                                        borderRadius: BorderRadius.circular(size.height*0.01)
+                                                    ),
+                                                    child: Center(
+                                                      child: Icon(
+                                                        Icons.delete,
+                                                        color: color3.withOpacity(0.8),
+                                                      ),
+                                                    )
                                                 ),
-                                                child: Center(
-                                                  child: Icon(
-                                                      Icons.delete,
-                                                    color: color3.withOpacity(0.8),
-                                                  ),
-                                                )
-                                              ),
+                                              )
                                             ),
                                           ],
                                         )
@@ -258,7 +299,7 @@ class _AddPublicationState extends State<AddPublication>{
 
                             color:PrimaryColor,
                             onPressed: (){
-                                  _addPublication();
+                                  _addPublication(modify);
                             },
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
                             child: Center(
@@ -451,7 +492,7 @@ class _AddPublicationState extends State<AddPublication>{
                       ),
                     );
                   }
-                  else if(index<imagePublication.length){
+                  else if(index<imagePublication.length+1){
                     return GestureDetector(
                       onTap: (){
                         setState(() {
@@ -470,7 +511,7 @@ class _AddPublicationState extends State<AddPublication>{
                             imageSelected=null;
                           });
                         },
-                        child: CardImage(null, size,publication.images[index-imagePublication.length-1])
+                        child: CardImage(null, size,publication.images[index-imagePublication.length-1].path)
                     );
                   }
                 }
@@ -543,7 +584,7 @@ class _AddPublicationState extends State<AddPublication>{
     }
   }
 
-  _addPublication(){
+  _addPublication(modify){
     if(_verificarCampos()){
       Publication publication= Publication();
       publication.idColor=newColor.idColor;
@@ -559,7 +600,14 @@ class _AddPublicationState extends State<AddPublication>{
       publication.licensePlate=plate.text;
       print(price.text);
       publication.price=double.parse(price.text);
-      BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
+      if(modify){
+        publication.idPublication=this.publication.idPublication;
+        BlocProvider.of<NavigationBloc>(context).add(ModifyPublicationEvent(publication,imagePublication,imagesDelete));
+      }
+      else{
+
+        BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
+      }
     }
 
   }
@@ -586,6 +634,7 @@ class _AddPublicationState extends State<AddPublication>{
       else  _validationInputs[4]=true;
       if(imagePublication.length==0) {_validationInputs[5]=false;ver=false;}
       else  _validationInputs[5]=true;
+      if(publication!=null&&publication.images.length>0) {_validationInputs[5]=true;ver=true;}
     });
     if(!ver){
       alertError("Llene todos los campos requeridos",context);

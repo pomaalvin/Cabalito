@@ -1,3 +1,4 @@
+import 'package:cabalitoapp/model/ImagePublicatio.dart';
 import 'package:intl/intl.dart';
 class Publication {
   int _idPublication;
@@ -14,7 +15,7 @@ class Publication {
   double _price;
   DateTime _datePublication;
   int _status;
-  List <String> _images;
+  List <ImagePublication> _images;
   Publication();
 
   int get status => _status;
@@ -101,9 +102,9 @@ class Publication {
     _idPublication = value;
   }
 
-  List<String> get images => _images;
+  List<ImagePublication> get images => _images;
 
-  set images(List<String> value) {
+  set images(List<ImagePublication> value) {
     _images = value;
   }
 

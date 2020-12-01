@@ -117,10 +117,25 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       bool estado=await _publicationRepository.addPublication(event.publication,event.images);
       print(estado);
       if(estado){
-        yield HomePageState();
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
       }
       else{
-        yield HomePageState();
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
+      }
+    }
+    else if(event is ModifyPublicationEvent){
+      yield LoadingPageState("Mis Publicaciones","Modificar");
+      bool estado=await _publicationRepository.modifyPublication(event.publication,event.images,event.imagesDelete);
+      print(estado);
+      if(estado){
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
+      }
+    else{
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
       }
     }
     else if(event is DeletePublicationEvent){
