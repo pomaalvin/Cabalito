@@ -1,6 +1,8 @@
 import 'package:cabalitoapp/lib/Colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 class LogIn extends StatefulWidget{
   @override
   State createState() => LogInState();
@@ -10,6 +12,24 @@ class LogInState extends State<LogIn>{
   void initState(){
     super.initState();
   }
+
+  String _launchGithub = 'https://github.com/pjalvin/Cabalito';
+  String _launchFacebook = 'https://www.facebook.com/Cabalito-104841941479769/?view_public_for=104841941479769';
+  String _launchTwitter = 'https://twitter.com/Cabalito4';
+
+  Future<void> _launchInBrowser(String url)async{
+    if(await canLaunch(url)){
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: false,
+        headers: <String,String>{'header_key': 'header_value'},
+      );
+    }else{
+      throw 'No se puede abrir $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +41,11 @@ class LogInState extends State<LogIn>{
             begin: Alignment.topCenter,
             colors: [
               PrimaryColor,
-              Color.fromRGBO(1, 89, 70, 1),
-              SecondaryColor,
+              PrimaryColor
             ]
           )
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             SizedBox(
               height: MediaQuery.of(context).size.height*0.032,
@@ -35,7 +53,7 @@ class LogInState extends State<LogIn>{
             Padding(
               padding: EdgeInsets.all(20),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text("Iniciar Sesión",
                     style: TextStyle(
@@ -46,7 +64,7 @@ class LogInState extends State<LogIn>{
                   SizedBox(
                     height: MediaQuery.of(context).size.height*0.020,
                   ),
-                  Text("Bienvenidos",
+                  Text("Bienvenido",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -58,7 +76,8 @@ class LogInState extends State<LogIn>{
             SizedBox(
               height: MediaQuery.of(context).size.height*0.025,
             ),
-            Expanded(
+            Container(
+              height: MediaQuery.of(context).size.height*0.70,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -100,7 +119,10 @@ class LogInState extends State<LogIn>{
                                     color: Colors.grey,
                                     fontSize: 16
                                   ),
-                                  border: InputBorder.none
+                                  border: InputBorder.none,
+                                  prefixIcon: Icon(Icons.email,
+                                    color: Colors.grey,
+                                  )
                                 ),
                               ),
                             ),
@@ -120,8 +142,12 @@ class LogInState extends State<LogIn>{
                                       color: Colors.grey,
                                       fontSize: 16
                                     ),
-                                    border: InputBorder.none
+                                    border: InputBorder.none,
+                                  prefixIcon: Icon(Icons.vpn_key,
+                                    color: Colors.grey,
+                                  ),
                                 ),
+                                obscureText: true,
                               ),
                             )
                           ],
@@ -135,7 +161,7 @@ class LogInState extends State<LogIn>{
                           child: Text(
                             "Registrarse",
                             style: TextStyle(
-                              color: BorderListColor,
+                              color: Colors.grey,
                               fontSize: 15
                             ),
                           )
@@ -169,7 +195,7 @@ class LogInState extends State<LogIn>{
                       Text(
                         "Encuentranos en:",
                         style: TextStyle(
-                            color: BorderListColor,
+                            color: Colors.grey,
                             fontSize: 15
                         ),
                       ),
@@ -177,52 +203,38 @@ class LogInState extends State<LogIn>{
                         height: 40,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.blue
-                              ),
-                              child: Center(
-                                child: FlatButton(
-                                    onPressed: (){},
-                                    child: Text(
-                                      "Facebook",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15
-                                      ),
-                                    )
-                                ),
-                              ),
+                          FloatingActionButton(
+                            backgroundColor: Color(0xff00acee),
+                            onPressed: (){
+                              _launchInBrowser(_launchTwitter);
+                            },
+                            child: Icon(FontAwesomeIcons.twitter,
                             ),
                           ),
                           SizedBox(
-                            width: 30,
+                            width: MediaQuery.of(context).size.width*0.06,
                           ),
-                          Expanded(
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Colors.redAccent
-                              ),
-                              child: Center(
-                                child: FlatButton(
-                                    onPressed: (){},
-                                    child: Text(
-                                      "Gmail",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15
-                                      ),
-                                    )
-                                ),
-                              ),
+                          FloatingActionButton(
+                            onPressed: (){
+                              _launchInBrowser(_launchFacebook);
+                            },
+                            backgroundColor: Color(0xff3b5998),
+                            child: Icon(FontAwesomeIcons.facebookSquare,
                             ),
-                          )
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width*0.06,
+                          ),
+                          FloatingActionButton(
+                            onPressed: (){
+                              _launchInBrowser(_launchGithub);
+                            },
+                            backgroundColor: Colors.black,
+                            child: Icon(FontAwesomeIcons.github,
+                            ),
+                          ),
                         ],
                       )
                     ],
