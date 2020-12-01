@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
           create:(context2)=>NavigationBloc(PublicationRepository(),MechanicRepository(),SellerRepository()),
-          child:LogIn()),
+          child:Menu()),
     );
   }
 }

@@ -1,10 +1,7 @@
 import 'package:cabalitoapp/lib/Colors.dart';
-import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:splashscreen/splashscreen.dart';
 
-import '../Home.dart';
 
 class SplashScreenView extends StatefulWidget{
   @override
@@ -16,10 +13,10 @@ class SplashScreenViewState extends State<SplashScreenView> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 5,
-      backgroundColor: Colors.white,
+      backgroundColor: PrimaryColor,
       image: Image.asset('assets/logo.png'),
-      loaderColor: PrimaryColor,
-      photoSize: 150.0,
+      loaderColor: SecondaryColor,
+      photoSize: 110.0,
     );
   }
 }
