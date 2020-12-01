@@ -40,6 +40,9 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is SplashScreenEvent){
       yield SplashScreenState1();
     }
+    else if(event is LogInEvent){
+      yield LogInState();
+    }
     else if(event is AddQualificationEvent){
       yield LoadingPageState();
       bool estado=await _mechanicRepository.addQualification(event.stars);

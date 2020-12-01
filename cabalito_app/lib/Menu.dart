@@ -135,7 +135,6 @@ class MenuState extends State<Menu>{
 
             },
           ),
-
           KFDrawerItem.initWithPage(
             text: Text("Splash",
               style: TextStyle(
@@ -150,6 +149,23 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(SplashScreenEvent());
             },
           ),
+          KFDrawerItem.initWithPage(
+            text: Text("LogIn",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.login,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
+            },
+          ),
+
+
+
           /*
           KFDrawerItem.initWithPage(
             text: Text("Publicación",

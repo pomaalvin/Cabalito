@@ -17,6 +17,10 @@ class SplashScreenEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
 }
+class LogInEvent extends NavigationEvent {
+  @override
+  List<Object> get props => [];
+}
 class HomePageEvent extends NavigationEvent {
   @override
   List<Object> get props => [];
