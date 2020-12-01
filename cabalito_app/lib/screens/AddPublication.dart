@@ -2,6 +2,7 @@
 import'dart:io';
 import 'dart:ui';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/lib/Alerts.dart';
@@ -259,11 +260,29 @@ class _AddPublicationState extends State<AddPublication>{
                             onPressed: (){
                                   _addPublication();
                             },
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
                             child: Center(
                               child: Text(modify?"Modificar":"Guardar",style:TextStyle(color:color4,fontSize: size.height*0.03)),
                             ),
                           ),
-                        )
+                        ),
+                        modify?Container(
+                          width: size.width,
+                          height: size.height*0.08,
+
+                          child: MaterialButton(
+
+
+                            color:colorError,
+                            onPressed: (){
+                              _delPublication();
+                            },
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+                            child: Center(
+                              child: AutoSizeText("Eliminar Publicación",style:TextStyle(color:color4,fontSize: size.height*0.03)),
+                            ),
+                          ),
+                        ):Container()
                       ],
                     ),
                   ),
@@ -543,6 +562,14 @@ class _AddPublicationState extends State<AddPublication>{
       BlocProvider.of<NavigationBloc>(context).add(AddPublicationEvent(publication,imagePublication));
     }
 
+  }
+  _delPublication()async{
+    print(publication.idPublication);
+    FocusScope.of(context).requestFocus(new FocusNode());
+    var alert=AlertItemPublication();
+    bool res=await alert.alertEliminar(context);
+    if(res==true)
+    BlocProvider.of<NavigationBloc>(context).add(DeletePublicationEvent(publication.idPublication));
   }
   _verificarCampos(){
     var ver=true;

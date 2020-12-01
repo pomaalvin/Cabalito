@@ -5,6 +5,7 @@ import 'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/screens/PublicationList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../lib/ApiUrl.dart' as api;
 import 'dart:async';
@@ -145,10 +146,10 @@ class PublicationRepository{
 
     }
   }
-  Future<List<ListPublication>> getSellerPublicationList()async {
+  Future<List<ListPublication>> getSellerPublicationList(int page)async {
     try{
       List<ListPublication> listPublications=List();
-      var url=api.url + "seller/publications/?n=5&i=0";
+      var url=api.url + "seller/publications/?n=5&i="+(page*5).toString();
       final response = await http.get(url
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -170,6 +171,27 @@ class PublicationRepository{
     catch(e){
       print(e);
       return null;
+
+    }
+  }
+  Future<bool> deletePublication(int idPublication)async{
+    try{
+      var url=api.url + "publications?idPublication="+idPublication.toString();
+      final response = await http.delete(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      if(response.statusCode==200){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    catch(e){
+      print(e);
+      return false;
 
     }
   }
@@ -217,6 +239,7 @@ class PublicationRepository{
       print(url);
       var element =  json.decode(utf8.decode(response.bodyBytes));
       Publication newPublication=Publication();
+      newPublication.idPublication=idPublication;
       newPublication.title=element["title"];
       newPublication.description=element["description"];
       newPublication.price=element["price"];

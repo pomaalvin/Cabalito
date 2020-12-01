@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
+import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,12 +20,32 @@ class SellerPublicationList extends StatefulWidget{
 class _PublicationList extends State<SellerPublicationList>{
   _PublicationList(this.listPublications);
   List<ListPublication> listPublications=List();
-
+  ScrollController scrollController=ScrollController();
   TextEditingController buscarPublicacion = TextEditingController();
+  int pagina=0;
+  bool cargando=true;
   @override
   void initState(){
     super.initState();
+    scrollController.addListener(() async{
+      if(
+      scrollController.position.maxScrollExtent==scrollController.offset&&cargando){
+        pagina++;
+        PublicationRepository publicationRepository=PublicationRepository();
+        var pubs=await publicationRepository.getSellerPublicationList(pagina);
+        if(pubs.length==0){
+          setState(() {
 
+            cargando=false;
+          });
+        }
+        else{
+          setState((){
+            listPublications.addAll(pubs);
+          });
+        }
+      }
+    });
   }
   Size size;
   @override
@@ -57,12 +78,28 @@ class _PublicationList extends State<SellerPublicationList>{
                                             separatorBuilder: (context,index){
                                               return SizedBox(height: 20,);
                                             },
+                                            controller:scrollController,
                                             padding: EdgeInsets.symmetric(horizontal: size.width*0.1,vertical: size.width*0.1),
                                             itemBuilder: (context,index){
+                                                if(index==listPublications.length){
+                                                  return Container(
+                                                    child: Column(
+                                                      children: [
+                                                        CircularProgressIndicator(
 
-                                              return _ViewPublic(size.width*0.8,size.height*0.18,listPublications[index],context);
+                                                          backgroundColor: Colors.transparent,
+                                                          valueColor: new AlwaysStoppedAnimation<Color>(cargando?PrimaryColor:Colors.transparent),
+                                                        )
+                                                      ],
+                                                    )
+                                                  );
+                                                }
+                                                else{
+
+                                                  return _ViewPublic(size.width*0.8,size.height*0.18,listPublications[index],context);
+                                                }
                                             },
-                                            itemCount: listPublications.length,
+                                            itemCount: listPublications.length+1,
                                           ),
 
                                         ),
@@ -182,50 +219,10 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
                                   ],
                                 )),
 
-                                Container(
-                                  child: Center(
-                                    child: Row(
-                                      children: [/*
-                                        GestureDetector(
-                                          child: Container(
-                                            height:height*0.18,
-                                            width:width*0.3,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(3),
-                                                color: color4
-                                            ),
-                                            child: Center(
-                                              child: Icon(Icons.edit,size:height*0.2,color: PrimaryColor,),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: width*0.03,
-                                        ),*/
-                                      ],
-                                    ),
-                                  )
-                                  )
 
                               ],
                             ),
-                            Positioned(
-                            bottom: 0,
-                              right: 0,
-                              child:
-                            GestureDetector(
-                              child: Container(
-                                width: height*0.25,
-                                height: height*0.25,
-                                decoration: BoxDecoration(color:colorError.withOpacity(1),
-                                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(10)),
 
-                                ),
-                                child: Center(
-                                  child: Icon(Icons.delete_forever,size:height*0.15,color: color4,),
-                                ),
-                              ),
-                            ),)
                           ],
                         ),
                       )

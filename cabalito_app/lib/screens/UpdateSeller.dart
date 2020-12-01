@@ -24,7 +24,9 @@ class UpdateSeller extends StatefulWidget{
 
 class UpdateSellerState extends State<UpdateSeller>{
   Seller seller;
-  UpdateSellerState(this.seller);
+  UpdateSellerState(this.seller){
+    print(seller);
+  }
 
   String mensaje="";
 

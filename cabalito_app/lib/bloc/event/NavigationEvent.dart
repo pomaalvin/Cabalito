@@ -122,3 +122,10 @@ class PublicationSearchEvent extends NavigationEvent{
   @override
   List<Object> get props =>[newCity,newColor,newBrand,numPuertas,search];
 }
+class DeletePublicationEvent extends NavigationEvent{
+  int idPublication;
+  DeletePublicationEvent(this.idPublication);
+  @override
+  List<Object> get props =>[idPublication];
+
+}

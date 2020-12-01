@@ -8,6 +8,45 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertItemPublication{
+  alertEliminar(context)async{
+    var size=MediaQuery.of(context).size;
+    return await showDialog(
+
+        context: (context),
+        builder: (context){
+          return AlertDialog(
+
+            actions: [
+                  MaterialButton(
+                    color: colorError,
+                    onPressed: (){
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text("Eliminar",style: TextStyle(color: color4),),),
+
+                  MaterialButton(
+                    color: PrimaryColor,
+                    onPressed: (){
+                      Navigator.of(context).pop(false);
+                    },
+                    child: Text("Cancelar",style: TextStyle(color: color4),),)
+            ],
+            contentPadding: EdgeInsets.all(10),
+            titlePadding: EdgeInsets.all(0),
+            title: Container(
+              padding: EdgeInsets.all(10),
+              color: PrimaryColor,
+              child: Center(
+                child: Text("Eliminar",style: TextStyle(color: color4),),
+              ),
+
+            ),
+
+            content: Text("¿Esta seguro de eliminar esta publicación?",style: TextStyle(color: PrimaryColor),),
+          );
+        }
+    );
+  }
   alertColor(context,List<Color> list)async{
     var size=MediaQuery.of(context).size;
     return await showDialog(

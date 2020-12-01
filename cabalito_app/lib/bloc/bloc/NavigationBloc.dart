@@ -123,9 +123,21 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
         yield HomePageState();
       }
     }
+    else if(event is DeletePublicationEvent){
+      yield LoadingPageState("Mis Publicaciones","Agregar");
+      bool estado=await _publicationRepository.deletePublication(event.idPublication);
+      if(estado){
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
+      }
+      else{
+        List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
+        yield SellerPublicationListState(publicationLists);
+      }
+    }
     else if(event is SellerPublicationEvent){
       yield LoadingPageState("Mis Publicaciones",null);
-      List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList();
+      List<ListPublication> publicationLists=await _publicationRepository.getSellerPublicationList(0);
       yield SellerPublicationListState(publicationLists);
     }
     else if(event is PublicationListsEvent){
