@@ -10,25 +10,29 @@ import '../lib/ApiUrl.dart' as api;
 
 class PublicationsView extends KFDrawerContent{
   List<PublicationView> publication;
-  List<ListPublication> publicationPaths;
-  PublicationsView(this.publication, this.publicationPaths);
+  PublicationsView(this.publication);
 
   @override
-  State createState() => _ViewPublications(publication,publicationPaths);
+  State createState() => _ViewPublications(publication);
 }
 
 class _ViewPublications extends State<PublicationsView>{
   List<PublicationView> publicationView = List();
-  List<ListPublication> publicationPaths = List();
-  _ViewPublications(this.publicationView,this.publicationPaths);
+  _ViewPublications(this.publicationView);
   List<String> images = List();
 
   int val=0;
   @override
   void initState(){
     super.initState();
-    for(int i=0;i<publicationPaths.length;i++) {
-      images.add(api.url+"image/"+publicationPaths[i].imagePath);
+    print("entra 1");
+
+    print(" defd ${publicationView[0].title}");
+    print(" defd ${publicationView[0].images.length}");
+    for(int i=0;i<publicationView[0].images.length;i++) {
+      images.add(api.url+"image/"+publicationView[0].images[i]);
+      print("entra");
+      print(images[i]);
     }
 
   }
@@ -423,7 +427,6 @@ class _ViewPublications extends State<PublicationsView>{
                           ),
                         ],
                       ),
-
                     ],
                   ),
                   Row(
@@ -447,7 +450,7 @@ class _ViewPublications extends State<PublicationsView>{
                                 color: Colors.transparent,
                                 width: size.width*0.655,
                                 height: size.height*0.03,
-                                child: Text("${publicationView[0].phoneNumber}",
+                                child: Text("${publicationView[0].doorNumber}",
                                   style: TextStyle(
                                       //color: Texto2Color,
                                       fontSize: 15.0

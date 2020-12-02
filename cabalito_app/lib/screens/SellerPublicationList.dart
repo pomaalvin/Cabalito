@@ -130,8 +130,6 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
             onTap: () async {
               BlocProvider.of<NavigationBloc>(context).add(SellerPublicationViewEvent(listPublication.idPublication));
             },
-
-
             child: Stack(
               children: [
                 Positioned(
@@ -218,8 +216,6 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
                                     ),
                                   ],
                                 )),
-
-
                               ],
                             ),
 
@@ -233,9 +229,7 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
             )
           ),
         );
-
   }
-
 
 class MyBehavior extends ScrollBehavior {
   @override

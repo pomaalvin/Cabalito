@@ -64,7 +64,7 @@ class MenuState extends State<Menu>{
             },
           ),
           KFDrawerItem.initWithPage(
-            text: Text("Lista de Publicación",
+            text: Text("Publicaciones",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,

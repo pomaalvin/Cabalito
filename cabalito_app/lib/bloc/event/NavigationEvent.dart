@@ -118,9 +118,10 @@ class PublicationSearchEvent extends NavigationEvent{
   City newCity;
   int numPuertas;
   String search;
-  PublicationSearchEvent(this.newCity,this.newColor,this.newBrand,this.numPuertas,this.search);
+  int page;
+  PublicationSearchEvent(this.newCity,this.newColor,this.newBrand,this.numPuertas,this.search,this.page);
   @override
-  List<Object> get props =>[newCity,newColor,newBrand,numPuertas,search];
+  List<Object> get props =>[newCity,newColor,newBrand,numPuertas,search,page];
 }
 class DeletePublicationEvent extends NavigationEvent{
   int idPublication;

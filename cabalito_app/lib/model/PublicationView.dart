@@ -11,6 +11,7 @@ class PublicationView{
   int _doorNumber;
   int _idSeller;
   String _City; // id
+  List <String> _images;
   PublicationView();
 
   String get City => _City;
@@ -83,6 +84,12 @@ class PublicationView{
 
   set title(String value) {
     _title = value;
+  }
+
+  List<String> get images => _images;
+
+  set images(List<String> value) {
+    _images = value;
   }
 
 

@@ -149,7 +149,7 @@ class PublicationRepository{
   Future<List<ListPublication>> getSellerPublicationList(int page)async {
     try{
       List<ListPublication> listPublications=List();
-      var url=api.url + "seller/publications/?n=5&i="+(page*5).toString();
+      var url=api.url + "seller/publications/?n=5&i="+(page*1).toString();
       final response = await http.get(url
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -195,38 +195,7 @@ class PublicationRepository{
 
     }
   }
-  Future<List<ListPublication>> getpublicationLists()async {
-    try{
-      List<ListPublication> listPublications=List();
-      var url=api.url + "publications/?n=${5}&i=${0}";
-      final response = await http.get(url,
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          }
-      );
-      List resCol = json.decode(utf8.decode(response.bodyBytes));
-      print(response.body);
-      resCol.forEach((element) {
-        ListPublication newPublicationList=ListPublication();
-        newPublicationList.idPublication=element["idPublication"];
-        newPublicationList.price=element["price"];
-        newPublicationList.title=element["title"];
-        newPublicationList.imagePath=element["imagePath"];
-        listPublications.add(newPublicationList);
-      });
-      if(response.statusCode==200){
-        return listPublications;
-      }
-      else{
-        return null;
-      }
-    }
-    catch(e){
-      print(e);
-      return null;
 
-    }
-  }
   Future<Publication> getpublicationEdit(int idPublication)async {
     try{
       var url=api.url + "publications/idd?idPublication=${idPublication.toString()}";
@@ -293,6 +262,13 @@ class PublicationRepository{
         newPublicationView.doorNumber=element["doorNumber"];
         newPublicationView.Color=element["color"];
         newPublicationView.City=element["city"];
+        var images=element["images"];
+      print(element);
+      print(images);
+        newPublicationView.images=List();
+        for (var value in images) {
+          newPublicationView.images.add(value["path"]);
+        }
         publicationView.add(newPublicationView);
 
       if(response.statusCode==200){
@@ -339,7 +315,40 @@ class PublicationRepository{
     }
   }
 
-  Future<List<ListPublication>> getpublicationSearch(City city, Color color, Brand brand, int numPuertas, String search)async {
+
+  Future<List<ListPublication>> getpublicationLists(int pagi)async {
+    try{
+      List<ListPublication> listPublications=List();
+      var url=api.url + "publications/?n=5&i=${(pagi*5).toString()}";
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+      );
+      List resCol = json.decode(utf8.decode(response.bodyBytes));
+      print(response.body);
+      resCol.forEach((element) {
+        ListPublication newPublicationList=ListPublication();
+        newPublicationList.idPublication=element["idPublication"];
+        newPublicationList.price=element["price"];
+        newPublicationList.title=element["title"];
+        newPublicationList.imagePath=element["imagePath"];
+        listPublications.add(newPublicationList);
+      });
+      if(response.statusCode==200){
+        return listPublications;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
+  Future<List<ListPublication>> getpublicationSearch(City city, Color color, Brand brand, int numPuertas, String search,int pagi)async {
     try{
       List<ListPublication> listPublications=List();
       String ruta="";
@@ -360,7 +369,7 @@ class PublicationRepository{
         ruta=ruta+"&title=${search.toString()}";
       }
       print(ruta);
-      var url=api.url + "publications/?n=${5}&i=${0}"+ruta;
+      var url=api.url + "publications/?n=5&i=${(pagi*5).toString()}"+ruta;
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',

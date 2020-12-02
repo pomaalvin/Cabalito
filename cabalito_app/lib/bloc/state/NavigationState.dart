@@ -69,10 +69,9 @@ class PublicationPageState extends NavigationState{
 }
 class PublicationViewState extends NavigationState{
   List<PublicationView> publicationsView;
-  List<ListPublication> publicationPaths;
-  PublicationViewState(this.publicationsView,this.publicationPaths);
+  PublicationViewState(this.publicationsView);
   @override
-  List<Object> get props => ["Publication","Ver",PublicationsView(publicationsView,publicationPaths)];
+  List<Object> get props => ["Publication","Ver",PublicationsView(publicationsView)];
 }
 class PublicationListState extends NavigationState{
   List<ListPublication> listPublication;
@@ -134,7 +133,7 @@ class PublicationSearchState extends NavigationState{
   City newCity;
   PublicationSearchState(this.listPublication,this.colors,this.brands,this.cities,this.newColor,this.newCity,this.newBrand,this.numPue);
   @override
-  List<Object> get props => ["Publicacion",PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
+  List<Object> get props => ["Publicacion",null,PublicationList(listPublication,colors,brands,cities,newColor,newCity,newBrand,numPue)];
 }
 
 

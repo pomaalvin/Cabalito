@@ -1,6 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
-import 'package:cabalitoapp/bloc/state/NavigationState.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cabalitoapp/model/Brand.dart';
@@ -9,6 +10,7 @@ import 'package:cabalitoapp/model/Color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+import '../lib/Colors.dart';
 import '../lib/Colors.dart';
 import '../lib/ApiUrl.dart' as api;
 import 'dart:async';
@@ -40,24 +42,36 @@ class _PublicationList extends State<PublicationList>{
   City newCity;
   List<ListPublication> listPublications=List();
   TextEditingController buscarPublicacion = TextEditingController();
-  Future buscar(t) async {
-    Completer c = Completer();
-    Timer(Duration(milliseconds: t), () {
-      c.complete(busquedatiempoReal(t));
-    });
-  }
-  busquedatiempoReal(t) {
-    setState(() {
-      if(buscarPublicacion.toString()!=""){
-      }
-      //print("ggg ${buscarPublicacion}");
-      buscar(t);
-    });
-  }
+
+  ScrollController scrollController=ScrollController();
+  int pagina=0;
+  bool cargando=true;
+
+
   @override
   void initState(){
     super.initState();
-    //buscar(10);
+    print("xcsdfcdHolas");
+    print(listPublications.length);
+    scrollController.addListener(() async{
+      if(
+      scrollController.position.maxScrollExtent==scrollController.offset&&cargando){
+        pagina++;
+        PublicationRepository publicationRepository=PublicationRepository();
+        var pubs=await publicationRepository.getpublicationSearch(newCity,newColor,newBrand,numPue,buscarPublicacion.text,pagina);
+        if(pubs.length==0){
+          setState(() {
+            cargando=false;
+          });
+        }
+        else{
+          setState((){
+            listPublications.addAll(pubs);
+          });
+        }
+      }
+    });print("Holas");
+    print(listPublications.length);
   }
   Size size;
   @override
@@ -246,13 +260,43 @@ class _PublicationList extends State<PublicationList>{
                                       Expanded(
                                         child: ScrollConfiguration(
                                           behavior: MyBehavior(),
-                                          child: ListView.builder(
+                                          child: ListView.separated(
+                                            separatorBuilder: (context,index){
+                                              return SizedBox(height: 20,);
+                                            },
+                                            controller:scrollController,
+                                            padding: EdgeInsets.only(left: size.width/9 ,right: size.width/9),
+                                            itemBuilder: (context,index){
+                                              if(index==listPublications.length){
+                                                return Container(
+                                                    child: Column(
+                                                      children: [
+                                                        CircularProgressIndicator(
+
+                                                          backgroundColor: Colors.transparent,
+                                                          valueColor: new AlwaysStoppedAnimation(cargando&&pagina>4?PrimaryColor:Colors.transparent),
+                                                          //AlwaysStoppedAnimation<Color>(cargando?PrimaryColor:Colors.transparent),
+                                                        )
+                                                      ],
+                                                    )
+                                                );
+                                              }
+                                              else{
+
+                                                return _ViewPublic(size.width*0.8,size.height*0.21,listPublications[index]);
+                                              }
+                                            },
+                                            itemCount: listPublications.length+1,
+                                          ),
+
+                                          /* ListView.builder(
                                             padding: EdgeInsets.only(left: size.width/9 ,right: size.width/9),
                                             itemBuilder: (context,index){
                                               return _ViewPublic(size.width,size.height,listPublications[index]);
                                             },
                                             itemCount: listPublications.length,
                                           ),
+                                          */
                                         ),
                                       ),
                                     ],
@@ -293,8 +337,7 @@ class _PublicationList extends State<PublicationList>{
               print("ingrese");
               //listPublication=null;
               setState(() {
-
-                BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text));
+                BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text,0));
               });
             },
           ) ,
@@ -310,7 +353,6 @@ class _PublicationList extends State<PublicationList>{
   }
 }
 
-
 class _ViewPublic extends StatelessWidget{
   KFDrawerController _drawerController;
   var width;
@@ -320,95 +362,94 @@ class _ViewPublic extends StatelessWidget{
   Widget build(BuildContext context) {
     return
         Container(
-          padding: const EdgeInsets.fromLTRB(0,10,0,10),
+          padding: const EdgeInsets.fromLTRB(0,6,0,6),
           width: width,
-          height: height*0.23,
+          height: height,
           color: Colors.transparent,
           child: GestureDetector(
             onTap: () async {
               BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent(listPublication.idPublication));
             },
             child: Container(
-              width: width,
-              height: height*0.1,
               decoration: BoxDecoration(
                 color: Colors.transparent,
-                borderRadius: BorderRadius.circular(5.0),
+                borderRadius: BorderRadius.circular(15.0),
                 border: Border.all(color: BorderListColor,
                     width: 2),
                 //#D4D4D5
               ),
-              padding: const EdgeInsets.fromLTRB(10,10,10,10),
-              child: Container(
-                width: width,
-                height: height*0.1,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: height,
+                      height: height,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(api.url+"image/"+listPublication.imagePath),
+                            fit: BoxFit.fill
+                        ),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
+                      ),
+                    ),
+                        SizedBox(
+                          width: height*0.02,
+                        ),
+              Expanded(
+
+                child: Stack(
                   children: [
                     Column(
-                      children: [
-                        Container(
-                          width: width*0.32,
-                          height: height*0.155,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(api.url+"image/"+listPublication.imagePath),
-                              fit: BoxFit.fill
-                            ),
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: width*0.02,
-                          height: height*0.02,
-                        ),
-                        Column(
+                        Expanded(child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              width: width*0.35,
-                              height: height*0.05,
-                              color: Colors.transparent,
-                              child: Text(listPublication.title,
-                                //textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0
-                                ),
+                              height: height*0.28-4,
+                              padding: EdgeInsets.symmetric(horizontal: width*0.02),
+                              child: Center(
+                                  child: Container(
+                                    width: width,
+                                    child: AutoSizeText(listPublication.title,
+                                      textAlign: TextAlign.left,
+                                      maxLines: 2,
+                                      maxFontSize: 21,
+                                      style: TextStyle(color:color3,fontSize: 21,fontWeight: FontWeight.bold),
+                                    ),
+                                  )
                               ),
                             ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: width*0.35,
-                                  height: height*0.05,
-                                  color: Colors.transparent,
-                                  child: Text("Precio: Bs. ${listPublication.price}",
-                                    style: TextStyle(
-                                        color: Colors.black54,
-                                        fontSize: 14.0
+                            SizedBox(
+                              height: height*0.1,
+                            ),
+                            Container(
+                              height: height*0.13,
+                              padding: EdgeInsets.symmetric(horizontal: width*0.02),
+                              child: Center(
+                                  child: Container(
+                                    width: width,
+                                    child: AutoSizeText("Precio: "+listPublication.price.toString()+r" $",
+                                      textAlign: TextAlign.left,
+                                      maxLines: 1,
+                                      maxFontSize: 21,
+                                      style: TextStyle(color:color3,fontSize: 21),
                                     ),
-                                  ),
-                                ),
-
-                              ],
-                            )
+                                  )
+                              ),
+                            ),
                           ],
-                        ),
+                        )),
+
+
                       ],
                     ),
+
                   ],
                 ),
-              ),
+              )
+                  ],
+                ),
             ),
           ),
         );

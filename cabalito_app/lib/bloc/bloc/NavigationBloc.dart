@@ -149,7 +149,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       int numPue;
       Brand newBrand;
       City newCity;
-      List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists();
+      List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists(0);
       yield PublicationListState(publicationLists,colors,brands,cities,newColor,newCity,newBrand,numPue);
       /*if(estado){
 
@@ -161,8 +161,7 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is PublicationViewEvent){
       yield LoadingPageState("Publicaciones","Ver");
       List<PublicationView> publicationsViews=await  _publicationRepository.getpublicationView(event.idPublication);
-      List<ListPublication> publicationsPaths=await  _publicationRepository.getpublicationPaths(event.idPublication);
-      yield PublicationViewState(publicationsViews,publicationsPaths);
+      yield PublicationViewState(publicationsViews);
     }
     else if(event is SellerPublicationViewEvent){
       yield LoadingPageState("Mis Publicaciones","Modificar");
@@ -174,11 +173,11 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield AddPublicationPageState(colors,brands,cities,true,publicationEdit);
     }
     else if(event is PublicationSearchEvent){
-      //yield LoadingPageState();
+      yield LoadingPageState("Publicaciones",null);
       List<Color> colors=await  _publicationRepository.getColors();
       List<City> cities=await  _publicationRepository.getCities();
       List<Brand> brands=await  _publicationRepository.getBrands();
-      List<ListPublication> publicationsSearchLists=await  _publicationRepository.getpublicationSearch(event.newCity,event.newColor,event.newBrand,event.numPuertas,event.search);
+      List<ListPublication> publicationsSearchLists=await  _publicationRepository.getpublicationSearch(event.newCity,event.newColor,event.newBrand,event.numPuertas,event.search,event.page);
       yield PublicationSearchState(publicationsSearchLists,colors,brands,cities,event.newColor,event.newCity,event.newBrand,event.numPuertas);
     }
   }
