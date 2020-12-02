@@ -41,6 +41,9 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
     else if(event is SplashScreenEvent){
       yield SplashScreenState1();
     }
+    else if(event is InformationEvent){
+      yield InformationState();
+    }
     else if(event is LogInEvent){
       yield LogInState();
     }

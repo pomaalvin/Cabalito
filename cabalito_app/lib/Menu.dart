@@ -163,6 +163,20 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
             },
           ),
+          KFDrawerItem.initWithPage(
+            text: Text("Información",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.info,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(InformationEvent());
+            },
+          ),
 
 
 

@@ -75,6 +75,10 @@ flutter:
     - assets/publication/no_image.jpg
     - assets/star.gif
     - assets/user.png
+    - assets/erwin.jpg
+    - assets/joma.jpg
+    - assets/alvin.jpg
+    - assets/sil.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

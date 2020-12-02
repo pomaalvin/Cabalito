@@ -7,6 +7,7 @@ import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
+import 'package:cabalitoapp/screens/Information.dart';
 import 'package:cabalitoapp/screens/Loading.dart';
 import 'package:cabalitoapp/screens/LogIn.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
@@ -36,6 +37,11 @@ class SplashScreenState1 extends NavigationState{
   const SplashScreenState1();
   @override
   List<Object> get props => ["Loading",null,SplashScreenView()];
+}
+class InformationState extends NavigationState{
+  const InformationState();
+  @override
+  List<Object> get props => ["Información",null,InformationView()];
 }
 class LogInState extends NavigationState{
   const LogInState();

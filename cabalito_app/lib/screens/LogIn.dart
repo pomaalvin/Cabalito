@@ -30,8 +30,10 @@ class LogInState extends State<LogIn>{
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.only(top: 30),
@@ -48,7 +50,7 @@ class LogInState extends State<LogIn>{
         child: ListView(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.032,
+              height: size.height*0.032,
             ),
             Padding(
               padding: EdgeInsets.all(20),
@@ -62,7 +64,7 @@ class LogInState extends State<LogIn>{
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height*0.020,
+                    height: size.height*0.020,
                   ),
                   Text("Bienvenido",
                     style: TextStyle(
@@ -74,10 +76,10 @@ class LogInState extends State<LogIn>{
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height*0.025,
+              height: size.height*0.025,
             ),
             Container(
-              height: MediaQuery.of(context).size.height*0.70,
+              height: size.height*0.70,
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -88,7 +90,7 @@ class LogInState extends State<LogIn>{
                   child: Column(
                     children: [
                       SizedBox(
-                          height: MediaQuery.of(context).size.height*0.06
+                          height: size.height*0.06
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -104,7 +106,7 @@ class LogInState extends State<LogIn>{
                         child: Column(
                           children: [
                             Container(
-                              padding: EdgeInsets.only(left: 15,top: 4,bottom: 4),
+                              padding: EdgeInsets.only(left: size.width*0.045,top: size.width*0.01,bottom: size.width*0.01),
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
@@ -127,7 +129,7 @@ class LogInState extends State<LogIn>{
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.only(left: 15,top: 4,bottom: 4),
+                              padding: EdgeInsets.only(left: size.width*0.045,top: size.width*0.01,bottom: size.width*0.01),
                               decoration: BoxDecoration(
                                   border: Border(
                                       bottom: BorderSide(
@@ -154,7 +156,7 @@ class LogInState extends State<LogIn>{
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.03,
+                        height: size.height*0.03,
                       ),
                       FlatButton(
                           onPressed: (){},
@@ -167,11 +169,11 @@ class LogInState extends State<LogIn>{
                           )
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height*0.03,
+                        height: size.height*0.03,
                       ),
                       Container(
                         height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 50),
+                        margin: EdgeInsets.symmetric(horizontal: size.width*0.15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: PrimaryColor
@@ -190,7 +192,7 @@ class LogInState extends State<LogIn>{
                         ),
                       ),
                       SizedBox(
-                        height: 40,
+                        height: size.height*0.03,
                       ),
                       Text(
                         "Encuentranos en:",
@@ -200,7 +202,7 @@ class LogInState extends State<LogIn>{
                         ),
                       ),
                       SizedBox(
-                        height: 40,
+                        height: size.height*0.03,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -214,7 +216,7 @@ class LogInState extends State<LogIn>{
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width*0.06,
+                            width: size.width*0.06,
                           ),
                           FloatingActionButton(
                             onPressed: (){
@@ -225,7 +227,7 @@ class LogInState extends State<LogIn>{
                             ),
                           ),
                           SizedBox(
-                            width: MediaQuery.of(context).size.width*0.06,
+                            width: size.width*0.06,
                           ),
                           FloatingActionButton(
                             onPressed: (){
