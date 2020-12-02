@@ -7,6 +7,7 @@ import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,8 +78,8 @@ class UpdateSellerState extends State<UpdateSeller>{
               child: Stack(
                 children: <Widget>[
                   Container(
-                      margin: new EdgeInsets.only(top: 6.0),
-                      padding: new EdgeInsets.only(top:25.0),
+                      margin: new EdgeInsets.only(top: size.height*0.03),
+                      padding: new EdgeInsets.only(top:size.height*0.01),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
@@ -89,10 +90,9 @@ class UpdateSellerState extends State<UpdateSeller>{
                             child: ScrollConfiguration(
                               behavior: MyBehavior(),
                               child: ListView.builder(
-                                padding: EdgeInsets.only(left: 50.0 ,right:50.0),
+                                padding: EdgeInsets.only(left: size.width*0.1 ,right:size.width*0.1),
                                 itemBuilder: (context,index){
                                   return Container(
-                                    margin: EdgeInsets.only(bottom: 20.0),
                                     child: Stack(
                                       children: [
                                         Column(
@@ -111,14 +111,20 @@ class UpdateSellerState extends State<UpdateSeller>{
                                             input(lastname,"Apellido: "+seller.lastName,true),
 
                                             input(phone,"Telefono: "+seller.phoneNumber,true),
+                                            Container(
+                                              height: size.height*0.03,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                buildButton("Actualizar", PrimaryColor),
+                                                buildButton("Cambiar Contraseña", PrimaryColor)
+                                              ],
+                                            )
                                           ],
                                         ),
-                                        Row(
-                                          children: [
-                                            buildButton("Actualizar", PrimaryColor),
-                                            buildButton("Cambiar Contraseña", PrimaryColor)
-                                          ],
-                                        )
+
+
                                       ],
                                     ),
                                   );
@@ -160,8 +166,10 @@ class UpdateSellerState extends State<UpdateSeller>{
   }
   Widget input(TextEditingController controller, String hint, bool flag){
     return  Padding(
+
       padding: EdgeInsets.only(top: size.height*0.015, left: size.width*0.05),
       child: TextField(
+
           controller: controller,
           obscureText: flag,
           style: TextStyle(fontSize: 18),
@@ -186,8 +194,9 @@ class UpdateSellerState extends State<UpdateSeller>{
 
   Widget buildButton(String buttonText, Color buttonColor) {
     return Padding(
-      padding: EdgeInsets.only(top: size.height*0.7, left: size.width*0.02),
+      padding: EdgeInsets.all(size.width*0.02),
       child: Container(
+
         width: size.width*0.35,
         height: size.height*0.08,
         child: RaisedButton(
@@ -214,6 +223,7 @@ class UpdateSellerState extends State<UpdateSeller>{
     );
   }
   Future<void> _showChoiceDialog(BuildContext context) {
+
     return showDialog(context: context, builder: (BuildContext context) {
       return AlertDialog(
         title: Text("Seleccione una opción",style:
@@ -250,24 +260,21 @@ class UpdateSellerState extends State<UpdateSeller>{
       );
     });
   }
-  /*decoration: BoxDecoration(
-  color: SecondaryColor,
-  shape: BoxShape.rectangle,
-  borderRadius: BorderRadius.circular(17),*/
   Future<void> _changePassword(BuildContext context) {
+    mensaje="";
     return showDialog(context: context, builder: (BuildContext context) {
 
       return Dialog(
         child: Container(
-          height: size.height*0.45,
+          height: size.height*0.6,
           decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(17),
+       //       borderRadius: BorderRadius.circular(30),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
-                  blurRadius: 10.0,
+                  blurRadius: 30.0,
                   offset: Offset(0.0,10.0),
                 )
               ]
@@ -276,20 +283,54 @@ class UpdateSellerState extends State<UpdateSeller>{
             children: [
               Column(
                 children: [
+                      Container(
+                        padding: EdgeInsets.all(size.height*0.02),
+                        height: size.height*0.09,
+                        width: size.width,
+                        color: PrimaryColor,
+                        child: Text("Cambio de contraseña", style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          backgroundColor: PrimaryColor
+                        ),),
+                        ),
+                      Container(
+                        height: size.height*0.05,
+                        color: PrimaryColor,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: SecondaryColor,
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(80),topRight: Radius.circular(0),bottomLeft:Radius.circular(0),bottomRight: Radius.circular(0) ),
+                          ),
+                          child: Container(
+                            margin: EdgeInsets.only(top: size.height*0.01, left: size.height*0.002),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(55),topRight: Radius.circular(0)),
+                            ),),
+                        ),
+                  ),
+
+
                   input(password,"Contraseña",true),
                   input(newPassword,"Nueva contraseña",true),
                   input(confirmPassword,"Confirmar contraseña",true),
+                 Container(
+                   height: size.height*0.01,
+                 ),
                  RaisedButton(
-                      elevation: 10.0,
 
+                      elevation: 10.0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
                       color: PrimaryColor,
                       highlightElevation: 10.0,
                       disabledColor: BorderListColor,
                       onPressed: (){
-                        _change();
+                        setState(() {
+                          _change();
+                        });
                       },
                       child: Text(
                         "Cambiar",
@@ -313,29 +354,17 @@ class UpdateSellerState extends State<UpdateSeller>{
       );
     });
   }
-  _change() async {
-    print("----------------------------------------------");
-    print(seller.idSeller);
-    print(seller.password);
-    print(password.text);
-    print(newPassword.text);
-    print(confirmPassword.text);
+  _change() {
+    mensaje="";
     if(seller.password==password.text && newPassword.text==confirmPassword.text){
       seller.password=newPassword.text;
       BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,false));
-      setState(() {
-        mensaje="Éxito";
-      });
+      mensaje="Éxito";
       Navigator.pop(context);
     }else{
-      setState(() {
         mensaje="No coinciden los campos";
-      });
     }
-    setState(() {
-      limpiar();
-    });
-
+    limpiar();
   }
 
   _buttonAction(context, String option){

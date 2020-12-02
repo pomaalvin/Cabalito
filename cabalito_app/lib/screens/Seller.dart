@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import '../lib/Colors.dart';
 import '../lib/ApiUrl.dart' as api;
 
@@ -86,8 +87,8 @@ class _Card extends StatelessWidget{
           Column(
             children: [
               Container(
-                width: size.width*0.7,
-                height: size.width*0.7,
+                width: size.width*0.6,
+                height: size.width*0.6,
                 decoration: BoxDecoration(
                   border: Border.all(width: 4, color: PrimaryColor),
                   image: DecorationImage(
@@ -101,7 +102,7 @@ class _Card extends StatelessWidget{
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.075),
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
                     child: Text("Nombre: ",
                       style: TextStyle(
                         fontSize: 18.0,
@@ -110,25 +111,15 @@ class _Card extends StatelessWidget{
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.01),
-                    child: Text(seller.firstName,
+                  Flexible(child: Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.02),
+                    child: Text(seller.firstName+" "+seller.lastName,
                       style: TextStyle(
                         fontSize: 18.0,
-                        color: TitleColor,
+                        color:Colors.black,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: heightScreen*0.085,left: widhtScreen*0.01),
-                    child: Text(seller.lastName,
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        color: TitleColor,
-                      ),
-                    ),
-                  )
-
+                  ),)
                 ],
               ),
               Row(
@@ -152,6 +143,14 @@ class _Card extends StatelessWidget{
                       ),
                     ),
                   ),
+
+                  IconButton(
+                      padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
+                      alignment: Alignment.centerRight,
+                      icon: Icon(Icons.phone),iconSize: size.width*0.1,color: Colors.lightGreen,
+                      onPressed: () {
+                        _call();
+                      }),
                 ],
               ),
               Row(
@@ -183,5 +182,9 @@ class _Card extends StatelessWidget{
         ],
       ),
     );
+  }
+  _call() async{
+    FlutterPhoneDirectCaller.callNumber(seller.phoneNumber);
+    //this.setState({});
   }
 }
