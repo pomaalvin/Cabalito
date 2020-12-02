@@ -1,6 +1,4 @@
-
-import 'dart:ui';
-
+import'dart:ui';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Seller.dart';
@@ -11,7 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../lib/Colors.dart';
-import '../lib/ApiUrl.dart' as api;
+
 class RegisterSeller extends StatefulWidget{
   @override
   State createState() => RegisterSellerState();
