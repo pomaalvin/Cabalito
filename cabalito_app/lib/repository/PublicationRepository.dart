@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
+import 'package:cabalitoapp/model/ImagePublicatio.dart';
 import 'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/model/PublicationView.dart';
@@ -35,6 +36,56 @@ class PublicationRepository{
     }
     catch(e){
       print(e);
+    }
+  }
+  Future<bool> modifyPublication(Publication publication,List<File>images,List<ImagePublication> imagesDelete)async {
+    try{
+      var url=api.url + "publications";
+      final response = await http.put(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(publication.toJson())
+      );
+      if(response.statusCode==200){
+        var resPub = json.decode(utf8.decode(response.bodyBytes));
+        var idPublication=resPub["idPublication"];
+        var resDel= await deleteImages(imagesDelete);
+        if(resDel){
+        return await uploadImages(images, idPublication);
+        }
+        else{
+          return false;
+        }
+      }
+      else{
+        return false;
+      }
+    }
+    catch(e){
+      print(e);
+      return false;
+    }
+  }
+  Future<bool> deleteImages(List<ImagePublication> imagesDelete)async{
+    try{
+      var url=api.url + "publications/images";
+      final response = await http.put(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(imagesDelete)
+      );
+      if(response.statusCode==200){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+    catch(e){
+      print(e);
+      return false;
     }
   }
   Future<bool> uploadImages(List<File> list,idPublication)async{
@@ -222,7 +273,10 @@ class PublicationRepository{
       var images=element["images"] as List;
       newPublication.images=List();
       for (var value in images) {
-        newPublication.images.add(value["path"]);
+        ImagePublication imagePublication=ImagePublication();
+        imagePublication.path=value["path"];
+        imagePublication.idImagePublication=value["idImagePublication"];
+        newPublication.images.add(imagePublication);
       }
 
       if(response.statusCode==200){
