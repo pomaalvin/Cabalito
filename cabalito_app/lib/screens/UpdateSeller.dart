@@ -1,7 +1,7 @@
 
 import 'dart:io';
 import 'dart:ui';
-
+import 'package:toast/toast.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/model/Seller.dart';
@@ -28,8 +28,6 @@ class UpdateSellerState extends State<UpdateSeller>{
   UpdateSellerState(this.seller){
     print(seller);
   }
-
-  String mensaje="";
 
   TextEditingController name = TextEditingController();
   TextEditingController lastname = TextEditingController();
@@ -167,7 +165,7 @@ class UpdateSellerState extends State<UpdateSeller>{
   Widget input(TextEditingController controller, String hint, bool flag){
     return  Padding(
 
-      padding: EdgeInsets.only(top: size.height*0.015, left: size.width*0.05),
+      padding: EdgeInsets.only(top: size.height*0.015, left: size.width*0.05,   right: size.width*0.05),
       child: TextField(
 
           controller: controller,
@@ -225,18 +223,36 @@ class UpdateSellerState extends State<UpdateSeller>{
   Future<void> _showChoiceDialog(BuildContext context) {
 
     return showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Seleccione una opción",style:
-        TextStyle(
-            color: PrimaryColor,
-            fontSize: 18.0),
+      return Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+
         ),
         backgroundColor: SecondaryColor,
-        content: SingleChildScrollView(
-
-          child: ListBody(
+        child: Container(
+          height: size.height*0.2,
+          child: Column(
             children: [
+              Container(
+                padding: EdgeInsets.all(size.height*0.03),
+                height: size.height*0.09,
+                width: size.width,
+
+                decoration: BoxDecoration(
+                  color: PrimaryColor,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(16),topRight: Radius.circular(16)),
+                ),
+                child: Text("Seleccione opción:",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                      //backgroundColor: PrimaryColor
+                  ),),
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
                     child: IconButton(icon: Icon(Icons.add_photo_alternate),iconSize: size.width*0.1,color: PrimaryColor,
@@ -261,41 +277,40 @@ class UpdateSellerState extends State<UpdateSeller>{
     });
   }
   Future<void> _changePassword(BuildContext context) {
-    mensaje="";
     return showDialog(context: context, builder: (BuildContext context) {
-
       return Dialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+
+        ),
         child: Container(
-          height: size.height*0.6,
+          height: size.height*0.5,
           decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-       //       borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 30.0,
-                  offset: Offset(0.0,10.0),
-                )
-              ]
+            borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
             children: [
               Column(
                 children: [
                       Container(
-                        padding: EdgeInsets.all(size.height*0.02),
+                        padding: EdgeInsets.all(size.height*0.03),
                         height: size.height*0.09,
                         width: size.width,
-                        color: PrimaryColor,
-                        child: Text("Cambio de contraseña", style: TextStyle(
+
+                        decoration: BoxDecoration(
+                          color: PrimaryColor,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(16),topRight: Radius.circular(16)),
+                        ),
+                        child: Text("Cambio de contraseña",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                           backgroundColor: PrimaryColor
                         ),),
                         ),
                       Container(
-                        height: size.height*0.05,
+                        height: size.height*0.03,
                         color: PrimaryColor,
                         child: Container(
                           decoration: BoxDecoration(
@@ -310,16 +325,13 @@ class UpdateSellerState extends State<UpdateSeller>{
                             ),),
                         ),
                   ),
-
-
                   input(password,"Contraseña",true),
                   input(newPassword,"Nueva contraseña",true),
                   input(confirmPassword,"Confirmar contraseña",true),
                  Container(
-                   height: size.height*0.01,
+                   height: size.height*0.03,
                  ),
                  RaisedButton(
-
                       elevation: 10.0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -333,7 +345,7 @@ class UpdateSellerState extends State<UpdateSeller>{
                         });
                       },
                       child: Text(
-                        "Cambiar",
+                        "Actualizar",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
@@ -341,9 +353,6 @@ class UpdateSellerState extends State<UpdateSeller>{
                         ),
                       ),
                     ),
-                  Text(mensaje,style: TextStyle(
-                    color: Colors.black
-                  ),)
 
                 ],
               )
@@ -355,14 +364,12 @@ class UpdateSellerState extends State<UpdateSeller>{
     });
   }
   _change() {
-    mensaje="";
     if(seller.password==password.text && newPassword.text==confirmPassword.text){
       seller.password=newPassword.text;
       BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,false));
-      mensaje="Éxito";
       Navigator.pop(context);
     }else{
-        mensaje="No coinciden los campos";
+      Toast.show("No coinciden los datos", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
     }
     limpiar();
   }
@@ -374,8 +381,7 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(option=="Cambiar Contraseña"){
       _changePassword(context);
     }
-    if(option=="Cambiar"){
-      mensaje="";
+    if(option=="Actualizar"){
       _change();
     }
   }

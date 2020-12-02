@@ -1,6 +1,8 @@
 import 'package:cabalitoapp/model/PublicationList.dart';
+import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -302,8 +304,6 @@ class _ViewPublications extends State<PublicationsView>{
                       )
                     ],
                   ),
-
-
                   Row(
                     children: [
 
@@ -510,8 +510,7 @@ class _ViewPublications extends State<PublicationsView>{
                               children: [
                                 GestureDetector(
                                   onPanDown: (dt) async{
-                                    FlutterPhoneDirectCaller.callNumber("${publicationView[0].phoneNumber}");
-                                    //print("boton");
+                                    _showSeller(context);
                                   },
                                   child: Container(
 
@@ -556,13 +555,25 @@ class _ViewPublications extends State<PublicationsView>{
       ),
     );
   }
+  Seller seller=Seller();
+
+  Future<void> _showSeller(BuildContext context) {
+    seller.imagePath="vacio";
+    seller.lastName="vacio";
+    seller.firstName="vacio";
+    seller.email="email";
+    seller.phoneNumber="52-3622-253";
+    return showDialog(context: context, builder: (BuildContext context) {
+      return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+
+          ),
+        child: _Card(size.width, size.height, seller)
+      );
+    });
+  }
 }
-
-
-
-
-
-
 class SelectedPhoto extends StatelessWidget{
   final int numberofDots;
   final int phoneIndex;
@@ -608,6 +619,7 @@ class SelectedPhoto extends StatelessWidget{
     );
   }
 
+
   List<Widget> _buildDots(){
     List<Widget> docs = [];
     for(int i=0;i<numberofDots;i++){
@@ -628,5 +640,165 @@ class SelectedPhoto extends StatelessWidget{
     );
   }
 
+}
+class _Card extends StatelessWidget{
+  Size size;
+  var widhtScreen;
+  var heightScreen;
+  Seller seller;
+
+  _Card(this.widhtScreen, this.heightScreen, this.seller);
+
+  Color color= PrimaryColor;
+  @override
+  Widget build(BuildContext context) {
+    size=MediaQuery.of(context).size;
+    return  Container(
+      width: size.width*0.80,
+      height: size.height*0.75,
+      child: Stack(
+        children: [
+          Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(size.height*0.03),
+                height: size.height*0.09,
+                width: size.width,
+
+                decoration: BoxDecoration(
+                  color: PrimaryColor,
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(16),topRight: Radius.circular(16)),
+                ),
+                child: Text("Perfil",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      backgroundColor: PrimaryColor
+                  ),),
+              ),
+              Container(
+                height: size.height*0.03,
+                color: PrimaryColor,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: SecondaryColor,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(80),topRight: Radius.circular(0),bottomLeft:Radius.circular(0),bottomRight: Radius.circular(0) ),
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.only(top: size.height*0.01, left: size.height*0.002),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(55),topRight: Radius.circular(0)),
+                    ),),
+                ),
+              ),
+              Container(
+                width: size.width*0.4,
+                height: size.width*0.4,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 4, color: PrimaryColor),
+                  image: DecorationImage(
+                      image: seller.imagePath=="vacio"?(AssetImage("assets/user.png")):(NetworkImage(api.url+"sellerImage/"+seller.imagePath)),
+                      fit: BoxFit.fill
+                  ),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
+                    child: Text("Nombre: ",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: PrimaryColor,
+                      ),
+                    ),
+                  ),
+                  Flexible(child: Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.02),
+                    child: Text(seller.firstName+" "+seller.lastName,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color:Colors.black,
+                      ),
+                    ),
+                  ),)
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075),
+                    child: Text("Telefono: ",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        color: PrimaryColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
+                    child: Text(seller.phoneNumber,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.075,bottom: 20),
+                    child: Text("Email: ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18.0,
+                        color: PrimaryColor,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.010,bottom: 20),
+                    child: Text(seller.email,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: TitleColor,
+                      ),
+                    ),
+                  ),
+
+                ],
+              )
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(size.width*0.04),
+            alignment: Alignment.bottomCenter,
+              child:CircleAvatar(
+                  backgroundColor: PrimaryColor,
+                  radius: 30,
+                  child: IconButton(
+                     // alignment: Alignment.center,
+                      icon: Icon(Icons.phone),iconSize: 25,color: Colors.lightGreen,
+                      onPressed: () {
+                        _call();
+                      }),
+                )
+          )
+        ],
+      ),
+
+    );
+  }
+  _call() async{
+    FlutterPhoneDirectCaller.callNumber(seller.phoneNumber);
+    //this.setState({});
+  }
 }
 
