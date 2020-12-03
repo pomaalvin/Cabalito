@@ -137,6 +137,8 @@ class _PublicationList extends State<PublicationList>{
                                     if(brand!=null){
                                       setState(() {
                                         newBrand=brand;
+
+                                        BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text,0));
                                       });
                                     }
                               },
@@ -171,6 +173,8 @@ class _PublicationList extends State<PublicationList>{
                                     if(color!=null){
                                       setState(() {
                                         newColor=color;
+
+                                        BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text,0));
                                       });
                                     }
                               },
@@ -205,6 +209,8 @@ class _PublicationList extends State<PublicationList>{
                                 if(city!=null){
                                   setState(() {
                                     newCity=city;
+
+                                    BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text,0));
                                   });
                                 }
                               },
@@ -241,6 +247,8 @@ class _PublicationList extends State<PublicationList>{
                                 if(numPuer!=null){
                                   setState(() {
                                     numPue=numPuer;
+
+                                    BlocProvider.of<NavigationBloc>(context).add(PublicationSearchEvent(newCity,newColor,newBrand,numPue,buscarPublicacion.text,0));
                                   });
                                 }
                               },
@@ -429,7 +437,7 @@ class _ViewPublic extends StatelessWidget{
                               child: Center(
                                   child: Container(
                                     width: width,
-                                    child: AutoSizeText("Precio: "+listPublication.price.toString()+r" $",
+                                    child: AutoSizeText("Precio: "+listPublication.price.toString()+r" Bs.",
                                       textAlign: TextAlign.left,
                                       maxLines: 1,
                                       maxFontSize: 21,
@@ -440,11 +448,8 @@ class _ViewPublic extends StatelessWidget{
                             ),
                           ],
                         )),
-
-
                       ],
                     ),
-
                   ],
                 ),
               )

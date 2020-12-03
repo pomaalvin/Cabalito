@@ -3,11 +3,8 @@ import 'package:cabalitoapp/model/Mechanic.dart';
 import 'dart:io';
 
 import 'package:cabalitoapp/model/Publication.dart';
-import'package:cabalitoapp/model/Publication.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/model/Stars.dart';
-import 'package:cabalitoapp/model/PublicationList.dart';
-import 'package:cabalitoapp/screens/PublicationList.dart';
 import 'package:equatable/equatable.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';

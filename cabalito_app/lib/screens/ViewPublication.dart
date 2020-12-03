@@ -509,11 +509,10 @@ class _ViewPublications extends State<PublicationsView>{
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 GestureDetector(
-                                  onPanDown: (dt) async{
+                                  onTap: () async{
                                     _showSeller(context);
                                   },
                                   child: Container(
-
                                     width: size.width*0.98,
                                     height: size.height*0.1,
                                     color: Colors.transparent,
@@ -530,20 +529,15 @@ class _ViewPublications extends State<PublicationsView>{
                                         ),
                                       ],
                                     ),
-
                                   ),
-
                                 )
                               ],
                             )
                           ],
                         ),
                       ),
-
                     ],
                   ),
-
-
                 ],
               ),
             ),
