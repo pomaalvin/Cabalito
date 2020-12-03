@@ -90,7 +90,7 @@ class _PublicationList extends State<SellerPublicationList>{
                                                         CircularProgressIndicator(
 
                                                           backgroundColor: Colors.transparent,
-                                                          valueColor: new AlwaysStoppedAnimation<Color>(cargando ||listPublications.length<=5?PrimaryColor:Colors.transparent),
+                                                          valueColor: new AlwaysStoppedAnimation<Color>(cargando &&listPublications.length>5?PrimaryColor:Colors.transparent),
                                                         )
                                                       ],
                                                     )
@@ -165,7 +165,7 @@ Widget _ViewPublic (width, height,ListPublication listPublication,context){
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: NetworkImage(api.url+"image/"+listPublication.imagePath),
-                                    fit: BoxFit.fill
+                                    fit: BoxFit.cover
                                 ),
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomLeft: Radius.circular(10)),
                               ),

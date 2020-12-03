@@ -9,14 +9,42 @@ class SplashScreenView extends StatefulWidget{
 }
 
 class SplashScreenViewState extends State<SplashScreenView> {
+  Size size;
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 5,
+    size=MediaQuery.of(context).size;
+    return /*SplashScreen(
+      seconds: 1,
       backgroundColor: PrimaryColor,
       image: Image.asset('assets/logo.png'),
       loaderColor: SecondaryColor,
       photoSize: 110.0,
-    );
+      navigateAfterSeconds: "",
+
+    );*/
+    Scaffold(
+      backgroundColor: PrimaryColor,
+      body: Center(
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              Container(
+               margin: EdgeInsets.symmetric(horizontal: size.width*0.2),
+               height: size.height*0.2,
+               decoration: BoxDecoration(
+                 image: DecorationImage(
+                   image: AssetImage('assets/logo.png'),
+                   fit: BoxFit.fill
+                 )
+               ),
+              ),
+              CircularProgressIndicator(
+              backgroundColor: Colors.transparent,
+              valueColor: new AlwaysStoppedAnimation<Color>(color4),
+            ),],
+          )
+      )
+      );
   }
 }

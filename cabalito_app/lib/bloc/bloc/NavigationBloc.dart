@@ -26,7 +26,15 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
   Stream<NavigationState> mapEventToState(NavigationEvent event) async* {
     if(event is HomePageEvent){
       yield LoadingPageState("Home",null);
-      yield HomePageState();
+      List<Color> colors=await  _publicationRepository.getColors();
+      List<City> cities=await  _publicationRepository.getCities();
+      List<Brand> brands=await  _publicationRepository.getBrands();
+      Color newColor;
+      int numPue;
+      Brand newBrand;
+      City newCity;
+      List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists(0);
+      yield PublicationListState(publicationLists, colors, brands, cities, newColor, newCity, newBrand, numPue);
     }
     else if(event is PublicationPageEvent){
       yield LoadingPageState("Home",null);

@@ -1,6 +1,8 @@
 
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/lib/token.dart';
+import 'package:cabalitoapp/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
@@ -163,6 +165,10 @@ class MenuState extends State<Menu>{
      body: KFDrawer(
          controller: _drawerController,
          footer: KFDrawerItem(
+           onPressed: (){
+             Token().delToken();
+             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MyApp()), (route) => false);
+           },
            text: Text("Logout",
              style: TextStyle(
                color: Colors.white,

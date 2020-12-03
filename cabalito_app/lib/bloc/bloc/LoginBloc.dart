@@ -17,7 +17,13 @@ class LogInBloc extends Bloc<LogInBlocEvent,LogInBlocState>{
     if(event is InitAppEvent){
       yield InitLoginState();
       await Future.delayed(Duration(seconds: 2));
-      yield LogInFailedState();
+      var perfil=await sellerRepository.getSeller();
+      if(perfil==null){
+        yield LogInFailedState();
+      }
+      else{
+        yield LogInOkState();
+      }
     }
     if(event is SignOutEvent){
       yield InitLoginState();
