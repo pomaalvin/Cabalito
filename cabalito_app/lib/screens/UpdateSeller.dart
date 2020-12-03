@@ -105,11 +105,11 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                 onPressed: () {
                                                   _showChoiceDialog(context);
                                                 }),
-                                            input(name,"Nombre: "+seller.firstName,true),
+                                            input(name,"Nombre: "+seller.firstName,false),
 
-                                            input(lastname,"Apellido: "+seller.lastName,true),
+                                            input(lastname,"Apellido: "+seller.lastName,false),
 
-                                            input(phone,"Telefono: "+seller.phoneNumber,true),
+                                            input(phone,"Telefono: "+seller.phoneNumber,false),
                                             Container(
                                               height: size.height*0.03,
                                             ),
@@ -384,9 +384,6 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(option=="Cambiar Contraseña"){
       _changePassword(context);
     }
-    if(option=="Actualizar"){
-      _change();
-    }
   }
   limpiar(){
     password.text="";
@@ -407,7 +404,7 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(imageFile==null){
       flag=false;
     }
-    BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,flag));
+   BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,flag));
 
   }
 

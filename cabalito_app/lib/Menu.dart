@@ -19,7 +19,6 @@ class MenuState extends State<Menu>{
         initialPage: ClassBuilder.fromString('Home'),
         items: [
 
-
           KFDrawerItem.initWithPage(
             text: Text("Publicaciones",
               style: TextStyle(
@@ -110,7 +109,7 @@ class MenuState extends State<Menu>{
             },
           ),
 
-          KFDrawerItem.initWithPage(
+          /*KFDrawerItem.initWithPage(
             text: Text("Registro usuario",
               style: TextStyle(
                 color: Colors.white,
@@ -153,7 +152,7 @@ class MenuState extends State<Menu>{
               _drawerController.close();
               BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
             },
-          ),
+          ),*/
         ]
     );
   }

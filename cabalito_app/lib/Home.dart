@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 
-import 'screens/ViewPublication.dart';
-
 class Home extends KFDrawerContent{
   @override
   _HomeState createState() => _HomeState();

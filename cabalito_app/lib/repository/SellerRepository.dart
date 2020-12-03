@@ -19,6 +19,8 @@ class SellerRepository{
       print(response.body);
       if(response.statusCode==200){
         var tok=json.decode(response.body)["token"];
+
+        print("Tokennnnn "+tok.toString());
         await Token().setToken(tok);
         return true;
       }
@@ -99,6 +101,38 @@ class SellerRepository{
       print(e);
     }
   }
+  Future<Seller> getSellerPublication()async {
+    try{
+      Seller seller=Seller();
+      var url=api.url + "seller";
+      var token=await Token().getToken();
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
+          }
+      );
+      print("Imprimir "+response.body);
+      var element = jsonDecode(response.body);
+      seller.idPerson=element['idPerson'];
+      seller.idSeller=element['idSeller'];
+      seller.firstName=element['firstName'];
+      seller.lastName=element['lastName'];
+      seller.phoneNumber=element['phoneNumber'];
+      seller.imagePath=element['imagePath'];
+      if(response.statusCode==200){
+        return seller;
+      }
+      else{
+        return null;
+      }
+    }
+    catch(e){
+      print(e);
+      return null;
+
+    }
+  }
   Future<Seller> getSeller()async {
     try{
       Seller seller=Seller();
@@ -115,6 +149,7 @@ class SellerRepository{
       seller.idSeller=element['idSeller'];
       seller.firstName=element['firstName'];
       seller.lastName=element['lastName'];
+      seller.email=element['email'];
       seller.phoneNumber=element['phoneNumber'];
       seller.imagePath=element['imagePath'];
       if(response.statusCode==200){
