@@ -72,9 +72,12 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       yield LoadingPageState("Usuario","Modificar");
       try{
         bool estado=await _sellerRepository.updateSeller(event.seller,event.imageFile,event.flag);
+        print("Modificado");
         if(estado){
           Seller seller =new Seller();
           seller=await _sellerRepository.getSeller();
+          print("Usuario Obtenido");
+          print("phone"+seller.phoneNumber);
           yield  UpdateSellerPageState(seller);
         }
       }catch(e){
@@ -148,17 +151,15 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       City newCity;
       List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists(0);
       yield PublicationListState(publicationLists,colors,brands,cities,newColor,newCity,newBrand,numPue);
-      /*if(estado){
 
-      }
-      else{
-      }*/
     }
 
     else if(event is PublicationViewEvent){
       yield LoadingPageState("Publicaciones","Ver");
+      Seller seller=await _sellerRepository.getSeller();
+      print("Seller "+seller.phoneNumber);
       List<PublicationView> publicationsViews=await  _publicationRepository.getpublicationView(event.idPublication);
-      yield PublicationViewState(publicationsViews);
+      yield PublicationViewState(publicationsViews,seller);
     }
     else if(event is SellerPublicationViewEvent){
       yield LoadingPageState("Mis Publicaciones","Modificar");

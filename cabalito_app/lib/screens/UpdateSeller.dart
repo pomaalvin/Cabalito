@@ -105,11 +105,11 @@ class UpdateSellerState extends State<UpdateSeller>{
                                                 onPressed: () {
                                                   _showChoiceDialog(context);
                                                 }),
-                                            input(name,"Nombre: "+seller.firstName,true),
+                                            input(name,"Nombre: "+seller.firstName,false),
 
-                                            input(lastname,"Apellido: "+seller.lastName,true),
+                                            input(lastname,"Apellido: "+seller.lastName,false),
 
-                                            input(phone,"Telefono: "+seller.phoneNumber,true),
+                                            input(phone,"Telefono: "+seller.phoneNumber,false),
                                             Container(
                                               height: size.height*0.03,
                                             ),

@@ -12,15 +12,17 @@ import '../lib/ApiUrl.dart' as api;
 
 class PublicationsView extends KFDrawerContent{
   List<PublicationView> publication;
-  PublicationsView(this.publication);
+  Seller seller;
+  PublicationsView(this.publication,this.seller);
 
   @override
-  State createState() => _ViewPublications(publication);
+  State createState() => _ViewPublications(publication,seller);
 }
 
 class _ViewPublications extends State<PublicationsView>{
   List<PublicationView> publicationView = List();
-  _ViewPublications(this.publicationView);
+  Seller seller;
+  _ViewPublications(this.publicationView,this.seller);
   List<String> images = List();
 
   int val=0;
@@ -31,6 +33,7 @@ class _ViewPublications extends State<PublicationsView>{
 
     print(" defd ${publicationView[0].title}");
     print(" defd ${publicationView[0].images.length}");
+    print("Selller"+seller.phoneNumber);
     for(int i=0;i<publicationView[0].images.length;i++) {
       images.add(api.url+"image/"+publicationView[0].images[i]);
       print("entra");
@@ -549,14 +552,13 @@ class _ViewPublications extends State<PublicationsView>{
       ),
     );
   }
-  Seller seller=Seller();
 
   Future<void> _showSeller(BuildContext context) {
-    seller.imagePath="vacio";
+   /*seller.imagePath="vacio";
     seller.lastName="vacio";
     seller.firstName="vacio";
     seller.email="email";
-    seller.phoneNumber="52-3622-253";
+    seller.phoneNumber="52-3622-253";*/
     return showDialog(context: context, builder: (BuildContext context) {
       return Dialog(
           shape: RoundedRectangleBorder(
@@ -713,7 +715,7 @@ class _Card extends StatelessWidget{
                   ),
                   Flexible(child: Padding(
                     padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.02),
-                    child: Text(seller.firstName+" "+seller.lastName,
+                    child: Text(seller.firstName.toString()+" "+seller.lastName.toString(),
                       style: TextStyle(
                         fontSize: 18.0,
                         color:Colors.black,
@@ -736,7 +738,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.01),
-                    child: Text(seller.phoneNumber,
+                    child: Text(seller.phoneNumber.toString(),
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
@@ -759,7 +761,7 @@ class _Card extends StatelessWidget{
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: heightScreen*0.05,left: widhtScreen*0.010,bottom: 20),
-                    child: Text(seller.email,
+                    child: Text(seller.email.toString(),
                       style: TextStyle(
                         fontSize: 18.0,
                         color: TitleColor,
