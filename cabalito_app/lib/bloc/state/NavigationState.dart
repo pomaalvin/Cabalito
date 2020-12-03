@@ -9,15 +9,15 @@ import 'package:cabalitoapp/model/Seller.dart';
 import 'package:cabalitoapp/screens/AddPublication.dart';
 import 'package:cabalitoapp/screens/Information.dart';
 import 'package:cabalitoapp/screens/Loading.dart';
-import 'file:///G:/Universidad/Semestre%206/Ingenieria%20de%20Software/Proyecto/Cabalito/cabalito_app/lib/screensLogin/LogIn.dart';
 import 'package:cabalitoapp/screens/MechanicList.dart';
 import 'package:cabalitoapp/screens/PublicationList.dart';
-import 'file:///G:/Universidad/Semestre%206/Ingenieria%20de%20Software/Proyecto/Cabalito/cabalito_app/lib/screensLogin/RegisterSeller.dart';
 import 'package:cabalitoapp/screens/SellerPublicationList.dart';
 import 'package:cabalitoapp/screens/SplashScreen.dart';
 import 'package:cabalitoapp/screens/Template.dart';
 import 'package:cabalitoapp/screens/Template2.dart';
 import 'package:cabalitoapp/screens/UpdateSeller.dart';
+import 'package:cabalitoapp/screensLogin/LogIn.dart';
+import 'package:cabalitoapp/screensLogin/RegisterSeller.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../screens/ViewPublication.dart';
