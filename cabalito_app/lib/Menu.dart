@@ -18,20 +18,6 @@ class MenuState extends State<Menu>{
     _drawerController = KFDrawerController(
         initialPage: ClassBuilder.fromString('Home'),
         items: [
-          KFDrawerItem.initWithPage(
-            text: Text("Inicio",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.home,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(HomePageEvent());
-            },
-          ),
 
           KFDrawerItem.initWithPage(
             text: Text("Publicaciones",
@@ -123,7 +109,7 @@ class MenuState extends State<Menu>{
             },
           ),
 
-          KFDrawerItem.initWithPage(
+          /*KFDrawerItem.initWithPage(
             text: Text("Registro usuario",
               style: TextStyle(
                 color: Colors.white,
@@ -166,7 +152,7 @@ class MenuState extends State<Menu>{
               _drawerController.close();
               BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
             },
-          ),
+          ),*/
         ]
     );
   }

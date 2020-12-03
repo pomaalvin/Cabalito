@@ -158,7 +158,6 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
       City newCity;
       List<ListPublication> publicationLists=await _publicationRepository.getpublicationLists(0);
       yield PublicationListState(publicationLists,colors,brands,cities,newColor,newCity,newBrand,numPue);
-
     }
 
     else if(event is PublicationViewEvent){
