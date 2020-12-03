@@ -80,8 +80,15 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
           print("phone"+seller.phoneNumber);
           yield  UpdateSellerPageState(seller);
         }
+        else{
+          Seller seller =new Seller();
+          seller=await _sellerRepository.getSeller();
+          yield  UpdateSellerPageState(seller);
+        }
       }catch(e){
-        print(e);
+        Seller seller =new Seller();
+        seller=await _sellerRepository.getSeller();
+        yield  UpdateSellerPageState(seller);
       }
     }
     else if(event is RegisterSellerPageEvent){

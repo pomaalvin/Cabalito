@@ -384,9 +384,6 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(option=="Cambiar Contraseña"){
       _changePassword(context);
     }
-    if(option=="Actualizar"){
-      _change();
-    }
   }
   limpiar(){
     password.text="";
@@ -407,7 +404,7 @@ class UpdateSellerState extends State<UpdateSeller>{
     if(imageFile==null){
       flag=false;
     }
-    BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,flag));
+   BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,flag));
 
   }
 
