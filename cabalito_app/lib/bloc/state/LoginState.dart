@@ -1,27 +1,32 @@
 
 import 'package:equatable/equatable.dart';
 
-abstract class LoginState extends Equatable{
-  const LoginState();
+
+abstract class LogInBlocState extends Equatable{
+  const LogInBlocState();
 }
-class InitState extends LoginState{
-  InitState();
+class InitLoginState extends LogInBlocState{
+  InitLoginState();
   @override
   List<Object> get props => [];
 }
 
-class LogInOkState extends LoginState{
+class LogInOkState extends LogInBlocState{
   LogInOkState();
   @override
   List<Object> get props => [];
 }
-
-class LogInFailedState extends LoginState{
+class LogInLoadingState extends LogInBlocState{
+  LogInLoadingState();
+  @override
+  List<Object> get props => [];
+}
+class LogInFailedState extends LogInBlocState{
   LogInFailedState();
   @override
   List<Object> get props => [];
 }
-class SignUpState extends LoginState{
+class SignUpState extends LogInBlocState{
   SignUpState();
   @override
   List<Object> get props=>[];

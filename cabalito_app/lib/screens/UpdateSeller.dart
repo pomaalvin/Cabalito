@@ -1,9 +1,9 @@
 
 import 'dart:io';
 import 'dart:ui';
-import 'package:toast/toast.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/lib/Alerts.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -369,7 +369,7 @@ class UpdateSellerState extends State<UpdateSeller>{
       BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,false));
       Navigator.pop(context);
     }else{
-      Toast.show("No coinciden los datos", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+      alertError("No coinciden los datos", context);
     }
     limpiar();
   }
