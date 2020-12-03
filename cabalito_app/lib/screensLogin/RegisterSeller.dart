@@ -1,6 +1,10 @@
 import'dart:ui';
+import 'package:cabalitoapp/bloc/bloc/LoginBloc.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/LoginEvent.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/lib/Alerts.dart';
+import 'package:cabalitoapp/model/LoginRequest.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -167,11 +171,16 @@ class RegisterSellerState extends State<RegisterSeller>{
     seller.lastName=lastname.text;
     seller.phoneNumber=phone.text;
     seller.email=email.text;
-    seller.password=password.text;
     seller.imagePath="vacio";
+    LoginRequest loginRequest=LoginRequest();
+    loginRequest.email=email.text;
+    loginRequest.password=password.text;
     if(password.text==confirmPassword.text) {
-      BlocProvider.of<NavigationBloc>(context).add(AddSellerEvent(seller));
+      BlocProvider.of<LogInBloc>(context).add(SignUpEvent(seller,loginRequest));
       }
+    else{
+      alertError("Las contraseñas no coinciden", context);
+    }
 
   }
 }

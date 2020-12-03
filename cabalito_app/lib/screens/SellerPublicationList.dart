@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
+import 'package:cabalitoapp/lib/token.dart';
 import 'package:cabalitoapp/model/PublicationList.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +25,7 @@ class _PublicationList extends State<SellerPublicationList>{
   TextEditingController buscarPublicacion = TextEditingController();
   int pagina=0;
   bool cargando=true;
+  String token;
   @override
   void initState(){
     super.initState();

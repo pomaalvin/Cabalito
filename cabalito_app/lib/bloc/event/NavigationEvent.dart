@@ -1,5 +1,6 @@
 import 'package:cabalitoapp/model/ImagePublicatio.dart';
 import 'package:cabalitoapp/model/Mechanic.dart';
+import 'package:cabalitoapp/model/PasswordRequest.dart';
 import 'dart:io';
 
 import 'package:cabalitoapp/model/Publication.dart';
@@ -138,5 +139,12 @@ class DeletePublicationEvent extends NavigationEvent{
   DeletePublicationEvent(this.idPublication);
   @override
   List<Object> get props =>[idPublication];
+
+}
+class ChangePasswordEvent extends NavigationEvent {
+  PasswordRequest passwordRequest;
+  ChangePasswordEvent(this.passwordRequest);
+  @override
+  List<Object> get props =>[passwordRequest];
 
 }

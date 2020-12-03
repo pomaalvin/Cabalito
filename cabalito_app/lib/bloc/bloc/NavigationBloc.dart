@@ -94,16 +94,6 @@ class NavigationBloc extends Bloc<NavigationEvent,NavigationState>{
 
       yield AddPublicationPageState(colors,brands,cities,false,null);
     }
-    else if(event is AddSellerEvent){
-      try{
-        bool estado=await _sellerRepository.addSeller(event.seller);
-        if(estado){
-          yield  HomePageState();
-        }
-      }catch(e){
-        print(e);
-      }
-    }
     else if(event is AddPublicationEvent){
       yield LoadingPageState("Mis Publicaciones","Agregar");
       bool estado=await _publicationRepository.addPublication(event.publication,event.images);

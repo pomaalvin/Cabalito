@@ -1,5 +1,7 @@
 
+import 'package:cabalitoapp/bloc/bloc/LoginBloc.dart';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
+import 'package:cabalitoapp/bloc/event/LoginEvent.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -131,20 +133,6 @@ class MenuState extends State<Menu>{
             },
           ),
           KFDrawerItem.initWithPage(
-            text: Text("LogIn",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.login,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
-            },
-          ),
-          KFDrawerItem.initWithPage(
             text: Text("Información",
               style: TextStyle(
                 color: Colors.white,
@@ -187,6 +175,16 @@ class MenuState extends State<Menu>{
      body: KFDrawer(
          controller: _drawerController,
          footer: KFDrawerItem(
+           onPressed: (){
+             Builder(
+                 builder: (context) {
+
+                   print("saasdf");
+                   BlocProvider.of<LogInBloc>(context).add(SignOutEvent());
+                   return null;
+                 }
+             );
+           },
            text: Text("Logout",
              style: TextStyle(
                color: Colors.white,

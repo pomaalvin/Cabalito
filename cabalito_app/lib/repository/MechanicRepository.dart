@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cabalitoapp/lib/token.dart';
 import 'package:cabalitoapp/model/Mechanic.dart';
 import 'package:cabalitoapp/model/Stars.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,11 @@ class MechanicRepository{
     try{
       List<Mechanic>mechanics=List();
       var url=api.url + "mechanic";
-      print(url);
+      var token=await Token().getToken();
       final response = await http.get(url,
         headers: <String,String>{
         'Content-Type':'application/json; charset=UTF-8',
+          'Authorization':token
         }
       );
       List mechanic= json.decode(utf8.decode(response.bodyBytes));
@@ -40,9 +42,11 @@ class MechanicRepository{
   Future<bool>addQualification(Stars stars)async{
     try{
       var url=api.url + "mechanic";
+      var token=await Token().getToken();
       final response = await http.post(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           },
           body: jsonEncode(stars.toJson())
       );

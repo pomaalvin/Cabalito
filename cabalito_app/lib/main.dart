@@ -7,7 +7,9 @@ import 'package:cabalitoapp/bloc/state/LoginState.dart';
 import 'package:cabalitoapp/repository/MechanicRepository.dart';
 import 'package:cabalitoapp/repository/PublicationRepository.dart';
 import 'package:cabalitoapp/repository/SellerRepository.dart';
-import 'package:cabalitoapp/screens/LogIn.dart';
+import 'package:cabalitoapp/screensLogin/LogIn.dart';
+import 'package:cabalitoapp/screensLogin/RegisterSeller.dart';
+import 'package:cabalitoapp/screensLogin/SignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,13 +28,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primaryColor: Color.fromRGBO(73, 24, 89, 1),accentColor: Colors.black,fontFamily: "SourceSansPro"),
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
-          create:(context)=>LogInBloc(),
+          create:(context)=>LogInBloc(SellerRepository())..add(InitAppEvent()),
           child:BlocBuilder<LogInBloc,LogInBlocState>(
             builder: (context,stateNavigation){
               if(stateNavigation is LogInOkState){
+                print(context);
                 return BlocProvider(
                     create:(context2)=>NavigationBloc(PublicationRepository(),MechanicRepository(),SellerRepository()),
                     child:Menu());
+              }
+              else if(stateNavigation is SignUpState||stateNavigation is SignUpLoadingState){
+                return SignUp();
               }
               else{
                 return LogIn();

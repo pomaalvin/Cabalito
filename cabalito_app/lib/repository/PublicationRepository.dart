@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cabalitoapp/lib/token.dart';
 import 'package:cabalitoapp/model/Brand.dart';
 import 'package:cabalitoapp/model/City.dart';
 import 'package:cabalitoapp/model/ImagePublicatio.dart';
@@ -19,9 +20,11 @@ class PublicationRepository{
   Future<bool> addPublication(Publication publication,List<File>images)async {
     try{
       var url=api.url + "publications";
+      var token=await Token().getToken();
       final response = await http.post(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           },
           body: jsonEncode(publication.toJson())
       );
@@ -41,9 +44,11 @@ class PublicationRepository{
   Future<bool> modifyPublication(Publication publication,List<File>images,List<ImagePublication> imagesDelete)async {
     try{
       var url=api.url + "publications";
+      var token=await Token().getToken();
       final response = await http.put(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           },
           body: jsonEncode(publication.toJson())
       );
@@ -70,9 +75,11 @@ class PublicationRepository{
   Future<bool> deleteImages(List<ImagePublication> imagesDelete)async{
     try{
       var url=api.url + "publications/images";
+      var token=await Token().getToken();
       final response = await http.put(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           },
           body: jsonEncode(imagesDelete)
       );
@@ -92,8 +99,10 @@ class PublicationRepository{
     try{
 
       var uri = Uri.parse(api.url + "publications/images?idPublication="+idPublication.toString());
+      var token=await Token().getToken();
       var request = http.MultipartRequest('POST', uri)
-        ..fields['idPublication'] = idPublication.toString();
+        ..fields['idPublication'] = idPublication.toString()
+      ..headers["Authorization"]=token;
       list.forEach((imageFile) async{
           request.files.add(await http.MultipartFile.fromPath("images", imageFile.path));
           });
@@ -114,9 +123,11 @@ class PublicationRepository{
     try{
       List<Color> colors=List();
       var url=api.url + "publications/colors";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -143,9 +154,11 @@ class PublicationRepository{
     try{
       List<Brand> brands=List();
       var url=api.url + "publications/brands";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -172,9 +185,11 @@ class PublicationRepository{
     try{
       List<City> cities=List();
       var url=api.url + "publications/cities";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -201,7 +216,12 @@ class PublicationRepository{
     try{
       List<ListPublication> listPublications=List();
       var url=api.url + "seller/publications/?n=5&i="+(page*1).toString();
-      final response = await http.get(url
+      var token=await Token().getToken();
+      final response = await http.get(url,
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
+          }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
       resCol.forEach((element) {
@@ -228,9 +248,11 @@ class PublicationRepository{
   Future<bool> deletePublication(int idPublication)async{
     try{
       var url=api.url + "publications?idPublication="+idPublication.toString();
+      var token=await Token().getToken();
       final response = await http.delete(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       if(response.statusCode==200){
@@ -250,9 +272,11 @@ class PublicationRepository{
   Future<Publication> getpublicationEdit(int idPublication)async {
     try{
       var url=api.url + "publications/idd?idPublication=${idPublication.toString()}";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       print(response.body);
@@ -296,9 +320,11 @@ class PublicationRepository{
     try{
       List<PublicationView> publicationView=List();
       var url=api.url + "publications/idd?idPublication=${idPublication.toString()}";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       print(response.body);
@@ -342,9 +368,11 @@ class PublicationRepository{
     try{
       List<ListPublication> listPublications=List();
       var url=api.url + "publications/paths?idPublication=${idPublication.toString()}";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol =  json.decode(utf8.decode(response.bodyBytes));
@@ -374,9 +402,11 @@ class PublicationRepository{
     try{
       List<ListPublication> listPublications=List();
       var url=api.url + "publications/?n=5&i=${(pagi*5).toString()}";
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));
@@ -424,9 +454,11 @@ class PublicationRepository{
       }
       print(ruta);
       var url=api.url + "publications/?n=5&i=${(pagi*5).toString()}"+ruta;
+      var token=await Token().getToken();
       final response = await http.get(url,
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
+            'Authorization':token
           }
       );
       List resCol = json.decode(utf8.decode(response.bodyBytes));

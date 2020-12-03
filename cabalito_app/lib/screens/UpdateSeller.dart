@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:cabalitoapp/bloc/bloc/NavigationBloc.dart';
 import 'package:cabalitoapp/bloc/event/NavigationEvent.dart';
 import 'package:cabalitoapp/lib/Alerts.dart';
+import 'package:cabalitoapp/model/PasswordRequest.dart';
 import 'package:cabalitoapp/model/Seller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -364,9 +365,11 @@ class UpdateSellerState extends State<UpdateSeller>{
     });
   }
   _change() {
-    if(seller.password==password.text && newPassword.text==confirmPassword.text){
-      seller.password=newPassword.text;
-      BlocProvider.of<NavigationBloc>(context).add(UpdateSellerEvent(seller,imageFile,false));
+    if(newPassword.text==confirmPassword.text){
+      PasswordRequest passwordRequest=PasswordRequest();
+      passwordRequest.oldPassword=password.text;
+      passwordRequest.newPassword=newPassword.text;
+      BlocProvider.of<NavigationBloc>(context).add(ChangePasswordEvent(passwordRequest));
       Navigator.pop(context);
     }else{
       alertError("No coinciden los datos", context);

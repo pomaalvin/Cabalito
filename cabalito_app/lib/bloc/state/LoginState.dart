@@ -31,6 +31,11 @@ class SignUpState extends LogInBlocState{
   @override
   List<Object> get props=>[];
 }
+class SignUpLoadingState extends LogInBlocState{
+  SignUpLoadingState();
+  @override
+  List<Object> get props=>[];
+}
 
 
 
