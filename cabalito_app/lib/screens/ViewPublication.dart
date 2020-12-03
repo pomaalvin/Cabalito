@@ -36,10 +36,7 @@ class _ViewPublications extends State<PublicationsView>{
     print("Selller"+seller.phoneNumber);
     for(int i=0;i<publicationView[0].images.length;i++) {
       images.add(api.url+"image/"+publicationView[0].images[i]);
-      print("entra");
-      print(images[i]);
     }
-
   }
 
   Size size;
@@ -57,17 +54,14 @@ class _ViewPublications extends State<PublicationsView>{
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: size.width*0.01,
-                  height: size.height*0.003,
-                ),
+
                 Container(
-                  color: Colors.white,
-                  width: size.width*0.98,
-                  height: size.height*0.5,
+                  color: Colors.transparent,
+                  width: size.width*0.99,
+                  height: size.height*0.44,
                   child: CarouselSlider(
                     options: CarouselOptions(
-                        height: 280.0,
+                        height: 300.0,
                       aspectRatio: 16/9,
                       viewportFraction: 0.8,
                       initialPage: 0,
@@ -79,9 +73,7 @@ class _ViewPublications extends State<PublicationsView>{
                       autoPlayCurve: Curves.fastOutSlowIn,
                       enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
-
                     ),
-
                     items: images.asMap().entries.map((ind) {
                       return Builder(
                         builder: (BuildContext context) {
@@ -156,7 +148,7 @@ class _ViewPublications extends State<PublicationsView>{
                           style: TextStyle(
                               color: color3,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20.0
+                              fontSize: 22.0
                           ),
 
                         ),
@@ -177,10 +169,10 @@ class _ViewPublications extends State<PublicationsView>{
                         color: Colors.transparent,
                         width: size.width*0.88,
                         height: size.height*0.1,
-                        child: Text(publicationView[0].title,
+                        child: Text(publicationView[0].description,
                           style: TextStyle(
                               //color: Texto2Color,
-                              fontSize: 15.0
+                              fontSize: 18.0
                           ),
                         ),
                       )
@@ -517,7 +509,7 @@ class _ViewPublications extends State<PublicationsView>{
                                   },
                                   child: Container(
                                     width: size.width*0.98,
-                                    height: size.height*0.1,
+                                    height: size.height*0.08,
                                     color: Colors.transparent,
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
