@@ -32,34 +32,7 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(HomePageEvent());
             },
           ),
-          KFDrawerItem.initWithPage(
-            text: Text("Agregar Publicación",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.add,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(AddPublicationPageEvent());
-            },
-          ),
-          KFDrawerItem.initWithPage(
-            text: Text("Mecánicos",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.build,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(MechanicPageEvent());
-            },
-          ),
+
           KFDrawerItem.initWithPage(
             text: Text("Publicaciones",
               style: TextStyle(
@@ -74,6 +47,22 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(PublicationListsEvent());
             },
           ),
+
+          KFDrawerItem.initWithPage(
+            text: Text("Agregar Publicación",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.add,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(AddPublicationPageEvent());
+            },
+          ),
+
           KFDrawerItem.initWithPage(
             text: Text("Mis Publicaciones",
               style: TextStyle(
@@ -88,20 +77,7 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(SellerPublicationEvent());
             },
           ),
-          KFDrawerItem.initWithPage(
-            text: Text("Registro usuario",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.group_add,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(RegisterSellerPageEvent());
-            },
-          ),
+
           KFDrawerItem.initWithPage(
             text: Text("Editar perfil",
               style: TextStyle(
@@ -116,34 +92,22 @@ class MenuState extends State<Menu>{
               BlocProvider.of<NavigationBloc>(context).add(UpdateSellerPageEvent());
             },
           ),
+
           KFDrawerItem.initWithPage(
-            text: Text("Splash",
+            text: Text("Mecánicos",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
               ),
             ),
-            icon: Icon(Icons.phone,color: Colors.white,
+            icon: Icon(Icons.build,color: Colors.white,
             ),
             onPressed: (){
               _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(SplashScreenEvent());
+              BlocProvider.of<NavigationBloc>(context).add(MechanicPageEvent());
             },
           ),
-          KFDrawerItem.initWithPage(
-            text: Text("LogIn",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            icon: Icon(Icons.login,color: Colors.white,
-            ),
-            onPressed: (){
-              _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
-            },
-          ),
+
           KFDrawerItem.initWithPage(
             text: Text("Información",
               style: TextStyle(
@@ -159,24 +123,50 @@ class MenuState extends State<Menu>{
             },
           ),
 
-
-
-          /*
           KFDrawerItem.initWithPage(
-            text: Text("Publicación",
+            text: Text("Registro usuario",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,
               ),
             ),
-            icon: Icon(Icons.view_list,color: Colors.white,
+            icon: Icon(Icons.group_add,color: Colors.white,
             ),
             onPressed: (){
               _drawerController.close();
-              BlocProvider.of<NavigationBloc>(context).add(PublicationViewEvent());
+              BlocProvider.of<NavigationBloc>(context).add(RegisterSellerPageEvent());
             },
           ),
-          */
+
+          KFDrawerItem.initWithPage(
+            text: Text("Splash",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.phone,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(SplashScreenEvent());
+            },
+          ),
+
+          KFDrawerItem.initWithPage(
+            text: Text("LogIn",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            icon: Icon(Icons.login,color: Colors.white,
+            ),
+            onPressed: (){
+              _drawerController.close();
+              BlocProvider.of<NavigationBloc>(context).add(LogInEvent());
+            },
+          ),
         ]
     );
   }
@@ -198,7 +188,6 @@ class MenuState extends State<Menu>{
            color: Color.fromRGBO(20, 61, 89, 1),
          ),
        ),
-
    );
   }
 }
