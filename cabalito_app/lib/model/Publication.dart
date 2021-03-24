@@ -1,4 +1,4 @@
-import 'package:cabalitoapp/model/ImagePublicatio.dart';
+import 'ImagePublicatio.dart';
 import 'package:intl/intl.dart';
 class Publication {
   int _idPublication;

@@ -1,4 +1,4 @@
-import 'package:cabalitoapp/model/ImagePublicatio.dart';
+import 'file:///G:/Universidad/Semestre%207/Taller%20sis/Grupo7_Cabalito_Frontend/movil/cabalito_frontend_mobile/lib/model/ImagePublicatio.dart';
 import 'package:cabalitoapp/model/Mechanic.dart';
 import 'package:cabalitoapp/model/PasswordRequest.dart';
 import 'dart:io';
